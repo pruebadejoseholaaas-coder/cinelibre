@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO -->
+    <title>CineLibre | Cine clásico gratis y legal</title>
+    <meta name="description" content="Catálogo de películas de dominio público y Creative Commons. Cine clásico gratis, legal y sin registros.">
+    <meta name="keywords" content="peliculas gratis, dominio publico, cine clasico, creative commons">
+    <meta name="author" content="Tu Nombre">
+    
+    <!-- Open Graph (para compartir en redes) -->
+    <meta property="og:title" content="CineLibre 🎬">
+    <meta property="og:description" content="Cine clásico gratis y legal.">
+    <meta property="og:type" content="website">
+    
+    <!-- Favicon (emoji como SVG) -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+    
+    <style>
+        /* ============ VARIABLES Y RESET ============ */
+        :root {
+            --bg-primary: #0f0f0f;
+            --bg-secondary: #181818;
+            --bg-card: #1f1f1f;
+            --accent: #e50914;
+            --accent-hover: #f6121d;
+            --text-main: #ffffff;
+            --text-muted: #a0a0a0;
+            --radius: 10px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            background: var(--bg-primary);
+            color: var(--text-main);
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+        }
+
+        ::selection { background: var(--accent); }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-primary); }
+        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+
+        /* ============ HEADER ============ */
+        header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(15, 15, 15, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 1rem 5%;
+            display: flex; flex-wrap: wrap; gap: 1rem;
+            align-items: center; justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.6rem; font-weight: 900;
+            color: var(--accent); letter-spacing: -1px;
+            text-decoration: none;
+        }
+        .logo span { color: var(--text-main); }
+
+        /* ============ BUSCADOR ============ */
+        .search-box {
+            position: relative;
+            flex: 1; max-width: 400px; min-width: 200px;
+        }
+
+        .search-box input {
+            width: 100%;
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            padding: 0.7rem 1rem 0.7rem 2.8rem;
+            color: var(--text-main);
+            font-size: 0.95rem;
+            transition: var(--transition);
+            outline: none;
+        }
+
+        .search-box input:focus { border-color: var(--accent); }
+        .search-box::before {
+            content: "🔍";
+            position: absolute; left: 1rem; top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem; opacity: 0.6;
+        }
+
+        /* ============ HERO ============ */
+        .hero {
+            padding: 3rem 5% 2rem;
+            background: radial-gradient(ellipse at top right, rgba(229,9,20,0.15), transparent 60%);
+        }
+
+        .hero h1 {
+            font-size: clamp(1.8rem, 5vw, 3rem);
+            font-weight: 900; line-height: 1.1;
+            margin-bottom: 0.8rem;
+        }
+
+        .hero h1 em { color: var(--accent); font-style: normal; }
+
+        .hero p { color: var(--text-muted); max-width: 600px; font-size: 1.05rem; }
+
+        /* ============ BARRA DE CONTROL ============ */
+        .controls {
+            padding: 1.5rem 5% 0.5rem;
+            display: flex; flex-wrap: wrap; gap: 0.8rem;
+            align-items: center; justify-content: space-between;
+        }
+
+        .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+        .chip {
+            background: var(--bg-card);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-muted);
+            padding: 0.5rem 1.1rem;
+            border-radius: 20px;
+            cursor: pointer; font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .chip:hover { color: var(--text-main); border-color: var(--accent); }
+        .chip.active { background: var(--accent); color: white; border-color: var(--accent); font-weight: 600; }
+
+        .sort-select {
+            background: var(--bg-card);
+            color: var(--text-main);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            cursor: pointer; font-size: 0.85rem;
+            outline: none;
+        }
+
+        /* ============ CONTADOR ============ */
+        .results-info {
+            padding: 1rem 5% 0;
+            color: var(--text-muted); font-size: 0.85rem;
+        }
+
+        /* ============ GRID DE PELÍCULAS ============ */
+        .catalog {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+            gap: 1.8rem;
+            padding: 1.5rem 5% 4rem;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border-radius: var(--radius);
+            overflow: hidden;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            animation: fadeIn 0.4s ease backwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+
+        .poster-wrap { position: relative; aspect-ratio: 2/3; overflow: hidden; background: #2a2a2a; }
+
+        .poster-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .card:hover .poster-wrap img { transform: scale(1.08); }
+
+        /* Botón play al hacer hover */
+        .play-overlay {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.4);
+            opacity: 0; transition: var(--transition);
+        }
+
+        .card:hover .play-overlay { opacity: 1; }
+
+        .play-overlay .play-icon {
+            width: 55px; height: 55px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; padding-left: 4px;
+        }
+
+        /* Botón favorito */
+        .fav-btn {
+            position: absolute; top: 8px; right: 8px; z-index: 5;
+            background: rgba(0,0,0,0.7);
+            border: none; color: white;
+            width: 34px; height: 34px;
+            border-radius: 50%; cursor: pointer;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .fav-btn:hover { transform: scale(1.15); }
+        .fav-btn.active { background: var(--accent); }
+
+        .badge {
+            position: absolute; top: 8px; left: 8px;
+            background: var(--accent);
+            color: white; font-size: 0.65rem; font-weight: 700;
+            padding: 0.25rem 0.6rem; border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        .info { padding: 0.9rem; }
+        .info .title {
+            font-size: 0.95rem; font-weight: 600;
+            margin-bottom: 0.35rem;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .info .meta {
+            display: flex; justify-content: space-between;
+            font-size: 0.75rem; color: var(--text-muted);
+        }
+
+        /* ============ ESTADO VACÍO ============ */
+        .empty-state {
+            grid-column: 1 / -1;
+            text-align: center; padding: 4rem 1rem;
+            color: var(--text-muted);
+        }
+        .empty-state .icon { font-size: 4rem; margin-bottom: 1rem; }
+
+        /* ============ MODAL REPRODUCTOR ============ */
+        .modal-overlay {
+            position: fixed; inset: 0; z-index: 100;
+            background: rgba(0,0,0,0.96);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-overlay.active { opacity: 1; pointer-events: all; }
+
+        .player-container {
+            width: 92%; max-width: 1100px;
+            position: relative;
+        }
+
+        .player-header {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .player-title { font-size: 1.2rem; font-weight: 700; }
+
+        .close-btn {
+            background: rgba(255,255,255,0.1);
+            border: none; color: white;
+            width: 40px; height: 40px;
+            border-radius: 50%; cursor: pointer;
+            font-size: 1.3rem;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover { background: var(--accent); transform: rotate(90deg); }
+
+        .video-frame {
+            aspect-ratio: 16/9;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 25px 80px rgba(229,9,20,0.2);
+        }
+
+        .video-frame iframe { width: 100%; height: 100%; border: none; }
+
+        /* ============ FOOTER ============ */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 2rem 5%;
+            text-align: center;
+            color: var(--text-muted); font-size: 0.85rem;
+        }
+
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 768px) {
+            header { flex-direction: column; align-items: stretch; }
+            .search-box { max-width: 100%; }
+            .catalog { grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 1rem; }
+            .controls { flex-direction: column; align-items: flex-start; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============ HEADER ============ -->
+    <header>
+        <a href="#" class="logo" onclick="resetFilters(); return false;">CINE<span>LIBRE</span></a>
+        <div class="search-box">
+            <input type="search" id="searchInput" placeholder="Buscar películas..." aria-label="Buscar películas" autocomplete="off">
+        </div>
+    </header>
+
+    <!-- ============ HERO ============ -->
+    <section class="hero">
+        <h1>Cine clásico <em>gratis</em> y 100% legal 🍿</h1>
+        <p>Descubre obras maestras del dominio público y Creative Commons. Sin registros, sin pagos, sin anuncios.</p>
+    </section>
+
+    <!-- ============ CONTROLES ============ -->
+    <div class="controls">
+        <nav class="filters" id="filters" aria-label="Filtros de categoría">
+            <button class="chip active" data-filter="all">🎬 Todos</button>
+            <button class="chip" data-filter="scifi">🚀 Sci-Fi</button>
+            <button class="chip" data-filter="horror">👻 Terror</button>
+            <button class="chip" data-filter="drama">🎭 Drama</button>
+            <button class="chip" data-filter="comedy">😂 Comedia</button>
+            <button class="chip" data-filter="animation">🎨 Animación</button>
+            <button class="chip" data-filter="fav">❤️ Mi Lista</button>
+        </nav>
+        <select class="sort-select" id="sortSelect" aria-label="Ordenar películas">
+            <option value="default">Ordenar por...</option>
+            <option value="year-desc">Año (más reciente)</option>
+            <option value="year-asc">Año (más antigua)</option>
+            <option value="title">Título (A-Z)</option>
+        </select>
+    </div>
+
+    <div class="results-info" id="resultsInfo"></div>
+
+    <!-- ============ CATÁLOGO ============ -->
+    <main class="catalog" id="catalog" aria-live="polite"></main>
+
+    <!-- ============ FOOTER ============ -->
+    <footer>
+        <p>🎬 <strong>CineLibre</strong> — Todo el contenido pertenece al dominio público o tiene licencia Creative Commons.</p>
+        <p>Hecho con ❤️ · <a href="https://github.com" target="_blank" rel="noopener">GitHub</a></p>
+    </footer>
+
+    <!-- ============ MODAL REPRODUCTOR ============ -->
+    <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Reproductor de video">
+        <div class="player-container">
+            <div class="player-header">
+                <h2 class="player-title" id="playerTitle"></h2>
+                <button class="close-btn" id="closeBtn" aria-label="Cerrar reproductor">✕</button>
+            </div>
+            <div class="video-frame">
+                <iframe id="videoPlayer" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // ================================================================
+    // BASE DE DATOS DE PELÍCULAS (Dominio Público / Creative Commons)
+    // ⚠️ IMPORTANTE: Verifica que cada videoId corresponda a una
+    // subida legal. Puedes reemplazarlos con cualquier video de YouTube.
+    // ================================================================
+    const movies = [
+        { id: 1,  title: "Night of the Living Dead", year: 1968, category: "horror",    featured: true,  poster: "https://image.tmdb.org/t/p/w500/hZnnUq0mrUQInGxsMjRFIhEcxY.jpg", videoId: "B7ouVlTOrOo" },
+        { id: 2,  title: "Nosferatu",                year: 1922, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/A8DqaYwNfbvkRcJtflnJWjcOTzj.jpg", videoId: "fkRKTZfzXUk" },
+        { id: 3,  title: "Metropolis",               year: 1927, category: "scifi",     featured: true,  poster: "https://image.tmdb.org/t/p/w500/hUK9rewffKGqtXynH5SW3v9hzcu.jpg", videoId: "7ma8BzfCqdo" },
+        { id: 4,  title: "The General",              year: 1926, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/k4HAy7SNaKUdKMlPjHEXmLRrZl.jpg", videoId: "vMfFsfvKcHc" },
+        { id: 5,  title: "Charade",                  year: 1963, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/x5E7zXMtOsGgkRcJNjKqLhBwH.jpg", videoId: "W2yWCMn8vRs" },
+        { id: 6,  title: "His Girl Friday",          year: 1940, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/uWJyt3e0rdCUcZSbWnAeFoJqjQc.jpg", videoId: "wDwLJBERh0A" },
+        { id: 7,  title: "Plan 9 from Outer Space",  year: 1959, category: "scifi",     featured: false, poster: "https://image.tmdb.org/t/p/w500/6yogADyBYPMYvP3MxLCqfJZwXh.jpg", videoId: "3pNmf0bgLJk" },
+        { id: 8,  title: "The Kid",                  year: 1921, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/drgMcNxILLMfAmQP1cBZr6MzT9k.jpg", videoId: "Qf5T6wZJqK8" },
+        { id: 9,  title: "A Trip to the Moon",       year: 1902, category: "scifi",     featured: false, poster: "https://image.tmdb.org/t/p/w500/v2SRgioPZfMkfWcBtJUMeFmJDns.jpg", videoId: "_S7J9uJvGHc" },
+        { id: 10, title: "Detour",                   year: 1945, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/wG0lQjUuJZfOQm7ZjMfLqJkqLbA.jpg", videoId: "cY9dFJjzW9Q" },
+        { id: 11, title: "The Phantom of the Opera", year: 1925, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/5XPPVv4IhwY6A6L0XwLWJFmYBfC.jpg", videoId: "QhS6uJkRq6M" },
+        { id: 12, title: "House on Haunted Hill",    year: 1959, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/qJpIcCmRk0cDqPnPzLqSmvEgLqp.jpg", videoId: "6Jc8sLJxVVE" },
+        { id: 13, title: "Sita Sings the Blues",     year: 2008, category: "animation", featured: false, poster: "https://image.tmdb.org/t/p/w500/nV8ZwWp4b6bnMxJyZqRCvCAqhB.jpg", videoId: "LsoLErDog_U" },
+        { id: 14, title: "Popeye el Marino",         year: 1938, category: "animation", featured: false, poster: "https://image.tmdb.org/t/p/w500/qbGyX0mFqLmCcJyKQhZwT3JqZpD.jpg", videoId: "A6fJkN3uB9E" },
+        { id: 15, title: "D.O.A.",                   year: 1950, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/6vJZkqPMvLqLYbQ6uMfWYxPjHdL.jpg", videoId: "XsJqY3sKfJE" }
+    ];
+
+    // ================================================================
+    // ESTADO GLOBAL
+    // ================================================================
+    let state = {
+        filter: 'all',
+        search: '',
+        sort: 'default',
+        favorites: JSON.parse(localStorage.getItem('cinelibre_favs')) || []
+    };
+
+    // Referencias DOM
+    const catalog = document.getElementById('catalog');
+    const modal = document.getElementById('modal');
+    const player = document.getElementById('videoPlayer');
+    const playerTitle = document.getElementById('playerTitle');
+    const closeBtn = document.getElementById('closeBtn');
+    const searchInput = document.getElementById('searchInput');
+    const sortSelect = document.getElementById('sortSelect');
+    const resultsInfo = document.getElementById('resultsInfo');
+
+    // ================================================================
+    // UTILIDADES
+    // ================================================================
+    function debounce(fn, delay = 300) {
+        let timer;
+        return (...args) => {
+            clearTimeout(timer);
+            timer = setTimeout(() => fn(...args), delay);
+        };
+    }
+
+    function saveFavorites() {
+        localStorage.setItem('cinelibre_favs', JSON.stringify(state.favorites));
+    }
+
+    function toggleFavorite(id, event) {
+        event.stopPropagation();
+        state.favorites = state.favorites.includes(id)
+            ? state.favorites.filter(f => f !== id)
+            : [...state.favorites, id];
+        saveFavorites();
+        renderMovies();
+    }
+
+    // ================================================================
+    // FILTRADO Y ORDENAMIENTO
+    // ================================================================
+    function getFilteredMovies() {
+        let result = [...movies];
+
+        // Filtro por categoría o favoritos
+        if (state.filter === 'fav') {
+            result = result.filter(m => state.favorites.includes(m.id));
+        } else if (state.filter !== 'all') {
+            result = result.filter(m => m.category === state.filter);
+        }
+
+        // Búsqueda por título
+        if (state.search) {
+            const q = state.search.toLowerCase();
+            result = result.filter(m => m.title.toLowerCase().includes(q));
+        }
+
+        // Ordenamiento
+        switch (state.sort) {
+            case 'year-desc': result.sort((a, b) => b.year - a.year); break;
+            case 'year-asc':  result.sort((a, b) => a.year - b.year); break;
+            case 'title':     result.sort((a, b) => a.title.localeCompare(b.title)); break;
+        }
+
+        return result;
+    }
+
+    // ================================================================
+    // RENDERIZADO
+    // ================================================================
+    function renderMovies() {
+        const filtered = getFilteredMovies();
+        catalog.innerHTML = '';
+
+        // Contador de resultados
+        resultsInfo.textContent = `Mostrando ${filtered.length} película${filtered.length !== 1 ? 's' : ''}`;
+
+        // Estado vacío
+        if (filtered.length === 0) {
+            catalog.innerHTML = `
+                <div class="empty-state">
+                    <div class="icon">🎬</div>
+                    <h3>No se encontraron películas</h3>
+                    <p>Prueba con otra búsqueda o categoría.</p>
+                </div>`;
+            return;
+        }
+
+        // Crear tarjetas
+        filtered.forEach((movie, index) => {
+            const isFav = state.favorites.includes(movie.id);
+            const card = document.createElement('article');
+            card.className = 'card';
+            card.style.animationDelay = `${index * 0.05}s`;
+            card.setAttribute('tabindex', '0');
+            card.setAttribute('role', 'button');
+            card.setAttribute('aria-label', `Ver ${movie.title}`);
+
+            card.innerHTML = `
+                <div class="poster-wrap">
+                    <img src="${movie.poster}" alt="Póster de ${movie.title}" loading="lazy"
+                         onerror="this.src='https://via.placeholder.com/300x450/1f1f1f/666?text=Sin+Póster'">
+                    <div class="play-overlay"><div class="play-icon">▶</div></div>
+                    ${movie.featured ? '<span class="badge">Destacada</span>' : ''}
+                </div>
+                <button class="fav-btn ${isFav ? 'active' : ''}" aria-label="${isFav ? 'Quitar de' : 'Añadir a'} Mi Lista">
+                    ${isFav ? '❤️' : '🤍'}
+                </button>
+                <div class="info">
+                    <h3 class="title">${movie.title}</h3>
+                    <div class="meta">
+                        <span>${movie.year}</span>
+                        <span>${movie.category.toUpperCase()}</span>
+                    </div>
+                </div>
+            `;
+
+            // Eventos
+            card.querySelector('.fav-btn').addEventListener('click', (e) => toggleFavorite(movie.id, e));
+            card.addEventListener('click', () => openPlayer(movie));
+            card.addEventListener('keydown', (e) => { if (e.key === 'Enter') openPlayer(movie); });
+
+            catalog.appendChild(card);
+        });
+    }
+
+    // ================================================================
+    // REPRODUCTOR MODAL
+    // ================================================================
+    function openPlayer(movie) {
+        playerTitle.textContent = `${movie.title} (${movie.year})`;
+        player.src = `https://www.youtube-nocookie.com/embed/${movie.videoId}?autoplay=1&rel=0`;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        closeBtn.focus();
+    }
+
+    function closePlayer() {
+        modal.classList.remove('active');
+        player.src = '';
+        document.body.style.overflow = '';
+    }
+
+    // ================================================================
+    // RESET (click en logo)
+    // ================================================================
+    function resetFilters() {
+        state.filter = 'all';
+        state.search = '';
+        searchInput.value = '';
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        document.querySelector('[data-filter="all"]').classList.add('active');
+        renderMovies();
+    }
+
+    // ================================================================
+    // EVENT LISTENERS
+    // ================================================================
+    closeBtn.addEventListener('click', closePlayer);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closePlayer(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePlayer(); });
+
+    searchInput.addEventListener('input', debounce((e) => {
+        state.search = e.target.value.trim();
+        renderMovies();
+    }));
+
+    sortSelect.addEventListener('change', (e) => {
+        state.sort = e.target.value;
+        renderMovies();
+    });
+
+    document.getElementById('filters').addEventListener('click', (e) => {
+        if (!e.target.classList.contains('chip')) return;
+        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
+        e.target.classList.add('active');
+        state.filter = e.target.dataset.filter;
+        renderMovies();
+    });
+
+    // ================================================================
+    // INICIALIZACIÓN
+    // ================================================================
+    renderMovies();
+</script>
+</body>
+</html>
