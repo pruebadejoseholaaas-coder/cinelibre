@@ -30,7 +30,7 @@ const peliculas = [
         year: 1995,
         category: "comedy",
         featured: true,
-        poster: "URL-DEL-POSTER-DE-BALBUENA",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPzyOkws-KZjmqMyhRDSQePe-2YES_buUGWx_NLU7jRg&s=10",
         videoId: "qDcNLIrmFOE"
     },
 
