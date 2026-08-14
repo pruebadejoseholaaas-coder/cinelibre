@@ -654,15 +654,336 @@ const peliculas = [
         videoId: "Xrw9Jxkme4c"
     },
 
-    {
-        id: 64,
-        title: "Héctor El Father",
-        year: 2018,
-        category: "documentary",
-        featured: false,
-        poster: "URL_DEL_POSTER",
-        videoId: "GCjwGfdnHqQ"
-    }
+   {
+    id: 64,
+    title: "Héctor El Father",
+    year: 2018,
+    category: "documentary",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "GCjwGfdnHqQ"
+},
+
+{
+    id: 65,
+    title: "Lotoman",
+    year: 2011,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "5fOOmkF3ROs"
+},
+
+{
+    id: 66,
+    title: "Ladrones a domicilio",
+    year: 2008,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "qXh_3OBq1EM"
+},
+
+{
+    id: 67,
+    title: "Nueba Yol: Balbuena en Nueva York",
+    year: 1995,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "1zTAAmWx_Ik"
+},
+
+{
+    id: 68,
+    title: "El fantasma de mi novia",
+    year: 2018,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "bMl6XrQbmvI"
+},
+
+{
+    id: 69,
+    title: "Cristiano de la secreta",
+    year: 2009,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "t2LVS8hAHrE"
+},
+
+{
+    id: 70,
+    title: "Dos policías en apuros",
+    year: 2016,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "VS9BN2Az54A"
+},
+
+{
+    id: 71,
+    title: "Nueba Yol 2: La historia continúa",
+    year: 1996,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "omI7pTxlAkM"
+},
+
+{
+    id: 72,
+    title: "Colao",
+    year: 2017,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "TQU2hc753oU"
+},
+
+{
+    id: 73,
+    title: "Qué León",
+    year: 2018,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "zH8d9UmIyx8"
+},
+
+{
+    id: 74,
+    title: "Código Paz",
+    year: 2014,
+    category: "action",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "SDj8RnRET30"
+},
+
+{
+    id: 75,
+    title: "Baile Urbano",
+    year: 2018,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "KijOyndrk7c"
+},
+
+{
+    id: 76,
+    title: "La Máscara",
+    year: 2020,
+    category: "horror",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "nuUwusxMcAs"
+},
+
+{
+    id: 77,
+    title: "La Máscara 2",
+    year: 2021,
+    category: "horror",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "42HruccjsNU"
+},
+
+{
+    id: 78,
+    title: "El Rey de Najayo",
+    year: 2012,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "hEDXnJGx_5I"
+},
+
+{
+    id: 79,
+    title: "Santi Clo... La vaina de la Navidad",
+    year: 2008,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "67_CnSMYc00"
+},
+
+{
+    id: 80,
+    title: "De Pez en Cuando",
+    year: 2014,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "cC0o77NZIBw"
+},
+
+{
+    id: 81,
+    title: "La Soga",
+    year: 2009,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "ZDTW_lbkSho"
+},
+
+{
+    id: 82,
+    title: "Talento de Barrio",
+    year: 2008,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "csrnvBNmUQc"
+},
+
+{
+    id: 83,
+    title: "Urgente",
+    year: 2014,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "o4eEy7__Iwg"
+},
+
+{
+    id: 84,
+    title: "Al Fin y al Cabo",
+    year: 2008,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "Q_A1wBFRLpk"
+},
+
+{
+    id: 85,
+    title: "La Bruja",
+    year: 2021,
+    category: "horror",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "irsUAe0crHo"
+},
+
+{
+    id: 86,
+    title: "Pinky & Mole",
+    year: 2020,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "HfFb7GYGAlQ"
+},
+
+{
+    id: 87,
+    title: "Perdiendo el Juicio",
+    year: 2023,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "NBISYc_O-84"
+},
+
+{
+    id: 88,
+    title: "La Gunguna",
+    year: 2015,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "i9pWZQgb4RE"
+},
+
+{
+    id: 89,
+    title: "Quiero ser fiel",
+    year: 2014,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "Wzd2FTFRJgE"
+},
+
+{
+    id: 90,
+    title: "No es lo que parece",
+    year: 2021,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: ""
+},
+
+{
+    id: 91,
+    title: "Casi fiel",
+    year: 2019,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: ""
+},
+
+{
+    id: 92,
+    title: "Todas las mujeres son iguales",
+    year: 2017,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "c2xIUmd3yXg"
+},
+
+{
+    id: 93,
+    title: "Todos los hombres son iguales",
+    year: 2016,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "o-SFwI5VCpQ"
+},
+
+{
+    id: 94,
+    title: "Trabajo Sucio",
+    year: 2018,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "ZKrbDbYaNvk"
+},
+
+{
+    id: 95,
+    title: "Volvió Juanita",
+    year: 2019,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "kfR-AWI-cF4"
+},
+
+{
+    id: 96,
+    title: "La Mejor Película Dominicana",
+    year: 2020,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "z0XdJl7WkOk"
+},
+
 ];
 
 window.peliculas = peliculas;
