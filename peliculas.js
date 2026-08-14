@@ -330,7 +330,7 @@ const peliculas = [
         year: 2024,
         category: "comedy",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/2024/11/19/pmf10987.jpg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwgcV3ePAvczk8CGBx2d2bcHtmtA3cW8xhofJQ0G4vqQ&s=10",
         videoId: "hIdiStJN1kw"
     },
 
@@ -340,7 +340,7 @@ const peliculas = [
         year: 2023,
         category: "comedy",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/2023/11/28/whatsapp-image-2023-11-28-at-12.41.24-pm.jpeg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaFHHwOB5ejEikmFJ4YMIDH37qLdYiG4z-5ks903B9Q&s=10",
         videoId: "HY5RmPWd6qs"
     },
 
@@ -350,7 +350,7 @@ const peliculas = [
         year: 2012,
         category: "drama",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/imagenes/2012/24/234835.jpg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUDB5vqJy6T2gIz9ed8yS-7-AY2-s0ZQiGpGr3sD-Jgw&s=10",
         videoId: "uhzWX3E4G5Y"
     },
 
@@ -360,7 +360,7 @@ const peliculas = [
         year: 2023,
         category: "drama",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/2023/09/26/manny-perez-la-soga.png",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt5WuWrC1MCbFKfqE8ZUyi96IZ438mf5gmjWHwh9ZIkg&s=10",
         videoId: "fw2jc-JxYXE"
     },
 
@@ -370,7 +370,7 @@ const peliculas = [
         year: 2013,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBmIk4hQLxaeMUOjoiPrCBR-0YYHsRzm4WwHb_4TDbDg&s=10",
         videoId: "Lr1MORjvgh4"
     },
 
@@ -380,7 +380,7 @@ const peliculas = [
         year: 2020,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeK3WxrlBK8IvMD-Jq2WpR9M9EMxA7MUdRejqqB3Q8fw&s=10",
         videoId: "uH8ajcWjKJg"
     },
 
@@ -390,7 +390,7 @@ const peliculas = [
         year: 2022,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYwHYr8CCVRK2_u3pu8xZA4hzfTLkg7TIPZp0EXn5GsQ&s=10",
         videoId: "8zeXvfIaZd8"
     },
 
@@ -400,7 +400,7 @@ const peliculas = [
         year: 2023,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS2ifAThiEHHR2BPItbMXXzAIG2bZvzuqH6Rz18FwhBw&s=10",
         videoId: "eJ0c4wV2_ps"
     },
 
@@ -410,7 +410,7 @@ const peliculas = [
         year: 2025,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYfi-RD4ROSne5WAOk4z57-qoAV80Km7Lx7-ft9YpOlQ&s=10",
         videoId: "aRyAEfZPf4Y"
     },
 
@@ -420,7 +420,7 @@ const peliculas = [
         year: 2022,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnuHpHveKxoX2xYbRr0jDhWWnvugh_FEEQoVqdX_UjRA&s=10",
         videoId: "fsCkuHpqXGo"
     },
 
@@ -430,7 +430,7 @@ const peliculas = [
         year: 2015,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrlNWFm5ETwgUnBkuPmDNvq3PCP6dPPFro7mttFCJ4Gw&s=10",
         videoId: "Z0i-FXTekqE"
     },
 
@@ -440,7 +440,7 @@ const peliculas = [
         year: 2015,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYBcBNxbXOAOkEZGtNch-ht2YHkScS5iOrxB8qnAJLhg&s=10",
         videoId: "WASqpqnTrWE"
     },
 
@@ -450,7 +450,7 @@ const peliculas = [
         year: 2005,
         category: "horror",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQeachrFCAEssTa1YkjGkArcgVi-sOHySbrngp1eFnBw&s=10",
         videoId: "v9r_HmguaZc"
     },
 
@@ -460,7 +460,7 @@ const peliculas = [
         year: 2009,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRYLB_E-Watw_r2R4L-bTY2pdbVRIEu_ciBZjtpV8_fQ&s=10",
         videoId: "ZDTW_lbkSho"
     },
 
@@ -470,7 +470,7 @@ const peliculas = [
         year: 2008,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPBG9uBtvykVBjccluwnhueHz-qAL-vX68ks_vcPrmUw&s=10",
         videoId: "csrnvBNmUQc"
     },
 
@@ -490,7 +490,7 @@ const peliculas = [
         year: 2021,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW5foGDjzMuVBFZQ250IpPcmfy5Cv2vYA23lJBvopTaQ&s=10",
         videoId: "WSw2WhGWGWQ"
     },
 
@@ -500,7 +500,7 @@ const peliculas = [
         year: 2005,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrahM11xiC-jqF_aQtEYbz_MNt5BdyfhEp2eDYstNe4g&s=10",
         videoId: "E7mL51TdrN4"
     },
 
@@ -510,17 +510,17 @@ const peliculas = [
         year: 2012,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCs07keq3fiUEZPcs8oxfnhAP1tyeYjbvr7QL14sGl7w&s=10",
         videoId: "We4fstvmpKE"
     },
 
     {
         id: 50,
-        title: "Me Gusta Tu Hermana",
+        title: "Me Gusta la Tuya",
         year: 2016,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4zHjPdD3y-q5GQd_hUk4iNYVT5lP4dsDdgHP7Ej1IzQ&s=10",
         videoId: "rRq7oKNwPeo"
     },
 
@@ -530,7 +530,7 @@ const peliculas = [
         year: 2008,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIHoueuQtlDSd8KhTw47n5l28cpLSxg_KPhq8Er4m_gQ&s=10",
         videoId: "Q_A1wBFRLpk"
     },
 
@@ -540,7 +540,7 @@ const peliculas = [
         year: 2015,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_abz8zIz6Ej4P6E1jrTSjs5pD5D8d3VwJg2TI7JcXHg&s=10",
         videoId: "dkrzdZzpljM"
     },
 
@@ -550,7 +550,7 @@ const peliculas = [
         year: 2021,
         category: "horror",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdakjavC4mMtNcX5P0Fg8duC7WKTVZ_LDylD_eo2V7Yg&s=10",
         videoId: "8T-_jpKd-Eg"
     },
 
@@ -560,7 +560,7 @@ const peliculas = [
         year: 2013,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShu4d6YeGMipsz3ZLeTBQNwfS0Z9jGrqr5KQin3uLZjA&s=10",
         videoId: "28Hsux5HKlg"
     },
 
@@ -570,7 +570,7 @@ const peliculas = [
         year: 2007,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp5JnvxsoXtN2vE56JyKDAy57lIigxu_Ocv0pvE01bYA&s=10",
         videoId: "FTmipsT-JMU"
     },
 
@@ -580,7 +580,7 @@ const peliculas = [
         year: 2011,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI9pFHSIVgU4nD2lVWeDB-f4nNihk2kbof_y2rOftYUQ&s=10",
         videoId: "jaDmstDIND8"
     },
 
@@ -590,7 +590,7 @@ const peliculas = [
         year: 2005,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlI-YRjyZYHi7Y2QT6LUIMAB9P_s4jvZHlXzumElrgbg&s=10",
         videoId: "6efEKPrmeCo"
     },
 
@@ -600,7 +600,7 @@ const peliculas = [
         year: 2012,
         category: "horror",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTYgq-7FNj4eaPeXSYC2zygfg7SgT88sbQp4VD02Ab1w&s=10",
         videoId: "Icvkq0lhAfs"
     },
 
@@ -610,7 +610,7 @@ const peliculas = [
         year: 2019,
         category: "war",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKLxQu3JFSZ-AuvNpq2FVzC8IZHpXk3tM1nw6CkFMqQQ&s=10",
         videoId: "hcOfV35XFWE"
     },
 
@@ -620,7 +620,7 @@ const peliculas = [
         year: 2016,
         category: "documentary",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7YQiXcrwQ6Wl5zVP8ZcU2kXWXJgqXDrLC-m65FQc6zw&s=10",
         videoId: "O400SlOHJbU"
     },
 
@@ -630,7 +630,7 @@ const peliculas = [
         year: 2017,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl39w9b9eDgpKxvbGBTRPHQBSpO09fkxyO6xVZnCwCqg&s=10",
         videoId: "HfFb7GYGAlQ"
     },
 
@@ -640,7 +640,7 @@ const peliculas = [
         year: 2016,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXUfCcNJWQa0LSJZdbtt8VSlCMuS2qIUawG-06UPXX7A&s=10",
         videoId: "RLYVlCOiiJk"
     },
 
@@ -650,340 +650,269 @@ const peliculas = [
         year: 2019,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9I-D8LM4SFgg-8lnMCae0KicZi1kkDcBPBWuDBfFhzQ&s=10",
         videoId: "Xrw9Jxkme4c"
     },
 
-   {
-    id: 64,
-    title: "Héctor El Father",
-    year: 2018,
-    category: "documentary",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "GCjwGfdnHqQ"
-},
+    {
+        id: 64,
+        title: "Héctor El Father",
+        year: 2018,
+        category: "documentary",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn4pYXx25jwnw1kBq04PhR8QixEWpJIINVqtC4jkIqhA&s=10",
+        videoId: "GCjwGfdnHqQ"
+    },
 
-{
-    id: 65,
-    title: "Lotoman",
-    year: 2011,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "5fOOmkF3ROs"
-},
+    {
+        id: 65,
+        title: "Lotoman",
+        year: 2011,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRQaEEHFfMzV4cA4cAOZun_Krsx3MFVRzD-tmQNHEV4A&s=10",
+        videoId: "5fOOmkF3ROs"
+    },
 
-{
-    id: 66,
-    title: "Ladrones a domicilio",
-    year: 2008,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "qXh_3OBq1EM"
-},
+    {
+        id: 66,
+        title: "Ladrones a domicilio",
+        year: 2008,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0R-5AsA6F6mE9VVKTjwCoMDdc9TsOKCqQax0_4Zg0lg&s=10",
+        videoId: "qXh_3OBq1EM"
+    },
 
-{
-    id: 67,
-    title: "Nueba Yol: Balbuena en Nueva York",
-    year: 1995,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "1zTAAmWx_Ik"
-},
+    {
+        id: 68,
+        title: "El fantasma de mi novia",
+        year: 2018,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-pgddv2Cv3zKDLe88L_9uYhQtK4lyJTLKWeZvNU3Iw&s=10",
+        videoId: "bMl6XrQbmvI"
+    },
 
-{
-    id: 68,
-    title: "El fantasma de mi novia",
-    year: 2018,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "bMl6XrQbmvI"
-},
+    {
+        id: 69,
+        title: "Cristiano de la secreta",
+        year: 2009,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRglVXuHq1TKZO4eEbeljBxJ_F99fcNJAKOOcnmhUyCpA&s=10",
+        videoId: "t2LVS8hAHrE"
+    },
 
-{
-    id: 69,
-    title: "Cristiano de la secreta",
-    year: 2009,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "t2LVS8hAHrE"
-},
+    {
+        id: 70,
+        title: "Dos policías en apuros",
+        year: 2016,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_zcSsWje9DA2hBd1Bf8lHw2V1MU_iATMfJ9Y40sLPKQ&s=10",
+        videoId: "VS9BN2Az54A"
+    },
 
-{
-    id: 70,
-    title: "Dos policías en apuros",
-    year: 2016,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "VS9BN2Az54A"
-},
+    {
+        id: 71,
+        title: "Nueba Yol 2: La historia continúa",
+        year: 1996,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "omI7pTxlAkM"
+    },
 
-{
-    id: 71,
-    title: "Nueba Yol 2: La historia continúa",
-    year: 1996,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "omI7pTxlAkM"
-},
+    {
+        id: 72,
+        title: "Colao",
+        year: 2017,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8627pjM2sE3r68-N2Qz-jcaaZ6mEVFjptMwK8KjL4Vg&s=10",
+        videoId: "TQU2hc753oU"
+    },
 
-{
-    id: 72,
-    title: "Colao",
-    year: 2017,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "TQU2hc753oU"
-},
+    {
+        id: 73,
+        title: "Qué León",
+        year: 2018,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwcTk-Si-4UCkmTjqEU0gNrsapLEJsHCuuoNEUgu-Fzw&s=10",
+        videoId: "zH8d9UmIyx8"
+    },
 
-{
-    id: 73,
-    title: "Qué León",
-    year: 2018,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "zH8d9UmIyx8"
-},
+    {
+        id: 74,
+        title: "Código Paz",
+        year: 2014,
+        category: "action",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBXbWVD2ZCK5fWuABO47VTZk1q6AKZMST9Ybuy4kyIqg&s=10",
+        videoId: "SDj8RnRET30"
+    },
 
-{
-    id: 74,
-    title: "Código Paz",
-    year: 2014,
-    category: "action",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "SDj8RnRET30"
-},
+    {
+        id: 75,
+        title: "Baile Urbano",
+        year: 2018,
+        category: "drama",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTBSWsCP1tJimR4PodeMG-g74lPSj7W_ZZz6MUwMi44Q&s=10",
+        videoId: "KijOyndrk7c"
+    },
 
-{
-    id: 75,
-    title: "Baile Urbano",
-    year: 2018,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "KijOyndrk7c"
-},
+    {
+        id: 76,
+        title: "La Máscara",
+        year: 2020,
+        category: "horror",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsusjz7c-GOIydA00qyLXNe5l6tBzTBwWbmfNnobhSQ&s=10",
+        videoId: "nuUwusxMcAs"
+    },
 
-{
-    id: 76,
-    title: "La Máscara",
-    year: 2020,
-    category: "horror",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "nuUwusxMcAs"
-},
+    {
+        id: 77,
+        title: "La Máscara 2",
+        year: 2021,
+        category: "horror",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt6Seil3o7jV-e_eOrikE8d3TqkTqFk0-Dx_bQm1cIuA&s=10",
+        videoId: "42HruccjsNU"
+    },
 
-{
-    id: 77,
-    title: "La Máscara 2",
-    year: 2021,
-    category: "horror",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "42HruccjsNU"
-},
+    {
+        id: 78,
+        title: "El Rey de Najayo",
+        year: 2012,
+        category: "drama",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTc-N0YpJumRYHZkKJJoTFoDRzKlF0968mJH2c-auV_w&s=10",
+        videoId: "hEDXnJGx_5I"
+    },
 
-{
-    id: 78,
-    title: "El Rey de Najayo",
-    year: 2012,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "hEDXnJGx_5I"
-},
+    {
+        id: 79,
+        title: "Santi Clo... La vaina de la Navidad",
+        year: 2008,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFIbJQ0aF4yQmkCI3a4L30MphT3t3x7vh0lZmR7SOKyw&s=10",
+        videoId: "67_CnSMYc00"
+    },
 
-{
-    id: 79,
-    title: "Santi Clo... La vaina de la Navidad",
-    year: 2008,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "67_CnSMYc00"
-},
+    {
+        id: 80,
+        title: "De Pez en Cuando",
+        year: 2014,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEDn4454uaVJ1G01vho_2CHO2x4qhbpCiSRAlEWmVtVA&s=10",
+        videoId: "cC0o77NZIBw"
+    },
 
-{
-    id: 80,
-    title: "De Pez en Cuando",
-    year: 2014,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "cC0o77NZIBw"
-},
+    {
+        id: 87,
+        title: "Perdiendo el Juicio",
+        year: 2023,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "NBISYc_O-84"
+    },
 
-{
-    id: 81,
-    title: "La Soga",
-    year: 2009,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "ZDTW_lbkSho"
-},
+    {
+        id: 88,
+        title: "La Gunguna",
+        year: 2015,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "i9pWZQgb4RE"
+    },
 
-{
-    id: 82,
-    title: "Talento de Barrio",
-    year: 2008,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "csrnvBNmUQc"
-},
+    {
+        id: 89,
+        title: "Quiero ser fiel",
+        year: 2014,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "Wzd2FTFRJgE"
+    },
 
-{
-    id: 83,
-    title: "Urgente",
-    year: 2014,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "o4eEy7__Iwg"
-},
+    {
+        id: 90,
+        title: "No es lo que parece",
+        year: 2021,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: ""
+    },
 
-{
-    id: 84,
-    title: "Al Fin y al Cabo",
-    year: 2008,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "Q_A1wBFRLpk"
-},
+    {
+        id: 91,
+        title: "Casi fiel",
+        year: 2019,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: ""
+    },
 
-{
-    id: 85,
-    title: "La Bruja",
-    year: 2021,
-    category: "horror",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "irsUAe0crHo"
-},
+    {
+        id: 92,
+        title: "Todas las mujeres son iguales",
+        year: 2017,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlA9jqyjR1tlJlUW90CB0u9dx3WbvF5Pov-64o_UFtAg&s=10",
+        videoId: "c2xIUmd3yXg"
+    },
 
-{
-    id: 86,
-    title: "Pinky & Mole",
-    year: 2020,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "HfFb7GYGAlQ"
-},
+    {
+        id: 93,
+        title: "Todos los hombres son iguales",
+        year: 2016,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrbQjXKUTGj95bSBc7EtJlrT4lPu4B00MaZ_AbwlyBNA&s=10",
+        videoId: "o-SFwI5VCpQ"
+    },
 
-{
-    id: 87,
-    title: "Perdiendo el Juicio",
-    year: 2023,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "NBISYc_O-84"
-},
+    {
+        id: 94,
+        title: "Trabajo Sucio",
+        year: 2018,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdCGSkijXUaO7Rq2Ck5N_XbkNn5jJuTKxD0j5bUqMutA&s=10",
+        videoId: "ZKrbDbYaNvk"
+    },
 
-{
-    id: 88,
-    title: "La Gunguna",
-    year: 2015,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "i9pWZQgb4RE"
-},
+    {
+        id: 95,
+        title: "Volvió Juanita",
+        year: 2019,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqbN96_Fj5UvaEyDjgNFe9rZk5J36dH_reMlRnMAFaTQ&s=10",
+        videoId: "kfR-AWI-cF4"
+    },
 
-{
-    id: 89,
-    title: "Quiero ser fiel",
-    year: 2014,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "Wzd2FTFRJgE"
-},
-
-{
-    id: 90,
-    title: "No es lo que parece",
-    year: 2021,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: ""
-},
-
-{
-    id: 91,
-    title: "Casi fiel",
-    year: 2019,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: ""
-},
-
-{
-    id: 92,
-    title: "Todas las mujeres son iguales",
-    year: 2017,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "c2xIUmd3yXg"
-},
-
-{
-    id: 93,
-    title: "Todos los hombres son iguales",
-    year: 2016,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "o-SFwI5VCpQ"
-},
-
-{
-    id: 94,
-    title: "Trabajo Sucio",
-    year: 2018,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "ZKrbDbYaNvk"
-},
-
-{
-    id: 95,
-    title: "Volvió Juanita",
-    year: 2019,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "kfR-AWI-cF4"
-},
-
-{
-    id: 96,
-    title: "La Mejor Película Dominicana",
-    year: 2020,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "z0XdJl7WkOk"
-},
-
+    {
+        id: 96,
+        title: "La Mejor Película Dominicana",
+        year: 2020,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "z0XdJl7WkOk"
+    }
 ];
 
 window.peliculas = peliculas;
