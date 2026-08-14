@@ -1,13 +1,28 @@
 // 🇩🇴 CATÁLOGO DE CINE DOMINICANO
-// Añade películas copiando el formato de abajo
+// ================================================================
+// Añade películas aquí sin tocar index.html.
+// El catálogo puede crecer a cientos de películas.
+// ================================================================
+//
+// Formato:
+//
+// {
+//     id: 1,
+//     title: "Título de la película",
+//     year: 2026,
+//     category: "drama",
+//     featured: false,
+//     poster: "ruta-o-url-del-poster",
+//     videoId: "ID-DE-YOUTUBE"
+// },
+//
+// Categorías actuales:
+// scifi, horror, drama, comedy, animation
+//
+// Para YouTube:
+// https://www.youtube.com/watch?v=ABC123
+// videoId: "ABC123"
 
-const peliculas = [
-  // Ejemplo (borra o reemplaza cuando tengas tus pelis):
-  {
-    titulo: "Ejemplo de Película",
-    anio: 2024,
-    categoria: "drama",
-    poster: "https://via.placeholder.com/300x450/1f1f1f/e50914?text=Cine+Dominicano",
-    videoId: "dQw4w9WgXcQ"
-  }
-];
+const peliculas = [];
+
+window.peliculas = peliculas;
