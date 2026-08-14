@@ -95,8 +95,11 @@
 
         /* ============ HERO ============ */
         .hero {
-            padding: 3rem 5% 2rem;
-            background: radial-gradient(ellipse at top right, rgba(229,9,20,0.15), transparent 60%);
+            padding: 4.5rem 5% 3rem;
+            background:
+                radial-gradient(ellipse at 85% 10%, rgba(229,9,20,0.22), transparent 35%),
+                radial-gradient(ellipse at 15% 80%, rgba(255,255,255,0.06), transparent 35%);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .hero h1 {
@@ -150,9 +153,9 @@
         /* ============ GRID DE PELÍCULAS ============ */
         .catalog {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-            gap: 1.8rem;
-            padding: 1.5rem 5% 4rem;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.4rem;
+            padding: 1.8rem 5% 5rem;
         }
 
         .card {
@@ -316,7 +319,7 @@
     <!-- ============ HERO ============ -->
     <section class="hero">
         <h1>Cine clásico <em>gratis</em> y 100% legal 🍿</h1>
-        <p>Descubre obras maestras del dominio público y Creative Commons. Sin registros, sin pagos, sin anuncios.</p>
+        <p>Historias, voces y clásicos del cine dominicano y del cine libre. Un espacio para descubrir nuestro cine con identidad propia.</p>
     </section>
 
     <!-- ============ CONTROLES ============ -->
@@ -362,29 +365,14 @@
         </div>
     </div>
 
-<script>
+<script src="peliculas.js"></script>
+
+    <script>
     // ================================================================
-    // BASE DE DATOS DE PELÍCULAS (Dominio Público / Creative Commons)
-    // ⚠️ IMPORTANTE: Verifica que cada videoId corresponda a una
-    // subida legal. Puedes reemplazarlos con cualquier video de YouTube.
+    // BASE DE DATOS
+    // Las películas se cargan desde peliculas.js.
     // ================================================================
-    const movies = [
-        { id: 1,  title: "Night of the Living Dead", year: 1968, category: "horror",    featured: true,  poster: "https://image.tmdb.org/t/p/w500/hZnnUq0mrUQInGxsMjRFIhEcxY.jpg", videoId: "B7ouVlTOrOo" },
-        { id: 2,  title: "Nosferatu",                year: 1922, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/A8DqaYwNfbvkRcJtflnJWjcOTzj.jpg", videoId: "fkRKTZfzXUk" },
-        { id: 3,  title: "Metropolis",               year: 1927, category: "scifi",     featured: true,  poster: "https://image.tmdb.org/t/p/w500/hUK9rewffKGqtXynH5SW3v9hzcu.jpg", videoId: "7ma8BzfCqdo" },
-        { id: 4,  title: "The General",              year: 1926, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/k4HAy7SNaKUdKMlPjHEXmLRrZl.jpg", videoId: "vMfFsfvKcHc" },
-        { id: 5,  title: "Charade",                  year: 1963, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/x5E7zXMtOsGgkRcJNjKqLhBwH.jpg", videoId: "W2yWCMn8vRs" },
-        { id: 6,  title: "His Girl Friday",          year: 1940, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/uWJyt3e0rdCUcZSbWnAeFoJqjQc.jpg", videoId: "wDwLJBERh0A" },
-        { id: 7,  title: "Plan 9 from Outer Space",  year: 1959, category: "scifi",     featured: false, poster: "https://image.tmdb.org/t/p/w500/6yogADyBYPMYvP3MxLCqfJZwXh.jpg", videoId: "3pNmf0bgLJk" },
-        { id: 8,  title: "The Kid",                  year: 1921, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/drgMcNxILLMfAmQP1cBZr6MzT9k.jpg", videoId: "Qf5T6wZJqK8" },
-        { id: 9,  title: "A Trip to the Moon",       year: 1902, category: "scifi",     featured: false, poster: "https://image.tmdb.org/t/p/w500/v2SRgioPZfMkfWcBtJUMeFmJDns.jpg", videoId: "_S7J9uJvGHc" },
-        { id: 10, title: "Detour",                   year: 1945, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/wG0lQjUuJZfOQm7ZjMfLqJkqLbA.jpg", videoId: "cY9dFJjzW9Q" },
-        { id: 11, title: "The Phantom of the Opera", year: 1925, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/5XPPVv4IhwY6A6L0XwLWJFmYBfC.jpg", videoId: "QhS6uJkRq6M" },
-        { id: 12, title: "House on Haunted Hill",    year: 1959, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/qJpIcCmRk0cDqPnPzLqSmvEgLqp.jpg", videoId: "6Jc8sLJxVVE" },
-        { id: 13, title: "Sita Sings the Blues",     year: 2008, category: "animation", featured: false, poster: "https://image.tmdb.org/t/p/w500/nV8ZwWp4b6bnMxJyZqRCvCAqhB.jpg", videoId: "LsoLErDog_U" },
-        { id: 14, title: "Popeye el Marino",         year: 1938, category: "animation", featured: false, poster: "https://image.tmdb.org/t/p/w500/qbGyX0mFqLmCcJyKQhZwT3JqZpD.jpg", videoId: "A6fJkN3uB9E" },
-        { id: 15, title: "D.O.A.",                   year: 1950, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/6vJZkqPMvLqLYbQ6uMfWYxPjHdL.jpg", videoId: "XsJqY3sKfJE" }
-    ];
+    const movies = window.peliculas || [];
 
     // ================================================================
     // ESTADO GLOBAL
@@ -434,7 +422,14 @@
     // FILTRADO Y ORDENAMIENTO
     // ================================================================
     function getFilteredMovies() {
-        let result = [...movies];
+        let result = movies.filter(movie =>
+            movie &&
+            movie.title &&
+            movie.year &&
+            movie.category &&
+            movie.poster &&
+            movie.videoId
+        ).map(movie => ({ ...movie }));
 
         // Filtro por categoría o favoritos
         if (state.filter === 'fav') {
@@ -474,8 +469,8 @@
             catalog.innerHTML = `
                 <div class="empty-state">
                     <div class="icon">🎬</div>
-                    <h3>No se encontraron películas</h3>
-                    <p>Prueba con otra búsqueda o categoría.</p>
+                    <h3>Tu catálogo está listo para crecer</h3>
+                    <p>Añade películas desde <strong>peliculas.js</strong>.</p>
                 </div>`;
             return;
         }
