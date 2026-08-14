@@ -50,7 +50,7 @@ const peliculas = [
         year: 1997,
         category: "comedy",
         featured: false,
-        poster: "PONER_URL_DEL_POSTER_AQUI",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgcUPF8-GqX32JArK6iYWNLQrT57cVjU7JE6MtjSIiMg&s=10",
         videoId: "6N2HyCwyfJs"
     },
 
@@ -70,7 +70,7 @@ const peliculas = [
         year: 2014,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFe_rrQiJvxQ4ueafy6CiUWWBZevGXQFtKGwM-S7ZQ-A&s=10",
         videoId: "b-ExSznPdhc"
     },
 
@@ -80,7 +80,7 @@ const peliculas = [
         year: 2013,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlVwhqVGrpoQqB-PxaF1WQHSRTWvFqXSBDuL2RIY-Llg&s=10",
         videoId: "C35xofb3dFQ"
     },
 
@@ -90,7 +90,7 @@ const peliculas = [
         year: 2003,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGMjpLsoaI0pLIpognbRowdBgh0pGjJ8nC7mkMYM_-5Q&s=10",
         videoId: "fMhQUoTzCoM"
     },
 
@@ -100,7 +100,7 @@ const peliculas = [
         year: 2013,
         category: "drama",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/imagenes/2013/26/307615.jpg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXApZ_8yz_r6-v5LvUE1lsPalzYPrTtKu6iPyJtBTj5Q&s=10",
         videoId: "ZgxHLU2JMOk"
     },
 
@@ -120,7 +120,7 @@ const peliculas = [
         year: 2016,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXnqwU0-Sw6eIxdpNtFZhG8ifE31P2_DcQ4TN8we0wwQ&s=10",
         videoId: "PHzPjMxP9lk"
     },
 
@@ -130,7 +130,7 @@ const peliculas = [
         year: 2013,
         category: "comedy",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/imagenes/2013/18/263062.jpg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROPKhE-bg3qs1yc_aCD6TtY8sZFRIiTO5tOpO0-bWulA&s=10",
         videoId: "MGdZXqIfAws"
     },
 
@@ -140,7 +140,7 @@ const peliculas = [
         year: 2014,
         category: "drama",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/imagenes/2014/08/318381.jpg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsRDwIhhXx9hYKUlUjOfVAXUbnneys6vZ5ufdnsOOW3w&s=10",
         videoId: "roaTxgdnr30"
     },
 
@@ -150,7 +150,7 @@ const peliculas = [
         year: 2007,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1kiOhXANfwWMGFwwOLQafmlsrELzW26eE6x3dJX_X_A&s=10",
         videoId: "G-aSUuWc51Y"
     },
 
@@ -160,7 +160,7 @@ const peliculas = [
         year: 2014,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrNGUB5ovIZF26_-5ZU2eQUYMAD0EvUq-9Cgqc3etN0g&s=10",
         videoId: "dwfL8l-wHIc"
     },
 
@@ -170,7 +170,7 @@ const peliculas = [
         year: 2021,
         category: "drama",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/2022/02/18/hotel-edaf857c.png",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKjYvEiEha5P4yPrdutSZZv68P7oSlCBw75oQjU_bHsw&s=10",
         videoId: ""
     },
 
@@ -180,7 +180,7 @@ const peliculas = [
         year: 2013,
         category: "comedy",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/imagenes/2013/18/286632.jpg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN0h1OZ-heM4Ta4Fd05Xi_tCElgFoVem9zNKG-691XMQ&s=10",
         videoId: "kpiH0kVI6RA"
     },
 
@@ -190,7 +190,7 @@ const peliculas = [
         year: 2018,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo0enTjgLvuj_C2FVbMf5tnmsqwk76YNEk9S1KsFC1bQ&s=10",
         videoId: "f5CzQ1UxkB4"
     },
 
@@ -200,7 +200,7 @@ const peliculas = [
         year: 2019,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmn7xVYiSNHYK07d2Qmwmv46fzx4vLtSmHbDuqt3lUNg&s=10",
         videoId: "GZ9XiqWzYqM"
     },
 
@@ -210,7 +210,7 @@ const peliculas = [
         year: 2021,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe3U5-aHg0-8vVMioH-9ak9_zQgvpuL9617fZDX5CpPg&s=10",
         videoId: "WcsQCjzqxIs"
     },
 
@@ -230,7 +230,7 @@ const peliculas = [
         year: 2022,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMiGbcwpmbt3VT48oOwt29vSHJcSiE4sO7fFJRdvyJpA&s=10",
         videoId: "rIva_BAFGtU"
     },
 
@@ -240,7 +240,7 @@ const peliculas = [
         year: 2004,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVNb0IciY0fZ9bm5aBCovF1tsh04eqZHTytU5bXCEVyA&s=10",
         videoId: "P9lyiONXDTM"
     },
 
@@ -250,7 +250,7 @@ const peliculas = [
         year: 2016,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP6NgKq5b-MC8HoRDvL_VgGcB4-Qf24a43kMqj0yBm6Q&s",
         videoId: "6_BoYVCeLlg"
     },
 
@@ -260,7 +260,7 @@ const peliculas = [
         year: 2017,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOlQYB_sUS1zr7qAmf8HCyilDizVhvj2yeD5HCVkUZCQ&s=10",
         videoId: "IrG2fg4_h-c"
     },
 
@@ -270,7 +270,7 @@ const peliculas = [
         year: 2017,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv56OoNexpebQoJzrbRVNTD2iMoqIKzehn88H6KpMmDQ&s=10",
         videoId: "jwVv1Ee9z-8"
     },
 
@@ -280,7 +280,7 @@ const peliculas = [
         year: 2011,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDL3n1NbTX0b8m2BCW4yKE9Lhdf8yZPY_2leA7S86aGQ&s=10",
         videoId: "vyXOcF1n3wE"
     },
 
@@ -290,7 +290,7 @@ const peliculas = [
         year: 2018,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlRROGZJ3RNBa3_Ygz9aoBKV6YBzU9wt1fNr33rcpRGQ&s=10",
         videoId: "-F-Sr5br67s"
     },
 
@@ -300,7 +300,7 @@ const peliculas = [
         year: 2018,
         category: "comedy",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/binrepository/image_content_10293476_20180713145421.jpg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7kCBgZOlLUiKJps8Ot2YvkfZY3aM2mmMuPh7j26IsA&s=10",
         videoId: "8MLkID-9J2w"
     },
 
@@ -310,7 +310,7 @@ const peliculas = [
         year: 2014,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSafCkBt5R-y-VgF_0XN8D1PINNk96y5bj_hOqE3J4K8g&s=10",
         videoId: "ulSWQw0hd58"
     }
 ];
