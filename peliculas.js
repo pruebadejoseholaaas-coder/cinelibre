@@ -476,11 +476,11 @@ const peliculas = [
 
     {
         id: 46,
-        title: "Urgente",
+        title: "El año del tigre poster",
         year: 2014,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRrlDZofUyMMRPaAKY7rGc9weHCSy9e21yVObStsRPXA&s=10",
         videoId: "o4eEy7__Iwg"
     },
 
@@ -490,7 +490,7 @@ const peliculas = [
         year: 2021,
         category: "drama",
         featured: false,
-        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW5foGDjzMuVBFZQ250IpPcmfy5Cv2vYA23lJBvopTaQ&s=10",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWBfhMe3jk-GP5X-NV6AdxrNNJ5Ui1JSblu2koO9EqfA&s=10",
         videoId: "WSw2WhGWGWQ"
     },
 
@@ -720,7 +720,7 @@ const peliculas = [
         year: 1996,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK84F8v6qIPK8RAQZZeszN9_cA8_IW-m2HDlIdNTM5Ng&s=10",
         videoId: "omI7pTxlAkM"
     },
 
@@ -730,7 +730,7 @@ const peliculas = [
         year: 2017,
         category: "comedy",
         featured: false,
-        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8627pjM2sE3r68-N2Qz-jcaaZ6mEVFjptMwK8KjL4Vg&s=10",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjFg_dg_4wsKcVU2OIDpr-96gKxpEgtZE57Vetd4uA-A&s=10",
         videoId: "TQU2hc753oU"
     },
 
