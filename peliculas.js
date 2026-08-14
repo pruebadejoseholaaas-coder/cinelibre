@@ -840,7 +840,7 @@ const peliculas = [
         year: 2014,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqVk8INNejWq9QiPnTWzFPlIwZZ8ztUMoQ1ybmZQ-iww&s=10",
         videoId: "Wzd2FTFRJgE"
     },
 
