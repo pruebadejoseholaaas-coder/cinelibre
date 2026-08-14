@@ -820,7 +820,7 @@ const peliculas = [
         year: 2023,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUFSmE-p1X0F4IvZm1fHA6CLBrIY2Ztt41dPwHXBcGcA&s=10",
         videoId: "NBISYc_O-84"
     },
 
@@ -830,7 +830,7 @@ const peliculas = [
         year: 2015,
         category: "comedy",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY_ZKAqGn4bDvHeqoBN3A2sRWtWR-E5BvR8AWNQb1qZg&s=10",
         videoId: "i9pWZQgb4RE"
     },
 
@@ -842,26 +842,6 @@ const peliculas = [
         featured: false,
         poster: "URL_DEL_POSTER",
         videoId: "Wzd2FTFRJgE"
-    },
-
-    {
-        id: 90,
-        title: "No es lo que parece",
-        year: 2021,
-        category: "comedy",
-        featured: false,
-        poster: "URL_DEL_POSTER",
-        videoId: ""
-    },
-
-    {
-        id: 91,
-        title: "Casi fiel",
-        year: 2019,
-        category: "comedy",
-        featured: false,
-        poster: "URL_DEL_POSTER",
-        videoId: ""
     },
 
     {
@@ -904,15 +884,7 @@ const peliculas = [
         videoId: "kfR-AWI-cF4"
     },
 
-    {
-        id: 96,
-        title: "La Mejor Película Dominicana",
-        year: 2020,
-        category: "drama",
-        featured: false,
-        poster: "URL_DEL_POSTER",
-        videoId: "z0XdJl7WkOk"
-    }
+    
 ];
 
 window.peliculas = peliculas;
