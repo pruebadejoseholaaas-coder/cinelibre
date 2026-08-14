@@ -110,7 +110,7 @@ const peliculas = [
         year: 2016,
         category: "comedy",
         featured: false,
-        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXnqwU0-Sw6eIxdpNtFZhG8ifE31P2_DcQ4TN8we0wwQ&s=10",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSceYy2Hrxj0KIKeX-tai9j-_Eu-EwmreOoPnpTnau_Fg&s=10",
         videoId: "PHzPjMxP9lk"
     },
 
