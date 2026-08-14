@@ -45,16 +45,6 @@ const peliculas = [
     },
 
     {
-        id: 29,
-        title: "Nueba Yol 3: Bajo la nueva ley",
-        year: 1997,
-        category: "comedy",
-        featured: false,
-        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgcUPF8-GqX32JArK6iYWNLQrT57cVjU7JE6MtjSIiMg&s=10",
-        videoId: "6N2HyCwyfJs"
-    },
-
-    {
         id: 3,
         title: "Los Paracaidistas",
         year: 2015,
@@ -305,364 +295,374 @@ const peliculas = [
     },
 
     {
-    id: 28,
-    title: "Lotoman 003",
-    year: 2014,
-    category: "comedy",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSafCkBt5R-y-VgF_0XN8D1PINNk96y5bj_hOqE3J4K8g&s=10",
-    videoId: "ulSWQw0hd58"
-},
+        id: 28,
+        title: "Lotoman 003",
+        year: 2014,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSafCkBt5R-y-VgF_0XN8D1PINNk96y5bj_hOqE3J4K8g&s=10",
+        videoId: "ulSWQw0hd58"
+    },
 
-{
-    id: 30,
-    title: "Boca Chica",
-    year: 2024,
-    category: "drama",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgMsIyuVP1K6wBpQBlg61mXFZos9OfmKefRbo1aIYq2A&s=10",
-    videoId: "ndYYroRNMOg"
-},
+    {
+        id: 29,
+        title: "Nueba Yol 3: Bajo la nueva ley",
+        year: 1997,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgcUPF8-GqX32JArK6iYWNLQrT57cVjU7JE6MtjSIiMg&s=10",
+        videoId: "6N2HyCwyfJs"
+    },
 
-{
-    id: 31,
-    title: "El Heredero",
-    year: 2024,
-    category: "comedy",
-    featured: false,
-    poster: "https://resources.diariolibre.com/images/2024/11/19/pmf10987.jpg",
-    videoId: "hIdiStJN1kw"
-},
+    {
+        id: 30,
+        title: "Boca Chica",
+        year: 2024,
+        category: "drama",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgMsIyuVP1K6wBpQBlg61mXFZos9OfmKefRbo1aIYq2A&s=10",
+        videoId: "ndYYroRNMOg"
+    },
 
-{
-    id: 32,
-    title: "Colao 2",
-    year: 2023,
-    category: "comedy",
-    featured: false,
-    poster: "https://resources.diariolibre.com/images/2023/11/28/whatsapp-image-2023-11-28-at-12.41.24-pm.jpeg",
-    videoId: "HY5RmPWd6qs"
-},
+    {
+        id: 31,
+        title: "El Heredero",
+        year: 2024,
+        category: "comedy",
+        featured: false,
+        poster: "https://resources.diariolibre.com/images/2024/11/19/pmf10987.jpg",
+        videoId: "hIdiStJN1kw"
+    },
 
-{
-    id: 33,
-    title: "La lucha de Ana",
-    year: 2012,
-    category: "drama",
-    featured: false,
-    poster: "https://resources.diariolibre.com/images/imagenes/2012/24/234835.jpg",
-    videoId: "uhzWX3E4G5Y"
-},
+    {
+        id: 32,
+        title: "Colao 2",
+        year: 2023,
+        category: "comedy",
+        featured: false,
+        poster: "https://resources.diariolibre.com/images/2023/11/28/whatsapp-image-2023-11-28-at-12.41.24-pm.jpeg",
+        videoId: "HY5RmPWd6qs"
+    },
 
-{
-    id: 34,
-    title: "La Soga 3: Venganza",
-    year: 2023,
-    category: "drama",
-    featured: false,
-    poster: "https://resources.diariolibre.com/images/2023/09/26/manny-perez-la-soga.png",
-    videoId: "fw2jc-JxYXE"
-},
+    {
+        id: 33,
+        title: "La lucha de Ana",
+        year: 2012,
+        category: "drama",
+        featured: false,
+        poster: "https://resources.diariolibre.com/images/imagenes/2012/24/234835.jpg",
+        videoId: "uhzWX3E4G5Y"
+    },
 
-{
-    id: 35,
-    title: "Mi Angelito Favorito",
-    year: 2013,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "Lr1MORjvgh4"
-},
+    {
+        id: 34,
+        title: "La Soga 3: Venganza",
+        year: 2023,
+        category: "drama",
+        featured: false,
+        poster: "https://resources.diariolibre.com/images/2023/09/26/manny-perez-la-soga.png",
+        videoId: "fw2jc-JxYXE"
+    },
 
-{
-    id: 36,
-    title: "Liborio",
-    year: 2020,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "uH8ajcWjKJg"
-},
+    {
+        id: 35,
+        title: "Mi Angelito Favorito",
+        year: 2013,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "Lr1MORjvgh4"
+    },
 
-{
-    id: 37,
-    title: "Danny 45",
-    year: 2022,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "8zeXvfIaZd8"
-},
+    {
+        id: 36,
+        title: "Liborio",
+        year: 2020,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "uH8ajcWjKJg"
+    },
 
-{
-    id: 38,
-    title: "Teacher Mechy",
-    year: 2023,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "eJ0c4wV2_ps"
-},
+    {
+        id: 37,
+        title: "Danny 45",
+        year: 2022,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "8zeXvfIaZd8"
+    },
 
-{
-    id: 39,
-    title: "Los Rechazados",
-    year: 2025,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "aRyAEfZPf4Y"
-},
+    {
+        id: 38,
+        title: "Teacher Mechy",
+        year: 2023,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "eJ0c4wV2_ps"
+    },
 
-{
-    id: 40,
-    title: "La Trampa",
-    year: 2022,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "fsCkuHpqXGo"
-},
+    {
+        id: 39,
+        title: "Los Rechazados",
+        year: 2025,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "aRyAEfZPf4Y"
+    },
 
-{
-    id: 41,
-    title: "Pa'l Campamento",
-    year: 2015,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "Z0i-FXTekqE"
-},
+    {
+        id: 40,
+        title: "La Trampa",
+        year: 2022,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "fsCkuHpqXGo"
+    },
 
-{
-    id: 42,
-    title: "Pueto Pa' Mi",
-    year: 2015,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "WASqpqnTrWE"
-},
+    {
+        id: 41,
+        title: "Pa'l Campamento",
+        year: 2015,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "Z0i-FXTekqE"
+    },
 
-{
-    id: 61,
-    title: "Andrea: La Venganza de un Espíritu",
-    year: 2005,
-    category: "horror",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "v9r_HmguaZc"
-},
+    {
+        id: 42,
+        title: "Pueto Pa' Mi",
+        year: 2015,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "WASqpqnTrWE"
+    },
 
-{
-    id: 62,
-    title: "La Soga",
-    year: 2009,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "ZDTW_lbkSho"
-},
+    {
+        id: 43,
+        title: "Andrea: La Venganza de un Espíritu",
+        year: 2005,
+        category: "horror",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "v9r_HmguaZc"
+    },
 
-{
-    id: 63,
-    title: "Talento de Barrio",
-    year: 2008,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "csrnvBNmUQc"
-},
+    {
+        id: 44,
+        title: "La Soga",
+        year: 2009,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "ZDTW_lbkSho"
+    },
 
-{
-    id: 64,
-    title: "Urgente",
-    year: 2014,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "o4eEy7__Iwg"
-},
+    {
+        id: 45,
+        title: "Talento de Barrio",
+        year: 2008,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "csrnvBNmUQc"
+    },
 
-{
-    id: 65,
-    title: "Carta Blanca",
-    year: 2021,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "WSw2WhGWGWQ"
-},
+    {
+        id: 46,
+        title: "Urgente",
+        year: 2014,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "o4eEy7__Iwg"
+    },
 
-{
-    id: 66,
-    title: "Los Locos También Piensan",
-    year: 2005,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "E7mL51TdrN4"
-},
+    {
+        id: 47,
+        title: "Carta Blanca",
+        year: 2021,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "WSw2WhGWGWQ"
+    },
 
-{
-    id: 67,
-    title: "Lotoman 2",
-    year: 2012,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "We4fstvmpKE"
-},
+    {
+        id: 48,
+        title: "Los Locos También Piensan",
+        year: 2005,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "E7mL51TdrN4"
+    },
 
-{
-    id: 68,
-    title: "Me Gusta Tu Hermana",
-    year: 2016,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "rRq7oKNwPeo"
-},
+    {
+        id: 49,
+        title: "Lotoman 2",
+        year: 2012,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "We4fstvmpKE"
+    },
 
-{
-    id: 69,
-    title: "Al Fin y al Cabo",
-    year: 2008,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "Q_A1wBFRLpk"
-},
+    {
+        id: 50,
+        title: "Me Gusta Tu Hermana",
+        year: 2016,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "rRq7oKNwPeo"
+    },
 
-{
-    id: 70,
-    title: "Tubérculo Gourmet",
-    year: 2015,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "dkrzdZzpljM"
-},
+    {
+        id: 51,
+        title: "Al Fin y al Cabo",
+        year: 2008,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "Q_A1wBFRLpk"
+    },
 
-{
-    id: 71,
-    title: "La Bruja",
-    year: 2021,
-    category: "horror",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "8T-_jpKd-Eg"
-},
+    {
+        id: 52,
+        title: "Tubérculo Gourmet",
+        year: 2015,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "dkrzdZzpljM"
+    },
 
-{
-    id: 72,
-    title: "A Ritmo de Fe",
-    year: 2013,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "28Hsux5HKlg"
-},
+    {
+        id: 53,
+        title: "La Bruja",
+        year: 2021,
+        category: "horror",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "8T-_jpKd-Eg"
+    },
 
-{
-    id: 73,
-    title: "Mi Novia Está de Madre",
-    year: 2007,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "FTmipsT-JMU"
-},
+    {
+        id: 54,
+        title: "A Ritmo de Fe",
+        year: 2013,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "28Hsux5HKlg"
+    },
 
-{
-    id: 74,
-    title: "La Hija Natural",
-    year: 2011,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "jaDmstDIND8"
-},
+    {
+        id: 55,
+        title: "Mi Novia Está de Madre",
+        year: 2007,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "FTmipsT-JMU"
+    },
 
-{
-    id: 75,
-    title: "La Fiesta del Chivo",
-    year: 2005,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "6efEKPrmeCo"
-},
+    {
+        id: 56,
+        title: "La Hija Natural",
+        year: 2011,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "jaDmstDIND8"
+    },
 
-{
-    id: 76,
-    title: "El Hoyo del Diablo",
-    year: 2012,
-    category: "horror",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "Icvkq0lhAfs"
-},
+    {
+        id: 57,
+        title: "La Fiesta del Chivo",
+        year: 2005,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "6efEKPrmeCo"
+    },
 
-{
-    id: 77,
-    title: "Héroes de Junio: La Historia Prohibida",
-    year: 2019,
-    category: "war",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "hcOfV35XFWE"
-},
+    {
+        id: 58,
+        title: "El Hoyo del Diablo",
+        year: 2012,
+        category: "horror",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "Icvkq0lhAfs"
+    },
 
-{
-    id: 78,
-    title: "La Vida de Peña Gómez",
-    year: 2016,
-    category: "documentary",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "O400SlOHJbU"
-},
+    {
+        id: 59,
+        title: "Héroes de Junio: La Historia Prohibida",
+        year: 2019,
+        category: "war",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "hcOfV35XFWE"
+    },
 
-{
-    id: 79,
-    title: "Pinky y Mole",
-    year: 2017,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "HfFb7GYGAlQ"
-},
+    {
+        id: 60,
+        title: "La Vida de Peña Gómez",
+        year: 2016,
+        category: "documentary",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "O400SlOHJbU"
+    },
 
-{
-    id: 80,
-    title: "Malcriados",
-    year: 2016,
-    category: "comedy",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "RLYVlCOiiJk"
-},
+    {
+        id: 61,
+        title: "Pinky y Mole",
+        year: 2017,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "HfFb7GYGAlQ"
+    },
 
-{
-    id: 81,
-    title: "Muerte en el Paraíso",
-    year: 2019,
-    category: "drama",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "Xrw9Jxkme4c"
-},
+    {
+        id: 62,
+        title: "Malcriados",
+        year: 2016,
+        category: "comedy",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "RLYVlCOiiJk"
+    },
 
-{
-    id: 82,
-    title: "Héctor El Father",
-    year: 2018,
-    category: "documentary",
-    featured: false,
-    poster: "URL_DEL_POSTER",
-    videoId: "GCjwGfdnHqQ"
-}
+    {
+        id: 63,
+        title: "Muerte en el Paraíso",
+        year: 2019,
+        category: "drama",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "Xrw9Jxkme4c"
+    },
+
+    {
+        id: 64,
+        title: "Héctor El Father",
+        year: 2018,
+        category: "documentary",
+        featured: false,
+        poster: "URL_DEL_POSTER",
+        videoId: "GCjwGfdnHqQ"
+    }
 ];
 
 window.peliculas = peliculas;
