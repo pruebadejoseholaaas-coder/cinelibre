@@ -442,6 +442,226 @@ const peliculas = [
     featured: false,
     poster: "URL_DEL_POSTER",
     videoId: "WASqpqnTrWE"
+},
+
+{
+    id: 61,
+    title: "Andrea: La Venganza de un Espíritu",
+    year: 2005,
+    category: "horror",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "v9r_HmguaZc"
+},
+
+{
+    id: 62,
+    title: "La Soga",
+    year: 2009,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "ZDTW_lbkSho"
+},
+
+{
+    id: 63,
+    title: "Talento de Barrio",
+    year: 2008,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "csrnvBNmUQc"
+},
+
+{
+    id: 64,
+    title: "Urgente",
+    year: 2014,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "o4eEy7__Iwg"
+},
+
+{
+    id: 65,
+    title: "Carta Blanca",
+    year: 2021,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "WSw2WhGWGWQ"
+},
+
+{
+    id: 66,
+    title: "Los Locos También Piensan",
+    year: 2005,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "E7mL51TdrN4"
+},
+
+{
+    id: 67,
+    title: "Lotoman 2",
+    year: 2012,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "We4fstvmpKE"
+},
+
+{
+    id: 68,
+    title: "Me Gusta Tu Hermana",
+    year: 2016,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "rRq7oKNwPeo"
+},
+
+{
+    id: 69,
+    title: "Al Fin y al Cabo",
+    year: 2008,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "Q_A1wBFRLpk"
+},
+
+{
+    id: 70,
+    title: "Tubérculo Gourmet",
+    year: 2015,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "dkrzdZzpljM"
+},
+
+{
+    id: 71,
+    title: "La Bruja",
+    year: 2021,
+    category: "horror",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "8T-_jpKd-Eg"
+},
+
+{
+    id: 72,
+    title: "A Ritmo de Fe",
+    year: 2013,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "28Hsux5HKlg"
+},
+
+{
+    id: 73,
+    title: "Mi Novia Está de Madre",
+    year: 2007,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "FTmipsT-JMU"
+},
+
+{
+    id: 74,
+    title: "La Hija Natural",
+    year: 2011,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "jaDmstDIND8"
+},
+
+{
+    id: 75,
+    title: "La Fiesta del Chivo",
+    year: 2005,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "6efEKPrmeCo"
+},
+
+{
+    id: 76,
+    title: "El Hoyo del Diablo",
+    year: 2012,
+    category: "horror",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "Icvkq0lhAfs"
+},
+
+{
+    id: 77,
+    title: "Héroes de Junio: La Historia Prohibida",
+    year: 2019,
+    category: "war",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "hcOfV35XFWE"
+},
+
+{
+    id: 78,
+    title: "La Vida de Peña Gómez",
+    year: 2016,
+    category: "documentary",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "O400SlOHJbU"
+},
+
+{
+    id: 79,
+    title: "Pinky y Mole",
+    year: 2017,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "HfFb7GYGAlQ"
+},
+
+{
+    id: 80,
+    title: "Malcriados",
+    year: 2016,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "RLYVlCOiiJk"
+},
+
+{
+    id: 81,
+    title: "Muerte en el Paraíso",
+    year: 2019,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "Xrw9Jxkme4c"
+},
+
+{
+    id: 82,
+    title: "Héctor El Father",
+    year: 2018,
+    category: "documentary",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "GCjwGfdnHqQ"
 }
 ];
 
