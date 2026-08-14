@@ -40,7 +40,7 @@ const peliculas = [
         year: 2017,
         category: "comedy",
         featured: false,
-        poster: "https://resources.diariolibre.com/images/imagenes/2014/15/809551.jpg",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRexWOg7331XhHVr4gmPZtTUiq49lRoVTTJt2ttjYHuTA&s=10",
         videoId: "96ZOzrOmMx4"
     },
 
