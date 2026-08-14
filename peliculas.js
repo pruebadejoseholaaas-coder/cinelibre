@@ -30,8 +30,18 @@ const peliculas = [
         year: 1995,
         category: "comedy",
         featured: true,
-        poster: "https://m.media-amazon.com/images/M/MV5BNzc2YmU3MmMtNGJlZS00ODMxLTg2N2EtYzdiMDc2YzY4ZTdlXkEyXkFqcGdeQXVyODU4MjAxOQ%40%40._V1_FMjpg_UX1000_.jpg",
+        poster: "URL-DEL-POSTER-DE-BALBUENA",
         videoId: "qDcNLIrmFOE"
+    },
+
+    {
+        id: 2,
+        title: "Dos compadres y una yola",
+        year: 2017,
+        category: "comedy",
+        featured: false,
+        poster: "https://resources.diariolibre.com/images/imagenes/2014/15/809551.jpg",
+        videoId: "96ZOzrOmMx4"
     }
 ];
 
