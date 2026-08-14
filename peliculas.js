@@ -23,6 +23,16 @@
 // https://www.youtube.com/watch?v=ABC123
 // videoId: "ABC123"
 
-const peliculas = [];
+const peliculas = [
+    {
+        id: 1,
+        title: "Nueba Yol: ¡Por fin llegó Balbuena!",
+        year: 1995,
+        category: "comedy",
+        featured: true,
+        poster: "https://m.media-amazon.com/images/M/MV5BNzc2YmU3MmMtNGJlZS00ODMxLTg2N2EtYzdiMDc2YzY4ZTdlXkEyXkFqcGdeQXVyODU4MjAxOQ%40%40._V1_FMjpg_UX1000_.jpg",
+        videoId: "qDcNLIrmFOE"
+    }
+];
 
 window.peliculas = peliculas;
