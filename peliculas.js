@@ -110,7 +110,7 @@ const peliculas = [
         year: 2016,
         category: "drama",
         featured: false,
-        poster: "URL_DEL_POSTER",
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8qP9tWeg_d7m41Ga9Wn4tXcw0w2Ez1giZC9xwVecROA&s=10",
         videoId: "e3ELetowtSE"
     },
 
@@ -305,14 +305,144 @@ const peliculas = [
     },
 
     {
-        id: 28,
-        title: "Lotoman 003",
-        year: 2014,
-        category: "comedy",
-        featured: false,
-        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSafCkBt5R-y-VgF_0XN8D1PINNk96y5bj_hOqE3J4K8g&s=10",
-        videoId: "ulSWQw0hd58"
-    }
+    id: 28,
+    title: "Lotoman 003",
+    year: 2014,
+    category: "comedy",
+    featured: false,
+    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSafCkBt5R-y-VgF_0XN8D1PINNk96y5bj_hOqE3J4K8g&s=10",
+    videoId: "ulSWQw0hd58"
+},
+
+{
+    id: 30,
+    title: "Boca Chica",
+    year: 2024,
+    category: "drama",
+    featured: false,
+    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgMsIyuVP1K6wBpQBlg61mXFZos9OfmKefRbo1aIYq2A&s=10",
+    videoId: "ndYYroRNMOg"
+},
+
+{
+    id: 31,
+    title: "El Heredero",
+    year: 2024,
+    category: "comedy",
+    featured: false,
+    poster: "https://resources.diariolibre.com/images/2024/11/19/pmf10987.jpg",
+    videoId: "hIdiStJN1kw"
+},
+
+{
+    id: 32,
+    title: "Colao 2",
+    year: 2023,
+    category: "comedy",
+    featured: false,
+    poster: "https://resources.diariolibre.com/images/2023/11/28/whatsapp-image-2023-11-28-at-12.41.24-pm.jpeg",
+    videoId: "HY5RmPWd6qs"
+},
+
+{
+    id: 33,
+    title: "La lucha de Ana",
+    year: 2012,
+    category: "drama",
+    featured: false,
+    poster: "https://resources.diariolibre.com/images/imagenes/2012/24/234835.jpg",
+    videoId: "uhzWX3E4G5Y"
+},
+
+{
+    id: 34,
+    title: "La Soga 3: Venganza",
+    year: 2023,
+    category: "drama",
+    featured: false,
+    poster: "https://resources.diariolibre.com/images/2023/09/26/manny-perez-la-soga.png",
+    videoId: "fw2jc-JxYXE"
+},
+
+{
+    id: 35,
+    title: "Mi Angelito Favorito",
+    year: 2013,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "Lr1MORjvgh4"
+},
+
+{
+    id: 36,
+    title: "Liborio",
+    year: 2020,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "uH8ajcWjKJg"
+},
+
+{
+    id: 37,
+    title: "Danny 45",
+    year: 2022,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "8zeXvfIaZd8"
+},
+
+{
+    id: 38,
+    title: "Teacher Mechy",
+    year: 2023,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "eJ0c4wV2_ps"
+},
+
+{
+    id: 39,
+    title: "Los Rechazados",
+    year: 2025,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "aRyAEfZPf4Y"
+},
+
+{
+    id: 40,
+    title: "La Trampa",
+    year: 2022,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "fsCkuHpqXGo"
+},
+
+{
+    id: 41,
+    title: "Pa'l Campamento",
+    year: 2015,
+    category: "comedy",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "Z0i-FXTekqE"
+},
+
+{
+    id: 42,
+    title: "Pueto Pa' Mi",
+    year: 2015,
+    category: "drama",
+    featured: false,
+    poster: "URL_DEL_POSTER",
+    videoId: "WASqpqnTrWE"
+}
 ];
 
 window.peliculas = peliculas;
