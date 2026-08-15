@@ -1,576 +1,80 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO -->
-    <title>CineLibre | Cine clásico gratis y legal</title>
-    <meta name="description" content="Catálogo de películas de dominio público y Creative Commons. Cine clásico gratis, legal y sin registros.">
-    <meta name="keywords" content="peliculas gratis, dominio publico, cine clasico, creative commons">
-    <meta name="author" content="Tu Nombre">
-    
-    <!-- Open Graph (para compartir en redes) -->
-    <meta property="og:title" content="CineLibre 🎬">
-    <meta property="og:description" content="Cine clásico gratis y legal.">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon (emoji como SVG) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
-    
-    <style>
-        /* ============ VARIABLES Y RESET ============ */
-        :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #181818;
-            --bg-card: #1f1f1f;
-            --accent: #e50914;
-            --accent-hover: #f6121d;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --radius: 10px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: var(--bg-primary);
-            color: var(--text-main);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            min-height: 100vh;
-        }
-
-        ::selection { background: var(--accent); }
-
-        /* Scrollbar personalizada */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-primary); }
-        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
-
-        /* ============ HEADER ============ */
-        header {
-            position: sticky; top: 0; z-index: 50;
-            background: rgba(15, 15, 15, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 1rem 5%;
-            display: flex; flex-wrap: wrap; gap: 1rem;
-            align-items: center; justify-content: space-between;
-        }
-
-        .logo {
-            font-size: 1.6rem; font-weight: 900;
-            color: var(--accent); letter-spacing: -1px;
-            text-decoration: none;
-        }
-        .logo span { color: var(--text-main); }
-
-        /* ============ BUSCADOR ============ */
-        .search-box {
-            position: relative;
-            flex: 1; max-width: 400px; min-width: 200px;
-        }
-
-        .search-box input {
-            width: 100%;
-            background: var(--bg-card);
-            border: 2px solid transparent;
-            border-radius: 25px;
-            padding: 0.7rem 1rem 0.7rem 2.8rem;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            transition: var(--transition);
-            outline: none;
-        }
-
-        .search-box input:focus { border-color: var(--accent); }
-        .search-box::before {
-            content: "🔍";
-            position: absolute; left: 1rem; top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.9rem; opacity: 0.6;
-        }
-
-        /* ============ HERO ============ */
-        .hero {
-            padding: 4.5rem 5% 3rem;
-            background:
-                radial-gradient(ellipse at 85% 10%, rgba(229,9,20,0.22), transparent 35%),
-                radial-gradient(ellipse at 15% 80%, rgba(255,255,255,0.06), transparent 35%);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .hero h1 {
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            font-weight: 900; line-height: 1.1;
-            margin-bottom: 0.8rem;
-        }
-
-        .hero h1 em { color: var(--accent); font-style: normal; }
-
-        .hero p { color: var(--text-muted); max-width: 600px; font-size: 1.05rem; }
-
-        /* ============ BARRA DE CONTROL ============ */
-        .controls {
-            padding: 1.5rem 5% 0.5rem;
-            display: flex; flex-wrap: wrap; gap: 0.8rem;
-            align-items: center; justify-content: space-between;
-        }
-
-        .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
-
-        .chip {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-muted);
-            padding: 0.5rem 1.1rem;
-            border-radius: 20px;
-            cursor: pointer; font-size: 0.85rem;
-            transition: var(--transition);
-        }
-
-        .chip:hover { color: var(--text-main); border-color: var(--accent); }
-        .chip.active { background: var(--accent); color: white; border-color: var(--accent); font-weight: 600; }
-
-        .sort-select {
-            background: var(--bg-card);
-            color: var(--text-main);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer; font-size: 0.85rem;
-            outline: none;
-        }
-
-        /* ============ CONTADOR ============ */
-        .results-info {
-            padding: 1rem 5% 0;
-            color: var(--text-muted); font-size: 0.85rem;
-        }
-
-        /* ============ GRID DE PELÍCULAS ============ */
-        .catalog {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-            gap: 1.4rem;
-            padding: 1.8rem 5% 5rem;
-        }
-
-        .card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            overflow: hidden;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            animation: fadeIn 0.4s ease backwards;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
-
-        .poster-wrap { position: relative; aspect-ratio: 2/3; overflow: hidden; background: #2a2a2a; }
-
-        .poster-wrap img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .card:hover .poster-wrap img { transform: scale(1.08); }
-
-        /* Botón play al hacer hover */
-        .play-overlay {
-            position: absolute; inset: 0;
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(0,0,0,0.4);
-            opacity: 0; transition: var(--transition);
-        }
-
-        .card:hover .play-overlay { opacity: 1; }
-
-        .play-overlay .play-icon {
-            width: 55px; height: 55px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; padding-left: 4px;
-        }
-
-        /* Botón favorito */
-        .fav-btn {
-            position: absolute; top: 8px; right: 8px; z-index: 5;
-            background: rgba(0,0,0,0.7);
-            border: none; color: white;
-            width: 34px; height: 34px;
-            border-radius: 50%; cursor: pointer;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
-
-        .fav-btn:hover { transform: scale(1.15); }
-        .fav-btn.active { background: var(--accent); }
-
-        .badge {
-            position: absolute; top: 8px; left: 8px;
-            background: var(--accent);
-            color: white; font-size: 0.65rem; font-weight: 700;
-            padding: 0.25rem 0.6rem; border-radius: 4px;
-            text-transform: uppercase;
-        }
-
-        .info { padding: 0.9rem; }
-        .info .title {
-            font-size: 0.95rem; font-weight: 600;
-            margin-bottom: 0.35rem;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
-        .info .meta {
-            display: flex; justify-content: space-between;
-            font-size: 0.75rem; color: var(--text-muted);
-        }
-
-        /* ============ ESTADO VACÍO ============ */
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center; padding: 4rem 1rem;
-            color: var(--text-muted);
-        }
-        .empty-state .icon { font-size: 4rem; margin-bottom: 1rem; }
-
-        /* ============ MODAL REPRODUCTOR ============ */
-        .modal-overlay {
-            position: fixed; inset: 0; z-index: 100;
-            background: rgba(0,0,0,0.96);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
-
-        .player-container {
-            width: 92%; max-width: 1100px;
-            position: relative;
-        }
-
-        .player-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 0.8rem;
-        }
-
-        .player-title { font-size: 1.2rem; font-weight: 700; }
-
-        .close-btn {
-            background: rgba(255,255,255,0.1);
-            border: none; color: white;
-            width: 40px; height: 40px;
-            border-radius: 50%; cursor: pointer;
-            font-size: 1.3rem;
-            transition: var(--transition);
-        }
-
-        .close-btn:hover { background: var(--accent); transform: rotate(90deg); }
-
-        .video-frame {
-            aspect-ratio: 16/9;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(229,9,20,0.2);
-        }
-
-        .video-frame iframe { width: 100%; height: 100%; border: none; }
-
-        /* ============ FOOTER ============ */
-        footer {
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 2rem 5%;
-            text-align: center;
-            color: var(--text-muted); font-size: 0.85rem;
-        }
-
-        footer a { color: var(--accent); text-decoration: none; }
-
-        /* ============ RESPONSIVE ============ */
-        @media (max-width: 768px) {
-            header { flex-direction: column; align-items: stretch; }
-            .search-box { max-width: 100%; }
-            .catalog { grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 1rem; }
-            .controls { flex-direction: column; align-items: flex-start; }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071015">
+<meta name="description" content="CineLibre — descubre cine dominicano, clásicos, producciones independientes y películas con licencia para ver online.">
+<meta name="keywords" content="cine dominicano, películas dominicanas, CineLibre, películas gratis, cine independiente">
+<meta property="og:title" content="CineLibre | Cine dominicano y cine libre">
+<meta property="og:description" content="Descubre historias, voces y películas de nuestra región.">
+<title>CineLibre | Cine dominicano y cine libre</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+<style>
+:root{--bg:#070b0f;--surface:#0d141a;--card:#121c23;--card2:#17232b;--text:#f6fafb;--muted:#9eabb2;--brand:#16c7bd;--brand2:#7be8df;--line:rgba(255,255,255,.09);--danger:#ff5b63;--shadow:0 20px 60px rgba(0,0,0,.35);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}body{font-family:Inter,Segoe UI,system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}::selection{background:var(--brand);color:#001513}::-webkit-scrollbar{width:9px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#29404a;border-radius:20px}
+.header{position:sticky;top:0;z-index:100;background:rgba(7,11,15,.86);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);height:72px;display:flex;align-items:center;gap:22px;padding:0 clamp(16px,4vw,64px)}
+.logo{font-weight:950;letter-spacing:-1.5px;font-size:1.45rem;white-space:nowrap}.logo b{color:var(--brand)}.nav{display:flex;gap:18px;color:var(--muted);font-size:.92rem}.nav a:hover,.nav a.active{color:var(--text)}
+.search{margin-left:auto;position:relative;width:min(360px,35vw)}.search input{width:100%;height:42px;border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:24px;padding:0 42px 0 16px;outline:0}.search input:focus{border-color:var(--brand)}.search span{position:absolute;right:14px;top:10px;color:var(--muted)}
+.hero{min-height:560px;display:flex;align-items:flex-end;padding:clamp(36px,8vw,90px) clamp(18px,5vw,72px) 60px;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 20%,rgba(22,199,189,.18),transparent 32%),linear-gradient(90deg,#071015 0%,rgba(7,11,15,.88) 42%,rgba(7,11,15,.22) 100%)}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(0deg,var(--bg) 0%,transparent 38%),radial-gradient(circle at 72% 45%,rgba(255,255,255,.08),transparent 28%);pointer-events:none}.hero-content{max-width:680px;position:relative;z-index:2}.eyebrow{color:var(--brand2);font-weight:800;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;margin-bottom:14px}.hero h1{font-size:clamp(2.5rem,6vw,5.4rem);line-height:.95;letter-spacing:-.06em;margin-bottom:18px}.hero h1 span{color:var(--brand)}.hero p{color:#c6d0d4;line-height:1.65;max-width:620px;font-size:1.04rem}.hero-meta{display:flex;gap:12px;flex-wrap:wrap;color:#d7e0e3;margin:18px 0}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:0;border-radius:12px;padding:12px 18px;font-weight:800;transition:transform .2s var(--ease),background .2s}.btn:hover{transform:translateY(-2px)}.btn-primary{background:var(--brand);color:#001513}.btn-secondary{background:rgba(255,255,255,.1);color:white;border:1px solid var(--line)}
+.section{padding:30px clamp(18px,5vw,72px) 8px}.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;margin-bottom:15px}.section h2{font-size:1.35rem}.section-sub{color:var(--muted);font-size:.9rem;margin-top:5px}.rail{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(175px,14vw);gap:14px;overflow-x:auto;padding:4px 2px 16px;scrollbar-width:thin}.movie-card{position:relative;min-width:0;transition:transform .25s var(--ease)}.movie-card:hover{transform:translateY(-5px)}.poster{aspect-ratio:2/3;border-radius:12px;overflow:hidden;background:var(--card);position:relative;border:1px solid var(--line)}.poster img{width:100%;height:100%;object-fit:cover;display:block}.poster:after{content:"▶";position:absolute;inset:0;display:grid;place-items:center;background:rgba(0,0,0,.48);font-size:2rem;opacity:0;transition:opacity .2s}.movie-card:hover .poster:after{opacity:1}.badge{position:absolute;left:8px;top:8px;background:var(--brand);color:#001513;font-size:.67rem;font-weight:900;padding:5px 7px;border-radius:6px}.fav{position:absolute;right:7px;top:7px;width:34px;height:34px;border:1px solid rgba(255,255,255,.15);border-radius:50%;background:rgba(0,0,0,.55);color:#fff;z-index:2}.fav.active{color:#ff6d78}.movie-title{font-weight:750;font-size:.9rem;margin-top:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.movie-meta{color:var(--muted);font-size:.75rem;margin-top:4px}.empty{padding:45px;text-align:center;color:var(--muted);grid-column:1/-1}
+.controls{padding:28px clamp(18px,5vw,72px) 0;display:flex;gap:10px;flex-wrap:wrap;align-items:center}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid var(--line);background:var(--card);color:var(--muted);border-radius:22px;padding:9px 13px}.chip.active,.chip:hover{background:var(--brand);color:#001513;border-color:var(--brand);font-weight:800}.sort{margin-left:auto;background:var(--card);border:1px solid var(--line);color:var(--text);border-radius:22px;padding:9px 13px}.results{padding:16px clamp(18px,5vw,72px) 0;color:var(--muted);font-size:.85rem}.catalog{padding:18px clamp(18px,5vw,72px) 50px;display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:25px 14px}.catalog .movie-card{min-width:0}
+.about{margin:20px clamp(18px,5vw,72px) 70px;padding:30px;border:1px solid var(--line);background:linear-gradient(135deg,var(--surface),#0a1116);border-radius:18px}.about h2{margin-bottom:10px}.about p{color:var(--muted);line-height:1.7;max-width:850px}.footer{border-top:1px solid var(--line);padding:30px clamp(18px,5vw,72px);color:var(--muted);font-size:.82rem;line-height:1.7}.footer strong{color:var(--text)}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(8px);z-index:300;display:none;overflow:auto}.modal.open{display:block}.detail{width:min(1100px,94vw);margin:5vh auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:var(--shadow)}.detail-top{display:grid;grid-template-columns:260px 1fr;gap:28px;padding:28px}.detail-poster{width:100%;border-radius:12px;aspect-ratio:2/3;object-fit:cover;background:var(--card)}.detail h2{font-size:clamp(1.8rem,4vw,3rem);margin:20px 0 10px}.detail p{color:var(--muted);line-height:1.7}.close{position:absolute;right:20px;top:18px;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:rgba(0,0,0,.6);color:#fff;font-size:1.3rem;z-index:5}.detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}.detail-info{display:flex;gap:12px;flex-wrap:wrap;color:#cbd4d7;font-size:.85rem}.player{margin:0 28px 28px;background:#000;border-radius:14px;overflow:hidden}.player iframe{width:100%;aspect-ratio:16/9;border:0;display:block}.notice{margin:0 28px 28px;padding:14px;border-radius:10px;background:rgba(255,190,70,.08);border:1px solid rgba(255,190,70,.2);color:#e8d4aa;font-size:.85rem}
+.bottom-nav{display:none}.toast{position:fixed;right:18px;bottom:18px;background:#17232b;color:white;border:1px solid var(--line);padding:12px 16px;border-radius:10px;z-index:500;transform:translateY(20px);opacity:0;pointer-events:none;transition:.25s}.toast.show{opacity:1;transform:translateY(0)}
+@media(max-width:760px){.header{height:62px;padding:0 14px;gap:10px}.nav{display:none}.search{width:auto;flex:1}.hero{min-height:520px;padding:40px 18px}.hero h1{font-size:3rem}.section{padding-top:24px}.rail{grid-auto-columns:42vw}.catalog{grid-template-columns:repeat(2,1fr);gap:20px 10px;padding-top:14px}.controls{padding-top:20px}.sort{margin-left:0}.detail-top{grid-template-columns:115px 1fr;gap:16px;padding:18px}.detail h2{font-size:1.45rem;margin-top:0}.detail{margin:2vh auto}.player,.notice{margin-left:18px;margin-right:18px}.bottom-nav{position:fixed;display:flex;bottom:0;left:0;right:0;height:62px;background:rgba(7,11,15,.95);border-top:1px solid var(--line);z-index:150;justify-content:space-around}.bottom-nav button{background:none;border:0;color:var(--muted);font-size:.7rem;padding:7px}.bottom-nav button b{display:block;font-size:1.1rem;margin-bottom:2px}.footer{padding-bottom:85px}}
+</style>
 </head>
 <body>
+<header class="header">
+  <a class="logo" href="#inicio" id="logo">CINE<span>LIBRE</span></a>
+  <nav class="nav"><a class="active" href="#inicio">Inicio</a><a href="#rd">🇩🇴 Hecho en RD</a><a href="#catalogo">Películas</a><a href="#about">Sobre CineLibre</a></nav>
+  <label class="search" aria-label="Buscar"><input id="searchInput" placeholder="Buscar películas, actores o directores..." autocomplete="off"><span>⌕</span></label>
+</header>
+<main id="inicio">
+  <section class="hero" id="hero"><div class="hero-content">
+    <div class="eyebrow">🇩🇴 Cine dominicano · Cine libre</div>
+    <h1>Historias que <span>nos representan.</span></h1>
+    <p>Descubre películas, clásicos y producciones independientes en una experiencia creada para celebrar el cine de nuestra región.</p>
+    <div class="hero-meta"><span id="heroMeta">CineLibre</span></div>
+    <div class="hero-actions"><button class="btn btn-primary" id="heroPlay">▶ Ver ahora</button><button class="btn btn-secondary" id="heroList">＋ Mi lista</button></div>
+  </div></section>
 
-    <!-- ============ HEADER ============ -->
-    <header>
-        <a href="#" class="logo" onclick="resetFilters(); return false;">CINE<span>LIBRE</span></a>
-        <div class="search-box">
-            <input type="search" id="searchInput" placeholder="Buscar películas..." aria-label="Buscar películas" autocomplete="off">
-        </div>
-    </header>
+  <section class="section" id="topSection"><div class="section-head"><div><h2>🔥 Las más destacadas</h2><div class="section-sub">Empieza por aquí.</div></div></div><div class="rail" id="topRail"></div></section>
+  <section class="section" id="rd"><div class="section-head"><div><h2>🇩🇴 Hecho en RD</h2><div class="section-sub">Historias creadas por dominicanos.</div></div></div><div class="rail" id="rdRail"></div></section>
+  <section class="section"><div class="section-head"><div><h2>🆕 Recién agregadas</h2><div class="section-sub">Nuevas para CineLibre.</div></div></div><div class="rail" id="newRail"></div></section>
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-        <h1>Cine clásico <em>gratis</em> y 100% legal 🍿</h1>
-        <p>Historias, voces y clásicos del cine dominicano y del cine libre. Un espacio para descubrir nuestro cine con identidad propia.</p>
-    </section>
+  <section class="controls" id="catalogo"><div class="chips" id="filters"></div><select class="sort" id="sortSelect"><option value="default">Ordenar por...</option><option value="year-desc">Más recientes</option><option value="year-asc">Más antiguas</option><option value="title">Título A-Z</option></select></section>
+  <div class="results" id="resultsInfo"></div><section class="catalog" id="catalog"></section>
 
-    <!-- ============ CONTROLES ============ -->
-    <div class="controls">
-        <nav class="filters" id="filters" aria-label="Filtros de categoría">
-            <button class="chip active" data-filter="all">🎬 Todos</button>
-            <button class="chip" data-filter="scifi">🚀 Sci-Fi</button>
-            <button class="chip" data-filter="horror">👻 Terror</button>
-            <button class="chip" data-filter="drama">🎭 Drama</button>
-            <button class="chip" data-filter="comedy">😂 Comedia</button>
-            <button class="chip" data-filter="animation">🎨 Animación</button>
-            <button class="chip" data-filter="fav">❤️ Mi Lista</button>
-        </nav>
-        <select class="sort-select" id="sortSelect" aria-label="Ordenar películas">
-            <option value="default">Ordenar por...</option>
-            <option value="year-desc">Año (más reciente)</option>
-            <option value="year-asc">Año (más antigua)</option>
-            <option value="title">Título (A-Z)</option>
-        </select>
-    </div>
-
-    <div class="results-info" id="resultsInfo"></div>
-
-    <!-- ============ CATÁLOGO ============ -->
-    <main class="catalog" id="catalog" aria-live="polite"></main>
-
-    <!-- ============ FOOTER ============ -->
-    <footer>
-        <p>🎬 <strong>CineLibre</strong> — Todo el contenido pertenece al dominio público o tiene licencia Creative Commons.</p>
-        <p>Hecho con ❤️ · <a href="https://github.com" target="_blank" rel="noopener">GitHub</a></p>
-    </footer>
-
-    <!-- ============ MODAL REPRODUCTOR ============ -->
-    <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Reproductor de video">
-        <div class="player-container">
-            <div class="player-header">
-                <h2 class="player-title" id="playerTitle"></h2>
-                <button class="close-btn" id="closeBtn" aria-label="Cerrar reproductor">✕</button>
-            </div>
-            <div class="video-frame">
-                <iframe id="videoPlayer" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>
-            </div>
-        </div>
-    </div>
-
+  <section class="about" id="about"><h2>🎬 CineLibre</h2><p>Una plataforma enfocada en descubrir cine dominicano, clásicos y producciones con derechos adecuados para su publicación. La disponibilidad de cada película depende de la licencia o autorización correspondiente.</p></section>
+</main>
+<footer class="footer"><strong>🎬 CineLibre</strong> — La información de derechos debe verificarse antes de publicar cada obra. · Hecho para descubrir y apoyar el cine dominicano.</footer>
+<nav class="bottom-nav"><button onclick="scrollTo({top:0,behavior:'smooth'})"><b>⌂</b>Inicio</button><button onclick="document.getElementById('searchInput').focus()"><b>⌕</b>Buscar</button><button onclick="setFilter('fav')"><b>♡</b>Mi lista</button><button onclick="document.getElementById('rd').scrollIntoView({behavior:'smooth'})"><b>🇩🇴</b>RD</button></nav>
+<div class="modal" id="modal" aria-hidden="true"><button class="close" id="closeBtn" aria-label="Cerrar">×</button><article class="detail"><div class="detail-top"><img class="detail-poster" id="detailPoster" alt=""><div><div class="eyebrow" id="detailCategory"></div><h2 id="detailTitle"></h2><div class="detail-info" id="detailInfo"></div><div class="detail-actions"><button class="btn btn-primary" id="detailPlay">▶ Reproducir</button><button class="btn btn-secondary" id="detailFav">＋ Mi lista</button></div><p id="detailDescription"></p><p id="detailCredits" style="margin-top:12px"></p></div></div><div class="player" id="playerBox" hidden><iframe id="videoPlayer" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe></div><div class="notice" id="rightsNotice">La película se reproduce desde la fuente indicada en los datos del catálogo. Verifica siempre los derechos de distribución antes del lanzamiento público.</div></article></div>
+<div class="toast" id="toast"></div>
 <script src="peliculas.js"></script>
-
-    <script>
-    // ================================================================
-    // BASE DE DATOS
-    // Las películas se cargan desde peliculas.js.
-    // ================================================================
-    const movies = window.peliculas || [];
-
-    // ================================================================
-    // ESTADO GLOBAL
-    // ================================================================
-    let state = {
-        filter: 'all',
-        search: '',
-        sort: 'default',
-        favorites: JSON.parse(localStorage.getItem('cinelibre_favs')) || []
-    };
-
-    // Referencias DOM
-    const catalog = document.getElementById('catalog');
-    const modal = document.getElementById('modal');
-    const player = document.getElementById('videoPlayer');
-    const playerTitle = document.getElementById('playerTitle');
-    const closeBtn = document.getElementById('closeBtn');
-    const searchInput = document.getElementById('searchInput');
-    const sortSelect = document.getElementById('sortSelect');
-    const resultsInfo = document.getElementById('resultsInfo');
-
-    // ================================================================
-    // UTILIDADES
-    // ================================================================
-    function debounce(fn, delay = 300) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => fn(...args), delay);
-        };
-    }
-
-    function saveFavorites() {
-        localStorage.setItem('cinelibre_favs', JSON.stringify(state.favorites));
-    }
-
-    function toggleFavorite(id, event) {
-        event.stopPropagation();
-        state.favorites = state.favorites.includes(id)
-            ? state.favorites.filter(f => f !== id)
-            : [...state.favorites, id];
-        saveFavorites();
-        renderMovies();
-    }
-
-    // ================================================================
-    // FILTRADO Y ORDENAMIENTO
-    // ================================================================
-    function getFilteredMovies() {
-        let result = movies.filter(movie =>
-            movie &&
-            movie.title &&
-            movie.year &&
-            movie.category &&
-            movie.poster &&
-            movie.videoId
-        ).map(movie => ({ ...movie }));
-
-        // Filtro por categoría o favoritos
-        if (state.filter === 'fav') {
-            result = result.filter(m => state.favorites.includes(m.id));
-        } else if (state.filter !== 'all') {
-            result = result.filter(m => m.category === state.filter);
-        }
-
-        // Búsqueda por título
-        if (state.search) {
-            const q = state.search.toLowerCase();
-            result = result.filter(m => m.title.toLowerCase().includes(q));
-        }
-
-        // Ordenamiento
-        switch (state.sort) {
-            case 'year-desc': result.sort((a, b) => b.year - a.year); break;
-            case 'year-asc':  result.sort((a, b) => a.year - b.year); break;
-            case 'title':     result.sort((a, b) => a.title.localeCompare(b.title)); break;
-        }
-
-        return result;
-    }
-
-    // ================================================================
-    // RENDERIZADO
-    // ================================================================
-    function renderMovies() {
-        const filtered = getFilteredMovies();
-        catalog.innerHTML = '';
-
-        // Contador de resultados
-        resultsInfo.textContent = `Mostrando ${filtered.length} película${filtered.length !== 1 ? 's' : ''}`;
-
-        // Estado vacío
-        if (filtered.length === 0) {
-            catalog.innerHTML = `
-                <div class="empty-state">
-                    <div class="icon">🎬</div>
-                    <h3>Tu catálogo está listo para crecer</h3>
-                    <p>Añade películas desde <strong>peliculas.js</strong>.</p>
-                </div>`;
-            return;
-        }
-
-        // Crear tarjetas
-        filtered.forEach((movie, index) => {
-            const isFav = state.favorites.includes(movie.id);
-            const card = document.createElement('article');
-            card.className = 'card';
-            card.style.animationDelay = `${index * 0.05}s`;
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', `Ver ${movie.title}`);
-
-            card.innerHTML = `
-                <div class="poster-wrap">
-                    <img src="${movie.poster}" alt="Póster de ${movie.title}" loading="lazy"
-                         onerror="this.src='https://via.placeholder.com/300x450/1f1f1f/666?text=Sin+Póster'">
-                    <div class="play-overlay"><div class="play-icon">▶</div></div>
-                    ${movie.featured ? '<span class="badge">Destacada</span>' : ''}
-                </div>
-                <button class="fav-btn ${isFav ? 'active' : ''}" aria-label="${isFav ? 'Quitar de' : 'Añadir a'} Mi Lista">
-                    ${isFav ? '❤️' : '🤍'}
-                </button>
-                <div class="info">
-                    <h3 class="title">${movie.title}</h3>
-                    <div class="meta">
-                        <span>${movie.year}</span>
-                        <span>${movie.category.toUpperCase()}</span>
-                    </div>
-                </div>
-            `;
-
-            // Eventos
-            card.querySelector('.fav-btn').addEventListener('click', (e) => toggleFavorite(movie.id, e));
-            card.addEventListener('click', () => openPlayer(movie));
-            card.addEventListener('keydown', (e) => { if (e.key === 'Enter') openPlayer(movie); });
-
-            catalog.appendChild(card);
-        });
-    }
-
-    // ================================================================
-    // REPRODUCTOR MODAL
-    // ================================================================
-    function openPlayer(movie) {
-        playerTitle.textContent = `${movie.title} (${movie.year})`;
-        player.src = `https://www.youtube-nocookie.com/embed/${movie.videoId}?autoplay=1&rel=0`;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        closeBtn.focus();
-    }
-
-    function closePlayer() {
-        modal.classList.remove('active');
-        player.src = '';
-        document.body.style.overflow = '';
-    }
-
-    // ================================================================
-    // RESET (click en logo)
-    // ================================================================
-    function resetFilters() {
-        state.filter = 'all';
-        state.search = '';
-        searchInput.value = '';
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        document.querySelector('[data-filter="all"]').classList.add('active');
-        renderMovies();
-    }
-
-    // ================================================================
-    // EVENT LISTENERS
-    // ================================================================
-    closeBtn.addEventListener('click', closePlayer);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closePlayer(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePlayer(); });
-
-    searchInput.addEventListener('input', debounce((e) => {
-        state.search = e.target.value.trim();
-        renderMovies();
-    }));
-
-    sortSelect.addEventListener('change', (e) => {
-        state.sort = e.target.value;
-        renderMovies();
-    });
-
-    document.getElementById('filters').addEventListener('click', (e) => {
-        if (!e.target.classList.contains('chip')) return;
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        e.target.classList.add('active');
-        state.filter = e.target.dataset.filter;
-        renderMovies();
-    });
-
-    // ================================================================
-    // INICIALIZACIÓN
-    // ================================================================
-    renderMovies();
+<script>
+const movies=Array.isArray(window.peliculas)?window.peliculas:[];const $=id=>document.getElementById(id);let state={filter:'all',search:'',sort:'default',favorites:JSON.parse(localStorage.getItem('cinelibre_favs')||'[]'),hero:null};
+const categories=[['all','🎬 Todos'],['action','💥 Acción'],['comedy','😂 Comedia'],['drama','🎭 Drama'],['horror','👻 Terror'],['romance','❤️ Romance'],['documentary','📚 Documental'],['animation','🎨 Animación'],['scifi','🚀 Sci-Fi'],['war','⚔️ Guerra'],['fav','♡ Mi lista']];
+function save(){localStorage.setItem('cinelibre_favs',JSON.stringify(state.favorites))}function isFav(id){return state.favorites.includes(id)}function toggleFav(id){state.favorites=isFav(id)?state.favorites.filter(x=>x!==id):[...state.favorites,id];save();renderAll();if(state.hero?.id===id) updateHeroButtons();toast(isFav(id)?'Añadida a Mi Lista':'Quitada de Mi Lista')}
+function normalize(m){return [m.title,m.category,m.director,m.description, ...(m.cast||[])].filter(Boolean).join(' ').toLowerCase()}
+function filtered(){let r=movies.filter(Boolean).map(x=>({...x}));if(state.filter==='fav')r=r.filter(x=>isFav(x.id));else if(state.filter!=='all')r=r.filter(x=>x.category===state.filter);if(state.search){const q=state.search.toLowerCase();r=r.filter(x=>normalize(x).includes(q))}if(state.sort==='year-desc')r.sort((a,b)=>(b.year||0)-(a.year||0));if(state.sort==='year-asc')r.sort((a,b)=>(a.year||0)-(b.year||0));if(state.sort==='title')r.sort((a,b)=>(a.title||'').localeCompare(b.title||''));return r}
+function card(m){const el=document.createElement('article');el.className='movie-card';el.tabIndex=0;const poster=m.poster||'data:image/svg+xml;charset=UTF-8,'+encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 450"><rect width="100%" height="100%" fill="#17232b"/><text x="50%" y="50%" text-anchor="middle" fill="#9eabb2" font-size="22">Sin póster</text></svg>');el.innerHTML=`<div class="poster"><img loading="lazy" src="${poster}" alt="Póster de ${esc(m.title)}"><button class="fav ${isFav(m.id)?'active':''}" aria-label="Mi lista">${isFav(m.id)?'♥':'♡'}</button>${m.featured?'<span class="badge">Destacada</span>':''}</div><div class="movie-title">${esc(m.title||'Sin título')}</div><div class="movie-meta">${m.year||'—'} · ${label(m.category)}${!m.videoId?' · Próximamente':''}</div>`;el.querySelector('.fav').onclick=e=>{e.stopPropagation();toggleFav(m.id)};el.onclick=()=>openDetail(m);el.onkeydown=e=>{if(e.key==='Enter')openDetail(m)};return el}
+function esc(v=''){return String(v).replace(/[&<>'"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]))}function label(c=''){return c?c.charAt(0).toUpperCase()+c.slice(1):'Cine'}
+function fillRail(id,list){const r=$(id);r.innerHTML='';list.slice(0,12).forEach(m=>r.appendChild(card(m)));if(!list.length)r.innerHTML='<div class="empty">Todavía no hay títulos en esta sección.</div>'}
+function renderCatalog(){const r=filtered();$('catalog').innerHTML='';$('resultsInfo').textContent=`${r.length} título${r.length!==1?'s':''} disponible${r.length!==1?'s':''}`;if(!r.length){$('catalog').innerHTML='<div class="empty"><h3>No encontramos lo que buscas.</h3><p>Prueba otro título, género o revisa Todos.</p></div>';return}r.forEach(m=>$('catalog').appendChild(card(m)))}
+function setFilter(f){state.filter=f;document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x.dataset.filter===f));renderCatalog();document.getElementById('catalogo').scrollIntoView({behavior:'smooth'})}
+function renderFilters(){$('filters').innerHTML='';categories.forEach(([v,t])=>{const b=document.createElement('button');b.className='chip'+(state.filter===v?' active':'');b.dataset.filter=v;b.textContent=t;b.onclick=()=>setFilter(v);$('filters').appendChild(b)})}
+function chooseHero(){let f=movies.find(m=>m.featured&&m.videoId)||movies.find(m=>m.featured)||movies.find(m=>m.videoId)||movies[0];state.hero=f||null;if(!f)return;$('hero').style.backgroundImage=`linear-gradient(90deg,#071015 0%,rgba(7,11,15,.9) 38%,rgba(7,11,15,.2) 100%),url("${f.backdrop||f.poster||''}")`;$('hero').style.backgroundSize='cover';$('hero').style.backgroundPosition='center';$('hero').querySelector('h1').innerHTML=esc(f.title||'Historias que nos representan.');$('hero').querySelector('p').textContent=f.description||'Descubre historias, voces y películas de nuestra región.';$('heroMeta').textContent=`${f.year||'—'} · ${label(f.category)}`;updateHeroButtons()}
+function updateHeroButtons(){if(!state.hero)return;$('heroList').textContent=isFav(state.hero.id)?'♥ En Mi Lista':'＋ Mi lista';$('heroPlay').textContent=state.hero.videoId?'▶ Ver ahora':'ℹ Ver información'}
+function openDetail(m){$('modal').classList.add('open');$('modal').setAttribute('aria-hidden','false');$('detailPoster').src=m.poster||'';$('detailPoster').alt=`Póster de ${m.title}`;$('detailTitle').textContent=m.title||'Sin título';$('detailCategory').textContent=`${label(m.category)} · ${m.year||'Año no indicado'}`;$('detailInfo').innerHTML=[m.year&&`📅 ${m.year}`,m.duration&&`⏱ ${m.duration}`,m.country&&`🌎 ${m.country}`].filter(Boolean).map(esc).join('<span>•</span>');$('detailDescription').textContent=m.description||'Descripción no disponible todavía.';$('detailCredits').textContent=[m.director&&`Director: ${m.director}`,m.cast?.length&&`Reparto: ${m.cast.join(', ')}`].filter(Boolean).join(' · ');$('detailFav').textContent=isFav(m.id)?'♥ En Mi Lista':'＋ Mi lista';$('detailFav').onclick=()=>{toggleFav(m.id);$('detailFav').textContent=isFav(m.id)?'♥ En Mi Lista':'＋ Mi lista'};$('detailPlay').onclick=()=>play(m);$('playerBox').hidden=true;$('videoPlayer').src='';$('detailPlay').disabled=!m.videoId;$('detailPlay').title=m.videoId?'':'Esta película no tiene videoId configurado.';state.current=m}
+function play(m){if(!m.videoId){toast('Esta película todavía no tiene un video configurado.');return}$('playerBox').hidden=false;$('videoPlayer').src=`https://www.youtube-nocookie.com/embed/${encodeURIComponent(m.videoId)}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;$('playerBox').scrollIntoView({behavior:'smooth',block:'center'})}
+function closeModal(){$('modal').classList.remove('open');$('modal').setAttribute('aria-hidden','true');$('videoPlayer').src='';$('playerBox').hidden=true}
+function renderAll(){renderFilters();renderCatalog();const byNew=[...movies].sort((a,b)=>(b.year||0)-(a.year||0));fillRail('topRail',movies.filter(m=>m.featured).concat(movies.filter(m=>!m.featured)));fillRail('rdRail',movies.filter(m=>m.country==='República Dominicana'||m.country==='RD'||m.dominican===true));fillRail('newRail',byNew);chooseHero()}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(window.tt);window.tt=setTimeout(()=>$('toast').classList.remove('show'),1800)}
+$('searchInput').addEventListener('input',e=>{state.search=e.target.value.trim();renderCatalog()});$('sortSelect').addEventListener('change',e=>{state.sort=e.target.value;renderCatalog()});$('closeBtn').onclick=closeModal;$('modal').addEventListener('click',e=>{if(e.target===$('modal'))closeModal()});document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});$('logo').onclick=()=>{state.search='';$('searchInput').value='';state.sort='default';setFilter('all')};$('heroPlay').onclick=()=>state.hero&&openDetail(state.hero);$('heroList').onclick=()=>state.hero&&toggleFav(state.hero.id);
+renderAll();
 </script>
 </body>
 </html>
