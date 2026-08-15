@@ -170,7 +170,7 @@ const peliculas = [
         category: "drama",
         featured: false,
         poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKjYvEiEha5P4yPrdutSZZv68P7oSlCBw75oQjU_bHsw&s=10",
-        videoId: "",
+        videoId: "https://ok.ru/video/2452376259270",
         synopsis: "En un hotel de Boca Chica, varias personas quedan atrapadas por las circunstancias y deben enfrentar sus propios conflictos mientras el mundo exterior atraviesa momentos difíciles."
     },
 
