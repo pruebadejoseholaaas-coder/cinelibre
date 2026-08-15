@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -1051,10 +1052,6 @@ footer{
 
 <body>
 
-<!-- =========================
-     HEADER
-========================= -->
-
 <header class="header">
 
     <a href="#" class="logo" id="homeLogo" aria-label="CineLibre, inicio">
@@ -1106,11 +1103,6 @@ footer{
 
 </header>
 
-
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero" aria-label="Película destacada">
 
     <div class="hero-bg">
@@ -1131,11 +1123,6 @@ footer{
 
 </section>
 
-
-<!-- =========================
-     MAIN
-========================= -->
-
 <main class="main">
 
     <div
@@ -1147,11 +1134,6 @@ footer{
     <div id="content"></div>
 
 </main>
-
-
-<!-- =========================
-     FOOTER
-========================= -->
 
 <footer>
 
@@ -1171,11 +1153,6 @@ footer{
     </p>
 
 </footer>
-
-
-<!-- =========================
-     MODAL DETALLES
-========================= -->
 
 <div
     class="modal detail-modal"
@@ -1284,11 +1261,6 @@ footer{
 
 </div>
 
-
-<!-- =========================
-     REPRODUCTOR
-========================= -->
-
 <div
     class="modal"
     id="playerModal"
@@ -1348,11 +1320,6 @@ footer{
 
 </div>
 
-
-<!-- =========================
-     PERFIL
-========================= -->
-
 <div
     class="modal profile-modal"
     id="profileModal"
@@ -1398,31 +1365,12 @@ footer{
 
 </div>
 
-
-<!-- =========================
-     TOAST
-========================= -->
-
 <div
     class="toast"
     id="toast">
 </div>
 
-
-<!-- ============================================================
-     CATÁLOGO EXTERNO
-     
-     IMPORTANTE:
-     Las películas NO están dentro de index.html.
-     Todo el catálogo debe estar en peliculas.js.
-============================================================ -->
-
 <script src="peliculas.js"></script>
-
-
-<!-- ============================================================
-     LÓGICA DE CINE LIBRE
-============================================================ -->
 
 <script>
 'use strict';
@@ -1534,7 +1482,49 @@ function getMovie(id){
 }
 
 
+/* ============================================================
+   SOPORTE DE VIDEOS
+============================================================ */
+
+/*
+    Devuelve true si la película tiene:
+
+    1. videoId       -> YouTube
+    2. videoUrl      -> OK.ru u otra fuente
+    3. videoEmbedUrl -> URL directa de iframe
+*/
+
 function hasVideo(movie){
+
+    if(!movie)
+        return false;
+
+    const youtube =
+        typeof movie.videoId === 'string' &&
+        movie.videoId.trim();
+
+    const videoUrl =
+        typeof movie.videoUrl === 'string' &&
+        movie.videoUrl.trim();
+
+    const embedUrl =
+        typeof movie.videoEmbedUrl === 'string' &&
+        movie.videoEmbedUrl.trim();
+
+    return !!(
+        youtube ||
+        videoUrl ||
+        embedUrl
+    );
+
+}
+
+
+/* =========================
+   YOUTUBE
+========================= */
+
+function isYouTube(movie){
 
     return !!(
         movie &&
@@ -1544,6 +1534,100 @@ function hasVideo(movie){
 
 }
 
+
+/* =========================
+   OK.RU
+========================= */
+
+function isOKRu(movie){
+
+    if(!movie)
+        return false;
+
+    const url =
+        typeof movie.videoUrl === 'string'
+            ? movie.videoUrl.trim()
+            : '';
+
+    const embed =
+        typeof movie.videoEmbedUrl === 'string'
+            ? movie.videoEmbedUrl.trim()
+            : '';
+
+    return !!(
+        /(?:^|\/\/)(?:www\.)?ok\.ru\//i.test(url)
+        ||
+        /(?:^|\/\/)(?:www\.)?ok\.ru\//i.test(embed)
+    );
+
+}
+
+
+/*
+    Si peliculas.js ya contiene directamente
+    una URL videoembed, la utilizamos.
+
+    Ejemplo:
+
+    videoEmbedUrl:
+    "https://ok.ru/videoembed/XXXXXXXX"
+*/
+
+function getOKRuEmbedUrl(movie){
+
+    if(!movie)
+        return null;
+
+
+    /*
+        PRIMERA OPCIÓN:
+        URL directa proporcionada por el catálogo.
+    */
+
+    if(
+        typeof movie.videoEmbedUrl === 'string' &&
+        movie.videoEmbedUrl.trim()
+    ){
+
+        return movie.videoEmbedUrl.trim();
+
+    }
+
+
+    /*
+        SEGUNDA OPCIÓN:
+        Algunas estructuras pueden utilizar
+        videoUrl directamente con /videoembed/.
+    */
+
+    if(
+        typeof movie.videoUrl === 'string' &&
+        /ok\.ru\/videoembed\//i.test(
+            movie.videoUrl
+        )
+    ){
+
+        return movie.videoUrl.trim();
+
+    }
+
+
+    /*
+        No inventamos el ID de videoembed.
+
+        OK.ru puede utilizar un identificador
+        de inserción diferente al identificador
+        visible en /video/.
+    */
+
+    return null;
+
+}
+
+
+/* =========================
+   ESCAPAR HTML
+========================= */
 
 function esc(value){
 
@@ -1862,7 +1946,7 @@ function card(movie){
                 class="card-play"
                 tabindex="-1"
                 aria-hidden="true">
-                i
+                ▶
             </button>
 
             <div class="card-info">
@@ -2373,9 +2457,9 @@ function closeDetails(){
 }
 
 
-/* =========================
-   REPRODUCTOR
-========================= */
+/* ============================================================
+   REPRODUCTOR MULTIFUENTE
+============================================================ */
 
 function openPlayer(id){
 
@@ -2403,12 +2487,22 @@ function openPlayer(id){
         $('youtubeButton');
 
 
-    if(hasVideo(movie)){
+    /*
+       ============================================================
+       YOUTUBE
+       ============================================================
+    */
+
+    if(isYouTube(movie)){
+
+        const videoId =
+            movie.videoId.trim();
+
 
         videoBox.innerHTML = `
 
             <iframe
-                src="https://www.youtube.com/embed/${encodeURIComponent(movie.videoId)}?rel=0&modestbranding=1"
+                src="https://www.youtube.com/embed/${encodeURIComponent(videoId)}?rel=0&modestbranding=1"
                 title="Reproductor de ${esc(movie.title)}"
                 allow="
                     accelerometer;
@@ -2423,6 +2517,7 @@ function openPlayer(id){
                 allowfullscreen
                 referrerpolicy="strict-origin-when-cross-origin">
             </iframe>
+
         `;
 
 
@@ -2434,7 +2529,7 @@ function openPlayer(id){
             () => {
 
                 window.open(
-                    `https://www.youtube.com/watch?v=${encodeURIComponent(movie.videoId)}`,
+                    `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
                     '_blank',
                     'noopener,noreferrer'
                 );
@@ -2445,6 +2540,146 @@ function openPlayer(id){
         $('playerStatus').textContent =
             'Reproduciendo mediante YouTube';
 
+
+    /*
+       ============================================================
+       OK.RU
+       ============================================================
+    */
+
+    }else if(isOKRu(movie)){
+
+        const embedUrl =
+            getOKRuEmbedUrl(movie);
+
+
+        if(!embedUrl){
+
+            videoBox.innerHTML = `
+
+                <div class="no-video">
+
+                    <div>
+
+                        <div style="font-size:3rem">
+                            🎬
+                        </div>
+
+                        <b>
+                            No se pudo abrir el video de OK.ru.
+                        </b>
+
+                        <span>
+                            El enlace de OK.ru existe, pero
+                            esta película necesita la URL
+                            de inserción correspondiente
+                            para reproducirse dentro del
+                            reproductor.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            youtubeButton.style.display =
+                'none';
+
+
+            $('playerStatus').textContent =
+                'Video de OK.ru pendiente de URL de inserción';
+
+
+        }else{
+
+            videoBox.innerHTML = `
+
+                <iframe
+                    src="${esc(embedUrl)}"
+                    title="Reproductor de ${esc(movie.title)}"
+                    allow="
+                        accelerometer;
+                        autoplay;
+                        clipboard-write;
+                        encrypted-media;
+                        gyroscope;
+                        picture-in-picture;
+                        web-share;
+                        fullscreen
+                    "
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+
+            `;
+
+
+            youtubeButton.style.display =
+                'none';
+
+
+            youtubeButton.onclick =
+                null;
+
+
+            $('playerStatus').textContent =
+                'Reproduciendo mediante OK.ru';
+
+        }
+
+
+    /*
+       ============================================================
+       OTRA URL DIRECTA DE VIDEO
+       ============================================================
+    */
+
+    }else if(
+        typeof movie.videoUrl === 'string' &&
+        movie.videoUrl.trim()
+    ){
+
+        videoBox.innerHTML = `
+
+            <iframe
+                src="${esc(movie.videoUrl.trim())}"
+                title="Reproductor de ${esc(movie.title)}"
+                allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                    fullscreen
+                "
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+
+        `;
+
+
+        youtubeButton.style.display =
+            'none';
+
+
+        youtubeButton.onclick =
+            null;
+
+
+        $('playerStatus').textContent =
+            'Reproduciendo video';
+
+
+    /*
+       ============================================================
+       SIN VIDEO
+       ============================================================
+    */
 
     }else{
 
@@ -2480,6 +2715,9 @@ function openPlayer(id){
         youtubeButton.style.display =
             'none';
 
+        youtubeButton.onclick =
+            null;
+
         $('playerStatus').textContent =
             'Video no disponible';
 
@@ -2509,6 +2747,9 @@ function closePlayer(){
 
     videoBox.innerHTML =
         '';
+
+    $('youtubeButton').onclick =
+        null;
 
     state.current =
         null;
@@ -2751,6 +2992,39 @@ document.addEventListener(
                     details.dataset.details
                 )
             );
+
+            return;
+        }
+
+
+        /*
+           Resultados del buscador.
+        */
+
+        const searchResult =
+            event.target.closest(
+                '[data-play]'
+            );
+
+
+        if(searchResult){
+
+            const movieId =
+                Number(
+                    searchResult.dataset.play
+                );
+
+            searchBox
+                .classList
+                .remove('open');
+
+            $('searchToggle')
+                .setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+            openDetails(movieId);
 
             return;
         }
@@ -3043,3 +3317,5 @@ if(!movies.length){
 
 </body>
 </html>
+```
+
