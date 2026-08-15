@@ -6,1562 +6,3040 @@
 <meta name="theme-color" content="#07090d">
 <meta name="description" content="CineLibre — descubre y disfruta el cine dominicano.">
 <title>CineLibre | Cine Dominicano</title>
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#07090d;--surface:#10141c;--surface2:#171c26;--text:#f7f8fb;--muted:#9aa3b2;--accent:#e50914;--line:rgba(255,255,255,.08);--radius:12px;--header:72px}
-html{scroll-behavior:smooth}body{font-family:Inter,Segoe UI,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-button,input{font:inherit}button{cursor:pointer}img{display:block;max-width:100%}a{color:inherit}
-::-webkit-scrollbar{width:9px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:#343b48;border-radius:99px}
-.header{position:sticky;top:0;z-index:500;height:var(--header);display:flex;align-items:center;gap:28px;padding:0 clamp(18px,4vw,60px);background:rgba(7,9,13,.88);border-bottom:1px solid var(--line);backdrop-filter:blur(18px)}
-.logo{font-size:1.65rem;font-weight:950;letter-spacing:-1px;text-decoration:none;white-space:nowrap}.logo b{color:var(--accent)}.logo small{font-size:.65rem}
-.nav{display:flex;gap:22px;align-items:center}.nav button{background:none;border:0;color:var(--muted);font-size:.9rem;transition:.25s}.nav button:hover,.nav button.active{color:#fff}.nav button.active{font-weight:800}
-.header-spacer{flex:1}.search-wrap{position:relative}.search-toggle{border:0;background:transparent;color:#fff;font-size:1.15rem;padding:9px}
-.search-box{position:absolute;right:0;top:48px;width:min(390px,calc(100vw - 28px));padding:12px;background:rgba(16,20,28,.98);border:1px solid var(--line);border-radius:12px;box-shadow:0 18px 55px rgba(0,0,0,.5);display:none}.search-box.open{display:block}
-.search-box input{width:100%;background:#080b10;border:1px solid var(--line);color:#fff;padding:12px 14px;border-radius:9px;outline:0}.search-box input:focus{border-color:var(--accent)}
-.search-results{max-height:320px;overflow:auto;margin-top:8px}.search-result{display:flex;gap:10px;padding:8px;border-radius:9px;cursor:pointer}.search-result:hover{background:var(--surface2)}.search-result img{width:42px;height:60px;object-fit:cover;border-radius:6px}.search-result div{min-width:0}.search-result strong{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.search-result span{color:var(--muted);font-size:.75rem}
-.profile-btn{border:1px solid var(--line);background:var(--surface2);color:#fff;border-radius:999px;padding:8px 12px;font-size:.8rem}.profile-btn:hover{border-color:rgba(255,255,255,.2)}
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0
+}
 
-.hero{min-height:72vh;position:relative;display:flex;align-items:flex-end;overflow:hidden}.hero-bg{position:absolute;inset:0;z-index:-2}.hero-bg img{width:100%;height:100%;object-fit:cover;filter:brightness(.42)}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(7,9,13,.98),rgba(7,9,13,.78) 38%,rgba(7,9,13,.18) 78%),linear-gradient(0deg,var(--bg),transparent 35%)}
-.hero-content{width:min(650px,92%);margin:0 clamp(18px,6vw,90px) 80px}.eyebrow{display:inline-flex;background:var(--accent);padding:6px 10px;border-radius:6px;text-transform:uppercase;font-size:.68rem;font-weight:900;letter-spacing:.7px;margin-bottom:14px}
-.hero h1{font-size:clamp(2.1rem,6vw,4.5rem);line-height:1.02;letter-spacing:-2px;margin-bottom:14px}.meta{display:flex;gap:12px;flex-wrap:wrap;color:var(--muted);margin-bottom:14px}.meta .year{color:#fff;font-weight:700}
-.hero p{color:#c4cad3;line-height:1.65;max-width:560px;margin-bottom:22px}.hero-actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn{border:0;border-radius:8px;padding:11px 18px;font-weight:800;display:inline-flex;align-items:center;gap:8px;transition:.25s}.btn-primary{background:#fff;color:#080a0e}.btn-primary:hover{transform:translateY(-2px)}.btn-secondary{background:rgba(255,255,255,.12);color:#fff}.btn-secondary:hover{background:rgba(255,255,255,.2)}
+:root{
+    --bg:#07090d;
+    --surface:#10141c;
+    --surface2:#171c26;
+    --text:#f7f8fb;
+    --muted:#9aa3b2;
+    --accent:#e50914;
+    --line:rgba(255,255,255,.08);
+    --radius:12px;
+    --header:72px
+}
 
-.main{padding:0 clamp(18px,4vw,60px) 40px;margin-top:-20px;position:relative}.toolbar{display:flex;gap:10px;align-items:center;overflow:auto;padding:10px 0 20px;scrollbar-width:none}.toolbar::-webkit-scrollbar{display:none}
-.chip{flex:0 0 auto;border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:9px 14px;border-radius:999px;font-size:.8rem;transition:.25s}.chip:hover,.chip.active{background:#fff;color:#080a0e;border-color:#fff}
-.section{margin:20px 0 34px}.section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:13px}.section-head h2{font-size:1.35rem}.section-head span{color:var(--muted);font-size:.78rem}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(165px,1fr));gap:15px}
-.card{position:relative;min-width:0;aspect-ratio:2/3;border-radius:var(--radius);overflow:hidden;background:var(--surface);cursor:pointer;box-shadow:0 7px 20px rgba(0,0,0,.2);transition:transform .25s,box-shadow .25s}.card:hover,.card:focus-visible{transform:translateY(-6px) scale(1.025);box-shadow:0 18px 42px rgba(0,0,0,.55);outline:none;z-index:4}
-.card img{width:100%;height:100%;object-fit:cover;transition:transform .35s}.card:hover img{transform:scale(1.06)}.card-gradient{position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.95),rgba(0,0,0,.12) 62%,transparent)}
-.card-info{position:absolute;left:12px;right:12px;bottom:11px}.card-title{font-size:.86rem;font-weight:850;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.card-meta{display:flex;gap:7px;color:#c0c5ce;font-size:.68rem;margin-top:4px}
-.card-play{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%) scale(.8);width:48px;height:48px;border-radius:50%;border:0;background:var(--accent);color:#fff;font-size:1rem;opacity:0;transition:.25s;box-shadow:0 10px 30px rgba(229,9,20,.35)}.card:hover .card-play,.card:focus-visible .card-play{opacity:1;transform:translate(-50%,-50%) scale(1)}
-.card-fav{position:absolute;right:9px;top:9px;width:31px;height:31px;border:0;border-radius:50%;background:rgba(0,0,0,.68);color:#fff;z-index:3}.card-fav.active{background:var(--accent)}
-.badge{position:absolute;left:9px;top:9px;background:var(--accent);padding:5px 7px;border-radius:5px;font-size:.58rem;font-weight:900;z-index:3}.badge.off{background:#343a45}
-.empty{padding:55px 20px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}.empty strong{display:block;color:#fff;font-size:1.05rem;margin-bottom:5px}
-footer{border-top:1px solid var(--line);padding:34px 20px;text-align:center;color:var(--muted);font-size:.76rem}.footer-links{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;margin-bottom:12px}.footer-links strong{color:#fff}
+html{
+    scroll-behavior:smooth
+}
 
-.modal{position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.94);display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity .25s}.modal.open{opacity:1;pointer-events:auto}
-.player{width:min(1120px,100%);max-height:96vh;overflow:auto}.player-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}.player-title{font-weight:900;font-size:1rem}.player-title span{color:var(--muted);font-weight:500;margin-left:8px}
-.close{width:42px;height:42px;border:0;border-radius:50%;background:var(--surface2);color:#fff;font-size:1.2rem}.close:hover{background:var(--accent)}
-.video{aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden}.video iframe{width:100%;height:100%;border:0}.no-video{height:100%;min-height:300px;display:grid;place-items:center;text-align:center;padding:30px;color:var(--muted)}.no-video div{max-width:430px}.no-video b{display:block;color:#fff;font-size:1.15rem;margin:8px 0}
-.player-foot{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px}.player-foot small{color:var(--muted)}.player-foot button{border:1px solid var(--line);background:var(--surface2);color:#fff;border-radius:8px;padding:9px 13px}.player-foot button:hover{border-color:var(--accent)}
-.profile-modal .panel{width:min(440px,100%);background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:24px;box-shadow:0 18px 55px rgba(0,0,0,.5)}.profile-modal h2{margin-bottom:8px}.profile-modal p{color:var(--muted);font-size:.85rem;line-height:1.5;margin-bottom:18px}.profile-input{width:100%;background:#080b10;border:1px solid var(--line);color:#fff;padding:12px;border-radius:8px;outline:0}.profile-input:focus{border-color:var(--accent)}.profile-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:14px}
-.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);background:#fff;color:#080a0e;padding:10px 15px;border-radius:9px;font-size:.8rem;font-weight:800;opacity:0;pointer-events:none;transition:.25s;z-index:2000}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:850px){.nav{display:none}.header{gap:12px}.hero{min-height:65vh}.hero-content{margin-bottom:55px}.grid{grid-template-columns:repeat(auto-fill,minmax(135px,1fr));gap:10px}}
-@media(max-width:520px){:root{--header:62px}.logo{font-size:1.35rem}.profile-btn{padding:7px 9px}.hero{min-height:59vh}.hero h1{letter-spacing:-1px}.hero-content{margin-bottom:38px}.main{padding-left:12px;padding-right:12px}.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}.card{border-radius:8px}.card-info{left:8px;right:8px;bottom:8px}.card-title{font-size:.7rem}.card-meta{font-size:.58rem}.card-fav{width:27px;height:27px;right:6px;top:6px}.badge{left:6px;top:6px;font-size:.5rem;padding:4px}.card-play{width:40px;height:40px}.hero p{font-size:.85rem}}
+body{
+    font-family:Inter,Segoe UI,system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden
+}
 
-.detail-modal{align-items:center}
-.detail-panel{width:min(1050px,100%);max-height:94vh;overflow:auto;background:#0d1118;border:1px solid var(--line);border-radius:18px;box-shadow:0 25px 80px rgba(0,0,0,.65)}
-.detail-grid{display:grid;grid-template-columns:280px 1fr;gap:28px;padding:28px}
-.detail-poster{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:12px;background:#171c26}
-.detail-body{padding:4px 0}
-.detail-kicker{display:inline-block;color:#fff;background:var(--accent);font-size:.68rem;font-weight:900;text-transform:uppercase;letter-spacing:.7px;padding:6px 9px;border-radius:5px;margin-bottom:12px}
-.detail-body h2{font-size:clamp(1.7rem,4vw,3rem);line-height:1.05;margin-bottom:12px}
-.detail-meta{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 20px}
-.detail-pill{border:1px solid var(--line);background:var(--surface);color:#dce1e9;padding:7px 10px;border-radius:999px;font-size:.78rem}
-.detail-section{margin:20px 0}
-.detail-section h3{font-size:.9rem;margin-bottom:8px}
-.detail-section p{color:#b8c0cc;line-height:1.7;font-size:.92rem}
-.rating{font-size:1.05rem;font-weight:900}
-.detail-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-.rights-note{font-size:.72rem!important;color:#8f99a8!important;border-top:1px solid var(--line);padding-top:14px}
-@media(max-width:700px){.detail-grid{grid-template-columns:145px 1fr;gap:18px;padding:18px}.detail-body h2{font-size:1.55rem}.detail-section p{font-size:.84rem}}
-@media(max-width:480px){.detail-grid{grid-template-columns:1fr}.detail-poster{width:170px;max-width:55vw;margin:auto}.detail-body{text-align:left}}
+button,
+input{
+    font:inherit
+}
 
+button{
+    cursor:pointer
+}
+
+img{
+    display:block;
+    max-width:100%
+}
+
+a{
+    color:inherit
+}
+
+::-webkit-scrollbar{
+    width:9px
+}
+
+::-webkit-scrollbar-track{
+    background:var(--bg)
+}
+
+::-webkit-scrollbar-thumb{
+    background:#343b48;
+    border-radius:99px
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header{
+    position:sticky;
+    top:0;
+    z-index:500;
+    height:var(--header);
+    display:flex;
+    align-items:center;
+    gap:28px;
+    padding:0 clamp(18px,4vw,60px);
+    background:rgba(7,9,13,.88);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(18px)
+}
+
+.logo{
+    font-size:1.65rem;
+    font-weight:950;
+    letter-spacing:-1px;
+    text-decoration:none;
+    white-space:nowrap
+}
+
+.logo b{
+    color:var(--accent)
+}
+
+.logo small{
+    font-size:.65rem
+}
+
+.nav{
+    display:flex;
+    gap:22px;
+    align-items:center
+}
+
+.nav button{
+    background:none;
+    border:0;
+    color:var(--muted);
+    font-size:.9rem;
+    transition:.25s
+}
+
+.nav button:hover,
+.nav button.active{
+    color:#fff
+}
+
+.nav button.active{
+    font-weight:800
+}
+
+.header-spacer{
+    flex:1
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-wrap{
+    position:relative
+}
+
+.search-toggle{
+    border:0;
+    background:transparent;
+    color:#fff;
+    font-size:1.15rem;
+    padding:9px
+}
+
+.search-box{
+    position:absolute;
+    right:0;
+    top:48px;
+    width:min(390px,calc(100vw - 28px));
+    padding:12px;
+    background:rgba(16,20,28,.98);
+    border:1px solid var(--line);
+    border-radius:12px;
+    box-shadow:0 18px 55px rgba(0,0,0,.5);
+    display:none
+}
+
+.search-box.open{
+    display:block
+}
+
+.search-box input{
+    width:100%;
+    background:#080b10;
+    border:1px solid var(--line);
+    color:#fff;
+    padding:12px 14px;
+    border-radius:9px;
+    outline:0
+}
+
+.search-box input:focus{
+    border-color:var(--accent)
+}
+
+.search-results{
+    max-height:320px;
+    overflow:auto;
+    margin-top:8px
+}
+
+.search-result{
+    display:flex;
+    gap:10px;
+    padding:8px;
+    border-radius:9px;
+    cursor:pointer
+}
+
+.search-result:hover{
+    background:var(--surface2)
+}
+
+.search-result img{
+    width:42px;
+    height:60px;
+    object-fit:cover;
+    border-radius:6px
+}
+
+.search-result div{
+    min-width:0
+}
+
+.search-result strong{
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis
+}
+
+.search-result span{
+    color:var(--muted);
+    font-size:.75rem
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-btn{
+    border:1px solid var(--line);
+    background:var(--surface2);
+    color:#fff;
+    border-radius:999px;
+    padding:8px 12px;
+    font-size:.8rem
+}
+
+.profile-btn:hover{
+    border-color:rgba(255,255,255,.2)
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:72vh;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden
+}
+
+.hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2
+}
+
+.hero-bg img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(.42)
+}
+
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7,9,13,.98),
+            rgba(7,9,13,.78) 38%,
+            rgba(7,9,13,.18) 78%
+        ),
+        linear-gradient(
+            0deg,
+            var(--bg),
+            transparent 35%
+        )
+}
+
+.hero-content{
+    width:min(650px,92%);
+    margin:0 clamp(18px,6vw,90px) 80px
+}
+
+.eyebrow{
+    display:inline-flex;
+    background:var(--accent);
+    padding:6px 10px;
+    border-radius:6px;
+    text-transform:uppercase;
+    font-size:.68rem;
+    font-weight:900;
+    letter-spacing:.7px;
+    margin-bottom:14px
+}
+
+.hero h1{
+    font-size:clamp(2.1rem,6vw,4.5rem);
+    line-height:1.02;
+    letter-spacing:-2px;
+    margin-bottom:14px
+}
+
+.meta{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    color:var(--muted);
+    margin-bottom:14px
+}
+
+.meta .year{
+    color:#fff;
+    font-weight:700
+}
+
+.hero p{
+    color:#c4cad3;
+    line-height:1.65;
+    max-width:560px;
+    margin-bottom:22px
+}
+
+.hero-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+    border:0;
+    border-radius:8px;
+    padding:11px 18px;
+    font-weight:800;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:.25s
+}
+
+.btn-primary{
+    background:#fff;
+    color:#080a0e
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px)
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.12);
+    color:#fff
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,.2)
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    padding:0 clamp(18px,4vw,60px) 40px;
+    margin-top:-20px;
+    position:relative
+}
+
+.toolbar{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    overflow:auto;
+    padding:10px 0 20px;
+    scrollbar-width:none
+}
+
+.toolbar::-webkit-scrollbar{
+    display:none
+}
+
+.chip{
+    flex:0 0 auto;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--muted);
+    padding:9px 14px;
+    border-radius:999px;
+    font-size:.8rem;
+    transition:.25s
+}
+
+.chip:hover,
+.chip.active{
+    background:#fff;
+    color:#080a0e;
+    border-color:#fff
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    margin:20px 0 34px
+}
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:13px
+}
+
+.section-head h2{
+    font-size:1.35rem
+}
+
+.section-head span{
+    color:var(--muted);
+    font-size:.78rem
+}
+
+/* =========================
+   MOVIE GRID
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(165px,1fr));
+    gap:15px
+}
+
+.card{
+    position:relative;
+    min-width:0;
+    aspect-ratio:2/3;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--surface);
+    cursor:pointer;
+    box-shadow:0 7px 20px rgba(0,0,0,.2);
+    transition:
+        transform .25s,
+        box-shadow .25s
+}
+
+.card:hover,
+.card:focus-visible{
+    transform:translateY(-6px) scale(1.025);
+    box-shadow:0 18px 42px rgba(0,0,0,.55);
+    outline:none;
+    z-index:4
+}
+
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .35s
+}
+
+.card:hover img{
+    transform:scale(1.06)
+}
+
+.card-gradient{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0,0,0,.95),
+            rgba(0,0,0,.12) 62%,
+            transparent
+        )
+}
+
+.card-info{
+    position:absolute;
+    left:12px;
+    right:12px;
+    bottom:11px
+}
+
+.card-title{
+    font-size:.86rem;
+    font-weight:850;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis
+}
+
+.card-meta{
+    display:flex;
+    gap:7px;
+    color:#c0c5ce;
+    font-size:.68rem;
+    margin-top:4px
+}
+
+.card-play{
+    position:absolute;
+    left:50%;
+    top:45%;
+    transform:translate(-50%,-50%) scale(.8);
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:0;
+    background:var(--accent);
+    color:#fff;
+    font-size:1rem;
+    opacity:0;
+    transition:.25s;
+    box-shadow:0 10px 30px rgba(229,9,20,.35)
+}
+
+.card:hover .card-play,
+.card:focus-visible .card-play{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1)
+}
+
+.card-fav{
+    position:absolute;
+    right:9px;
+    top:9px;
+    width:31px;
+    height:31px;
+    border:0;
+    border-radius:50%;
+    background:rgba(0,0,0,.68);
+    color:#fff;
+    z-index:3
+}
+
+.card-fav.active{
+    background:var(--accent)
+}
+
+.badge{
+    position:absolute;
+    left:9px;
+    top:9px;
+    background:var(--accent);
+    padding:5px 7px;
+    border-radius:5px;
+    font-size:.58rem;
+    font-weight:900;
+    z-index:3
+}
+
+.badge.off{
+    background:#343a45
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    padding:55px 20px;
+    text-align:center;
+    color:var(--muted);
+    border:1px dashed var(--line);
+    border-radius:12px
+}
+
+.empty strong{
+    display:block;
+    color:#fff;
+    font-size:1.05rem;
+    margin-bottom:5px
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:34px 20px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.76rem
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:12px
+}
+
+.footer-links strong{
+    color:#fff
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    background:rgba(0,0,0,.94);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s
+}
+
+.modal.open{
+    opacity:1;
+    pointer-events:auto
+}
+
+/* =========================
+   PLAYER
+========================= */
+
+.player{
+    width:min(1120px,100%);
+    max-height:96vh;
+    overflow:auto
+}
+
+.player-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:10px
+}
+
+.player-title{
+    font-weight:900;
+    font-size:1rem
+}
+
+.player-title span{
+    color:var(--muted);
+    font-weight:500;
+    margin-left:8px
+}
+
+.close{
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    background:var(--surface2);
+    color:#fff;
+    font-size:1.2rem
+}
+
+.close:hover{
+    background:var(--accent)
+}
+
+.video{
+    aspect-ratio:16/9;
+    background:#000;
+    border-radius:12px;
+    overflow:hidden
+}
+
+.video iframe{
+    width:100%;
+    height:100%;
+    border:0
+}
+
+.no-video{
+    height:100%;
+    min-height:300px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:30px;
+    color:var(--muted)
+}
+
+.no-video div{
+    max-width:430px
+}
+
+.no-video b{
+    display:block;
+    color:#fff;
+    font-size:1.15rem;
+    margin:8px 0
+}
+
+.player-foot{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-top:10px
+}
+
+.player-foot small{
+    color:var(--muted)
+}
+
+.player-foot button{
+    border:1px solid var(--line);
+    background:var(--surface2);
+    color:#fff;
+    border-radius:8px;
+    padding:9px 13px
+}
+
+.player-foot button:hover{
+    border-color:var(--accent)
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-modal .panel{
+    width:min(440px,100%);
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 18px 55px rgba(0,0,0,.5)
+}
+
+.profile-modal h2{
+    margin-bottom:8px
+}
+
+.profile-modal p{
+    color:var(--muted);
+    font-size:.85rem;
+    line-height:1.5;
+    margin-bottom:18px
+}
+
+.profile-input{
+    width:100%;
+    background:#080b10;
+    border:1px solid var(--line);
+    color:#fff;
+    padding:12px;
+    border-radius:8px;
+    outline:0
+}
+
+.profile-input:focus{
+    border-color:var(--accent)
+}
+
+.profile-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:14px
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translate(-50%,20px);
+    background:#fff;
+    color:#080a0e;
+    padding:10px 15px;
+    border-radius:9px;
+    font-size:.8rem;
+    font-weight:800;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    z-index:2000
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0)
+}
+
+/* =========================
+   DETAIL MODAL
+========================= */
+
+.detail-modal{
+    align-items:center
+}
+
+.detail-panel{
+    width:min(1050px,100%);
+    max-height:94vh;
+    overflow:auto;
+    background:#0d1118;
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:0 25px 80px rgba(0,0,0,.65)
+}
+
+.detail-grid{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:28px;
+    padding:28px
+}
+
+.detail-poster{
+    width:100%;
+    aspect-ratio:2/3;
+    object-fit:cover;
+    border-radius:12px;
+    background:#171c26
+}
+
+.detail-body{
+    padding:4px 0
+}
+
+.detail-kicker{
+    display:inline-block;
+    color:#fff;
+    background:var(--accent);
+    font-size:.68rem;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    padding:6px 9px;
+    border-radius:5px;
+    margin-bottom:12px
+}
+
+.detail-body h2{
+    font-size:clamp(1.7rem,4vw,3rem);
+    line-height:1.05;
+    margin-bottom:12px
+}
+
+.detail-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin:0 0 20px
+}
+
+.detail-pill{
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:#dce1e9;
+    padding:7px 10px;
+    border-radius:999px;
+    font-size:.78rem
+}
+
+.detail-section{
+    margin:20px 0
+}
+
+.detail-section h3{
+    font-size:.9rem;
+    margin-bottom:8px
+}
+
+.detail-section p{
+    color:#b8c0cc;
+    line-height:1.7;
+    font-size:.92rem
+}
+
+.rating{
+    font-size:1.05rem;
+    font-weight:900
+}
+
+.detail-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px
+}
+
+.rights-note{
+    font-size:.72rem!important;
+    color:#8f99a8!important;
+    border-top:1px solid var(--line);
+    padding-top:14px
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+    .nav{
+        display:none
+    }
+
+    .header{
+        gap:12px
+    }
+
+    .hero{
+        min-height:65vh
+    }
+
+    .hero-content{
+        margin-bottom:55px
+    }
+
+    .grid{
+        grid-template-columns:repeat(auto-fill,minmax(135px,1fr));
+        gap:10px
+    }
+}
+
+@media(max-width:700px){
+
+    .detail-grid{
+        grid-template-columns:145px 1fr;
+        gap:18px;
+        padding:18px
+    }
+
+    .detail-body h2{
+        font-size:1.55rem
+    }
+
+    .detail-section p{
+        font-size:.84rem
+    }
+}
+
+@media(max-width:520px){
+
+    :root{
+        --header:62px
+    }
+
+    .logo{
+        font-size:1.35rem
+    }
+
+    .profile-btn{
+        padding:7px 9px
+    }
+
+    .hero{
+        min-height:59vh
+    }
+
+    .hero h1{
+        letter-spacing:-1px
+    }
+
+    .hero-content{
+        margin-bottom:38px
+    }
+
+    .main{
+        padding-left:12px;
+        padding-right:12px
+    }
+
+    .grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:7px
+    }
+
+    .card{
+        border-radius:8px
+    }
+
+    .card-info{
+        left:8px;
+        right:8px;
+        bottom:8px
+    }
+
+    .card-title{
+        font-size:.7rem
+    }
+
+    .card-meta{
+        font-size:.58rem
+    }
+
+    .card-fav{
+        width:27px;
+        height:27px;
+        right:6px;
+        top:6px
+    }
+
+    .badge{
+        left:6px;
+        top:6px;
+        font-size:.5rem;
+        padding:4px
+    }
+
+    .card-play{
+        width:40px;
+        height:40px
+    }
+
+    .hero p{
+        font-size:.85rem
+    }
+}
+
+@media(max-width:480px){
+
+    .detail-grid{
+        grid-template-columns:1fr
+    }
+
+    .detail-poster{
+        width:170px;
+        max-width:55vw;
+        margin:auto
+    }
+
+    .detail-body{
+        text-align:left
+    }
+}
 </style>
 </head>
+
 <body>
+
+<!-- =========================
+     HEADER
+========================= -->
+
 <header class="header">
-<a href="#" class="logo" id="homeLogo" aria-label="CineLibre, inicio">CINE<b>LIBRE</b> 🇩🇴</a>
-<nav class="nav" aria-label="Navegación principal">
-<button class="active" data-filter="all">Inicio</button><button data-filter="fav">❤️ Mi lista</button>
-<button data-filter="comedy">Comedia</button><button data-filter="drama">Drama</button><button data-filter="horror">Terror</button><button data-filter="action">Acción</button>
-</nav>
-<div class="header-spacer"></div>
-<div class="search-wrap"><button class="search-toggle" id="searchToggle" aria-label="Abrir buscador" aria-expanded="false">🔍</button>
-<div class="search-box" id="searchBox"><input id="searchInput" type="search" placeholder="Buscar por título, año o categoría..." autocomplete="off" aria-label="Buscar películas"><div class="search-results" id="searchResults"></div></div></div>
-<button class="profile-btn" id="profileButton">Perfil</button>
+
+    <a href="#" class="logo" id="homeLogo" aria-label="CineLibre, inicio">
+        CINE<b>LIBRE</b> 🇩🇴
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+        <button class="active" data-filter="all">Inicio</button>
+        <button data-filter="fav">❤️ Mi lista</button>
+        <button data-filter="comedy">Comedia</button>
+        <button data-filter="drama">Drama</button>
+        <button data-filter="horror">Terror</button>
+        <button data-filter="action">Acción</button>
+    </nav>
+
+    <div class="header-spacer"></div>
+
+    <div class="search-wrap">
+
+        <button
+            class="search-toggle"
+            id="searchToggle"
+            aria-label="Abrir buscador"
+            aria-expanded="false">
+            🔍
+        </button>
+
+        <div class="search-box" id="searchBox">
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Buscar por título, año o categoría..."
+                autocomplete="off"
+                aria-label="Buscar películas">
+
+            <div
+                class="search-results"
+                id="searchResults">
+            </div>
+
+        </div>
+
+    </div>
+
+    <button class="profile-btn" id="profileButton">
+        Perfil
+    </button>
+
 </header>
 
+
+<!-- =========================
+     HERO
+========================= -->
+
 <section class="hero" aria-label="Película destacada">
-<div class="hero-bg"><img id="heroImage" alt="" fetchpriority="high"><div class="hero-overlay"></div></div>
-<div class="hero-content" id="heroContent"></div>
+
+    <div class="hero-bg">
+
+        <img
+            id="heroImage"
+            alt=""
+            fetchpriority="high">
+
+        <div class="hero-overlay"></div>
+
+    </div>
+
+    <div
+        class="hero-content"
+        id="heroContent">
+    </div>
+
 </section>
 
-<main class="main"><div class="toolbar" id="categoryToolbar" aria-label="Filtros de películas"></div><div id="content"></div></main>
-<footer><div class="footer-links"><strong>🎬 CineLibre</strong><span>Cine dominicano</span><span>Descubrimiento cultural</span></div><p>CineLibre — una plataforma pensada para descubrir el cine dominicano y caribeño.</p></footer>
 
+<!-- =========================
+     MAIN
+========================= -->
 
-<div class="modal detail-modal" id="detailModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle">
-  <div class="detail-panel">
-    <div class="player-head" style="padding:16px 18px 0">
-      <span></span>
-      <button class="close" id="closeDetail" aria-label="Cerrar información">✕</button>
+<main class="main">
+
+    <div
+        class="toolbar"
+        id="categoryToolbar"
+        aria-label="Filtros de películas">
     </div>
-    <div class="detail-grid">
-      <img class="detail-poster" id="detailPoster" alt="">
-      <div class="detail-body">
-        <div class="detail-kicker" id="detailKicker">CineLibre</div>
-        <h2 id="detailTitle">Película</h2>
-        <div class="detail-meta">
-          <span class="detail-pill" id="detailYear"></span>
-          <span class="detail-pill" id="detailGenre"></span>
-          <span class="detail-pill" id="detailCountry"></span>
-          <span class="detail-pill" id="detailRating"></span>
-        </div>
-        <div class="detail-section">
-          <h3>📝 Sinopsis</h3>
-          <p id="detailSynopsis"></p>
-        </div>
-        <div class="detail-section">
-          <h3>▶️ Reproducción</h3>
-          <p id="detailRights"></p>
-        </div>
-        <div class="detail-actions">
-          <button class="btn btn-primary" id="detailPlay">▶ Ver película</button>
-          <button class="btn btn-secondary" id="detailFav">♡ Mi lista</button>
-        </div>
-      </div>
+
+    <div id="content"></div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <div class="footer-links">
+
+        <strong>🎬 CineLibre</strong>
+
+        <span>Cine dominicano</span>
+
+        <span>Descubrimiento cultural</span>
+
     </div>
-  </div>
+
+    <p>
+        CineLibre — una plataforma pensada para descubrir
+        el cine dominicano y caribeño.
+    </p>
+
+</footer>
+
+
+<!-- =========================
+     MODAL DETALLES
+========================= -->
+
+<div
+    class="modal detail-modal"
+    id="detailModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="detailTitle">
+
+    <div class="detail-panel">
+
+        <div
+            class="player-head"
+            style="padding:16px 18px 0">
+
+            <span></span>
+
+            <button
+                class="close"
+                id="closeDetail"
+                aria-label="Cerrar información">
+                ✕
+            </button>
+
+        </div>
+
+        <div class="detail-grid">
+
+            <img
+                class="detail-poster"
+                id="detailPoster"
+                alt="">
+
+            <div class="detail-body">
+
+                <div
+                    class="detail-kicker"
+                    id="detailKicker">
+                    CineLibre
+                </div>
+
+                <h2 id="detailTitle">
+                    Película
+                </h2>
+
+                <div class="detail-meta">
+
+                    <span
+                        class="detail-pill"
+                        id="detailYear">
+                    </span>
+
+                    <span
+                        class="detail-pill"
+                        id="detailGenre">
+                    </span>
+
+                    <span
+                        class="detail-pill"
+                        id="detailCountry">
+                    </span>
+
+                    <span
+                        class="detail-pill"
+                        id="detailRating">
+                    </span>
+
+                </div>
+
+                <div class="detail-section">
+
+                    <h3>📝 Sinopsis</h3>
+
+                    <p id="detailSynopsis"></p>
+
+                </div>
+
+                <div class="detail-section">
+
+                    <h3>▶️ Reproducción</h3>
+
+                    <p id="detailRights"></p>
+
+                </div>
+
+                <div class="detail-actions">
+
+                    <button
+                        class="btn btn-primary"
+                        id="detailPlay">
+                        ▶ Ver película
+                    </button>
+
+                    <button
+                        class="btn btn-secondary"
+                        id="detailFav">
+                        ♡ Mi lista
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
-<div class="modal" id="playerModal" role="dialog" aria-modal="true" aria-labelledby="playerTitle">
-<div class="player"><div class="player-head"><div class="player-title" id="playerTitle">Película <span id="playerMeta"></span></div><button class="close" id="closePlayer" aria-label="Cerrar reproductor">✕</button></div>
-<div class="video" id="videoBox"></div><div class="player-foot"><small id="playerStatus"></small><div><button id="youtubeButton" style="display:none">▶ Abrir en YouTube</button><button id="closePlayer2">Cerrar</button></div></div></div>
+
+<!-- =========================
+     REPRODUCTOR
+========================= -->
+
+<div
+    class="modal"
+    id="playerModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="playerTitle">
+
+    <div class="player">
+
+        <div class="player-head">
+
+            <div
+                class="player-title"
+                id="playerTitle">
+
+                Película
+
+                <span id="playerMeta"></span>
+
+            </div>
+
+            <button
+                class="close"
+                id="closePlayer"
+                aria-label="Cerrar reproductor">
+                ✕
+            </button>
+
+        </div>
+
+        <div
+            class="video"
+            id="videoBox">
+        </div>
+
+        <div class="player-foot">
+
+            <small id="playerStatus"></small>
+
+            <div>
+
+                <button
+                    id="youtubeButton"
+                    style="display:none">
+                    ▶ Abrir en YouTube
+                </button>
+
+                <button id="closePlayer2">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
 </div>
 
-<div class="modal profile-modal" id="profileModal" role="dialog" aria-modal="true" aria-labelledby="profileTitle">
-<div class="panel"><h2 id="profileTitle">Tu perfil</h2><p>Este perfil se guarda localmente en este dispositivo. Es la primera base para el futuro sistema real de cuentas de CineLibre.</p>
-<input class="profile-input" id="profileName" maxlength="30" placeholder="¿Cómo quieres que te llamemos?">
-<div class="profile-actions"><button class="btn btn-secondary" id="cancelProfile">Cancelar</button><button class="btn btn-primary" id="saveProfile">Guardar</button></div></div>
-</div>
-<div class="toast" id="toast"></div>
 
-<script>
-const peliculas = [
-  {
-    "id": 1,
-    "title": "Nueba Yol: ¡Por fin llegó Balbuena!",
-    "year": 1995,
-    "category": "comedy",
-    "featured": true,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPzyOkws-KZjmqMyhRDSQePe-2YES_buUGWx_NLU7jRg&s=10",
-    "videoId": "qDcNLIrmFOE",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 2,
-    "title": "Dos compadres y una yola",
-    "year": 2017,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRexWOg7331XhHVr4gmPZtTUiq49lRoVTTJt2ttjYHuTA&s=10",
-    "videoId": "96ZOzrOmMx4",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 3,
-    "title": "Los Paracaidistas",
-    "year": 2015,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://m.media-amazon.com/images/M/MV5BMTgzNTM4NTE1Ml5BMl5BanBnXkFtZTgwODcwODI0NDE%40._V1_FMjpg_UX1000_.jpg",
-    "videoId": "qygP3GFshQo",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 4,
-    "title": "Un Lío en Dólares",
-    "year": 2014,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQFe_rrQiJvxQ4ueafy6CiUWWBZevGXQFtKGwM-S7ZQ-A&s=10",
-    "videoId": "b-ExSznPdhc",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 5,
-    "title": "Ponchao",
-    "year": 2013,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlVwhqQqB-PxaF1WQHSRTWvFqXSBDuL2RIY-Llg&s=10",
-    "videoId": "C35xofb3dFQ",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 6,
-    "title": "Perico Ripiao",
-    "year": 2003,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGMjpLsoaI0pLIpognbRowdBgh0pGjJ8nC7mkMYM_-5Q&s=10",
-    "videoId": "fMhQUoTzCoM",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 7,
-    "title": "Cristo Rey",
-    "year": 2013,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXApZ_8yz_r6-v5LvUE1lsPalzYPrTtKu6iPyJtBTj5Q&s=10",
-    "videoId": "ZgxHLU2JMOk",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 8,
-    "title": "Flor del Sol",
-    "year": 2016,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8qP9tWeg_d7m41Ga9Wn4tXcw0w2Ez1giZC9xwVecROA&s=10",
-    "videoId": "e3ELetowtSE",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 9,
-    "title": "Tubérculo Presidente",
-    "year": 2016,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSceYy2Hrxj0KIKeX-tai9j-_Eu-EwmreOoPnpTnau_Fg&s=10",
-    "videoId": "PHzPjMxP9lk",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 10,
-    "title": "Profe por accidente",
-    "year": 2013,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROPKhE-bg3qs1yc_aCD6TtY8sZFRIiTO5tOpO0-bWulA&s=10",
-    "videoId": "MGdZXqIfAws",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 11,
-    "title": "Duarte, Traición y Gloria",
-    "year": 2014,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQsRDwIhhXx9hYKUlUjOfVAXUbnneys6vZ5ufdnsOOW3w&s=10",
-    "videoId": "roaTxgdnr30",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 12,
-    "title": "Sanky Panky",
-    "year": 2007,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1kiOhXANfwWMGFwwOLQafmlsrELzW26eE6x3dJX_X_A&s=10",
-    "videoId": "G-aSUuWc51Y",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 13,
-    "title": "Vamos de Robo",
-    "year": 2014,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrNGUB5ovIZF26_-5ZU2eQUYMAD0EvUq-9Cgqc3etN0g&s=10",
-    "videoId": "dwfL8l-wHIc",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 14,
-    "title": "Hotel Coppelia",
-    "year": 2021,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKjYvEiEha5P4yPrdutSZZv68P7oSlCBw75oQjU_bHsw&s=10",
-    "videoId": "",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "",
-    "rightsStatus": "Reproducción no disponible actualmente."
-  },
-  {
-    "id": 15,
-    "title": "Sanky Panky 2",
-    "year": 2013,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTN0h1OZ-heM4Ta4Fd05Xi_tCElgFoVem9zNKG-691XMQ&s=10",
-    "videoId": "kpiH0kVI6RA",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 16,
-    "title": "Sanky Panky 3",
-    "year": 2018,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRo0enTjgLvuj_C2FVbMf5tnmsqwk76YNEk9S1KsFC1bQ&s=10",
-    "videoId": "f5CzQ1UxkB4",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 17,
-    "title": "La Maravilla",
-    "year": 2019,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmn7xVYiSNHYK07d2Qmwmv46fzx4vLtSmHbDuqt3lUNg&s=10",
-    "videoId": "GZ9XiqWzYqM",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 18,
-    "title": "La Vida de los Reyes",
-    "year": 2021,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRe3U5-aHg0-8vVMioH-9ak9_zQgvpuL9617fZDX5CpPg&s=10",
-    "videoId": "WcsQCjzqxIs",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 19,
-    "title": "Súper Familia",
-    "year": 2021,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://resources.diariolibre.com/images/binrepository/unnamed-1_17523516_20211029113830.jpg",
-    "videoId": "0XEUUOimmoI",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 20,
-    "title": "Padre se busca",
-    "year": 2022,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMiGbcwpmbt3VT48oOwt29vSHJcSiE4sO7fFJRdvyJpA&s=10",
-    "videoId": "rIva_BAFGtU",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 21,
-    "title": "Negocios son negocios",
-    "year": 2004,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVNb0IciY0fZ9bm5aBCovF1tsh04eqZHTytU5bXCEVyA&s=10",
-    "videoId": "P9lyiONXDTM",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 22,
-    "title": "Pa' Qué Me Casé",
-    "year": 2016,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQP6NgKq5b-MC8HoRDvL_VgGcB4-Qf24a43kMqj0yBm6Q&s",
-    "videoId": "6_BoYVCeLlg",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 23,
-    "title": "Súper Papá",
-    "year": 2017,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOlQYB_sUS1zr7qAmf8HCyilDizVhvj2yeD5HCVkUZCQ&s=10",
-    "videoId": "IrG2fg4_h-c",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 24,
-    "title": "El Plan Perfecto",
-    "year": 2017,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRv56OoNexpebQoJzrbRVNTD2iMoqIKzehn88H6KpMmDQ&s=10",
-    "videoId": "jwVv1Ee9z-8",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 25,
-    "title": "I Love Bachata",
-    "year": 2011,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDL3n1NbTX0b8m2BCW4yKE9Lhdf8yZPY_2leA7S86aGQ&s=10",
-    "videoId": "vyXOcF1n3wE",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 26,
-    "title": "Pobres Millonarios",
-    "year": 2018,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSlRROGZJ3RNBa3_Ygz9aoBKV6YBzU9wt1fNr33rcpRGQ&s=10",
-    "videoId": "-F-Sr5br67s",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 27,
-    "title": "Jugando a Bailar",
-    "year": 2018,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSy7kCBgZOlLUiKJps8Ot2YvkfZY3aM2mmMuPh7j26IsA&s=10",
-    "videoId": "8MLkID-9J2w",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 28,
-    "title": "Lotoman 003",
-    "year": 2014,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSafCkBt5R-y-VgF_0XN8D1PINNk96y5bj_hOqE3J4K8g&s=10",
-    "videoId": "ulSWQw0hd58",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 29,
-    "title": "Nueba Yol 3: Bajo la nueva ley",
-    "year": 1997,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgcUPF8-GqX32JArK6iYWNLQrT57cVjU7JE6MtjSIiMg&s=10",
-    "videoId": "6N2HyCwyfJs",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 30,
-    "title": "Boca Chica",
-    "year": 2024,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgMsIyuVP1K6wBpQBlg61mXFZos9OfmKefRbo1aIYq2A&s=10",
-    "videoId": "ndYYroRNMOg",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 31,
-    "title": "El Heredero",
-    "year": 2024,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwgcV3ePAvczk8CGBx2d2bcHtmtA3cW8xhofJQ0G4vqQ&s=10",
-    "videoId": "hIdiStJN1kw",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 32,
-    "title": "Colao 2",
-    "year": 2023,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIaFHHwOB5ejEikmFJ4YMIDH37qLdYiG4z-5ks903B9Q&s=10",
-    "videoId": "HY5RmPWd6qs",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 33,
-    "title": "La lucha de Ana",
-    "year": 2012,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUDB5vqJy6T2gIz9ed8yS-7-AY2-s0ZQiGpGr3sD-Jgw&s=10",
-    "videoId": "uhzWX3E4G5Y",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 34,
-    "title": "La Soga 3: Venganza",
-    "year": 2023,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSt5WuWrC1MCbFKfqE8ZUyi96IZ438mf5gmjWHwh9ZIkg&s=10",
-    "videoId": "fw2jc-JxYXE",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 35,
-    "title": "Mi Angelito Favorito",
-    "year": 2013,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBmIk4hQLxaeMUOjoiPrCBR-0YYHsRzm4WwHb_4TDbDg&s=10",
-    "videoId": "Lr1MORjvgh4",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 36,
-    "title": "Liborio",
-    "year": 2020,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeK3WxrlBK8IvMD-Jq2WpR9M9EMxA7MUdRejqqB3Q8fw&s=10",
-    "videoId": "uH8ajcWjKJg",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 37,
-    "title": "Danny 45",
-    "year": 2022,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYwHYr8CCVRK2_u3pu8xZA4hzfTLkg7TIPZp0EXn5GsQ&s=10",
-    "videoId": "8zeXvfIaZd8",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 38,
-    "title": "Teacher Mechy",
-    "year": 2023,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTS2ifAThiEHHR2BPItbMXXzAIG2bZvzuqH6Rz18FwhBw&s=10",
-    "videoId": "eJ0c4wV2_ps",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 39,
-    "title": "Los Rechazados",
-    "year": 2025,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRYfi-RD4ROSne5WAOk4z57-qoAV80Km7Lx7-ft9YpOlQ&s=10",
-    "videoId": "aRyAEfZPf4Y",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 40,
-    "title": "La Trampa",
-    "year": 2022,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnuHpHveKxoX2xYbRr0jDhWWnvugh_FEEQoVqdX_UjRA&s=10",
-    "videoId": "fsCkuHpqXGo",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 41,
-    "title": "Pa'l Campamento",
-    "year": 2015,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrlNWFm5ETwgUnBkuPmDNvq3PCP6dPPFro7mttFCJ4Gw&s=10",
-    "videoId": "Z0i-FXTekqE",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 42,
-    "title": "Pueto Pa' Mi",
-    "year": 2015,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYBcBNxbXOAOkEZGtNch-ht2YHkScS5iOrxB8qnAJLhg&s=10",
-    "videoId": "WASqpqnTrWE",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 43,
-    "title": "Andrea: La Venganza de un Espíritu",
-    "year": 2005,
-    "category": "horror",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQeachrFCAEssTa1YkjGkArcgVi-sOHySbrngp1eFnBw&s=10",
-    "videoId": "v9r_HmguaZc",
-    "country": "República Dominicana",
-    "genre": "Terror",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 44,
-    "title": "La Soga",
-    "year": 2009,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRYLB_E-Watw_r2R4L-bTY2pdbVRIEu_ciBZjtpV8_fQ&s=10",
-    "videoId": "ZDTW_lbkSho",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 45,
-    "title": "Talento de Barrio",
-    "year": 2008,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPBG9uBtvykVBjccluwnhueHz-qAL-vX68ks_vcPrmUw&s=10",
-    "videoId": "csrnvBNmUQc",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 46,
-    "title": "El año del tigre poster",
-    "year": 2014,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRrlDZofUyMMRPaAKY7rGc9weHCSy9e21yVObStsRPXA&s=10",
-    "videoId": "o4eEy7__Iwg",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 47,
-    "title": "Carta Blanca",
-    "year": 2021,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWBfhMe3jk-GP5X-NV6AdxrNNJ5Ui1JSblu2koO9EqfA&s=10",
-    "videoId": "WSw2WhGWGWQ",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 48,
-    "title": "Los Locos También Piensan",
-    "year": 2005,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrahM11xiC-jqF_aQtEYbz_MNt5BdyfhEp2eDYstNe4g&s=10",
-    "videoId": "E7mL51TdrN4",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 49,
-    "title": "Lotoman 2",
-    "year": 2012,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCs07keq3fiUEZPcs8oxfnhAP1tyeYjbvr7QL14sGl7w&s=10",
-    "videoId": "We4fstvmpKE",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 50,
-    "title": "Me Gusta la Tuya",
-    "year": 2016,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4zHjPdD3y-q5GQd_hUk4iNYVT5lP4dsDdgHP7Ej1IzQ&s=10",
-    "videoId": "rRq7oKNwPeo",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 51,
-    "title": "Al Fin y al Cabo",
-    "year": 2008,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIHoueuQtlDSd8KhTw47n5l28cpLSxg_KPhq8Er4m_gQ&s=10",
-    "videoId": "Q_A1wBFRLpk",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 52,
-    "title": "Tubérculo Gourmet",
-    "year": 2015,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_abz8zIz6Ej4P6E1jrTSjs5pD5D8d3VwJg2TI7JcXHg&s=10",
-    "videoId": "dkrzdZzpljM",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 53,
-    "title": "La Bruja",
-    "year": 2021,
-    "category": "horror",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdakjavC4mMtNcX5P0Fg8duC7WKTVZ_LDylD_eo2V7Yg&s=10",
-    "videoId": "8T-_jpKd-Eg",
-    "country": "República Dominicana",
-    "genre": "Terror",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 54,
-    "title": "A Ritmo de Fe",
-    "year": 2013,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcShu4d6YeGMipsz3ZLeTBQNwfS0Z9jGrqr5KQin3uLZjA&s=10",
-    "videoId": "28Hsux5HKlg",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 55,
-    "title": "Mi Novia Está de Madre",
-    "year": 2007,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSp5JnvxsoXtN2vE56JyKDAy57lIigxu_Ocv0pvE01bYA&s=10",
-    "videoId": "FTmipsT-JMU",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 56,
-    "title": "La Hija Natural",
-    "year": 2011,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI9pFHSIVgU4nD2lVWeDB-f4nNihk2kbof_y2rOftYUQ&s=10",
-    "videoId": "jaDmstDIND8",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 57,
-    "title": "La Fiesta del Chivo",
-    "year": 2005,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlI-YRjyZYHi7Y2QT6LUIMAB9P_s4jvZHlXzumElrgbg&s=10",
-    "videoId": "6efEKPrmeCo",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 58,
-    "title": "El Hoyo del Diablo",
-    "year": 2012,
-    "category": "horror",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSTYgq-7FNj4eaPeXSYC2zygfg7SgT88sbQp4VD02Ab1w&s=10",
-    "videoId": "Icvkq0lhAfs",
-    "country": "República Dominicana",
-    "genre": "Terror",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 59,
-    "title": "Héroes de Junio: La Historia Prohibida",
-    "year": 2019,
-    "category": "war",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKLxQu3JFSZ-AuvNpq2FVzC8IZHpXk3tM1nw6CkFMqQQ&s=10",
-    "videoId": "hcOfV35XFWE",
-    "country": "República Dominicana",
-    "genre": "Guerra",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 60,
-    "title": "La Vida de Peña Gómez",
-    "year": 2016,
-    "category": "documentary",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7YQiXcrwQ6Wl5zVP8ZcU2kXWXJgqXDrLC-m65FQc6zw&s=10",
-    "videoId": "O400SlOHJbU",
-    "country": "República Dominicana",
-    "genre": "Documental",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 61,
-    "title": "Pinky y Mole",
-    "year": 2017,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSl39w9b9eDgpKxvbGBTRPHQBSpO09fkxyO6xVZnCwCqg&s=10",
-    "videoId": "HfFb7GYGAlQ",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 62,
-    "title": "Malcriados",
-    "year": 2016,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXUfCcNJWQa0LSJZdbtt8VSlCMuS2qIUawG-06UPXX7A&s=10",
-    "videoId": "RLYVlCOiiJk",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 63,
-    "title": "Muerte en el Paraíso",
-    "year": 2019,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9I-D8LM4SFgg-8lnMCae0KicZi1kkDcBPBWuDBfFhzQ&s=10",
-    "videoId": "Xrw9Jxkme4c",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 64,
-    "title": "Héctor El Father",
-    "year": 2018,
-    "category": "documentary",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTn4pYXx25jwnw1kBq04PhR8QixEWpJIINVqtC4jkIqhA&s=10",
-    "videoId": "GCjwGfdnHqQ",
-    "country": "República Dominicana",
-    "genre": "Documental",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 65,
-    "title": "Lotoman",
-    "year": 2011,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRQaEEHFfMzV4cA4cAOZun_Krsx3MFVRzD-tmQNHEV4A&s=10",
-    "videoId": "5fOOmkF3ROs",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 66,
-    "title": "Ladrones a domicilio",
-    "year": 2008,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0R-5AsA6F6mE9VVKTjwCoMDdc9TsOKCqQax0_4Zg0lg&s=10",
-    "videoId": "qXh_3OBq1EM",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 68,
-    "title": "El fantasma de mi novia",
-    "year": 2018,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTT-pgddv2Cv3zKDLe88L_9uYhQtK4lyJTLKWeZvNU3Iw&s=10",
-    "videoId": "bMl6XrQbmvI",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 69,
-    "title": "Cristiano de la secreta",
-    "year": 2009,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRglVXuHq1TKZO4eEbeljBxJ_F99fcNJAKOOcnmhUyCpA&s=10",
-    "videoId": "t2LVS8hAHrE",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 70,
-    "title": "Dos policías en apuros",
-    "year": 2016,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_zcSsWje9DA2hBd1Bf8lHw2V1MU_iATMfJ9Y40sLPKQ&s=10",
-    "videoId": "VS9BN2Az54A",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 71,
-    "title": "Nueba Yol 2: La historia continúa",
-    "year": 1996,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK84F8v6qIPK8RAQZZeszN9_cA8_IW-m2HDlIdNTM5Ng&s=10",
-    "videoId": "omI7pTxlAkM",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 72,
-    "title": "Colao",
-    "year": 2017,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjFg_dg_4wsKcVU2OIDpr-96gKxpEgtZE57Vetd4uA-A&s=10",
-    "videoId": "TQU2hc753oU",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 73,
-    "title": "Qué León",
-    "year": 2018,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwcTk-Si-4UCkmTjqEU0gNrsapLEJsHCuuoNEUgu-Fzw&s=10",
-    "videoId": "zH8d9UmIyx8",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 74,
-    "title": "Código Paz",
-    "year": 2014,
-    "category": "action",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBXbWVD2ZCK5fWuABO47VTZk1q6AKZMST9Ybuy4kyIqg&s=10",
-    "videoId": "SDj8RnRET30",
-    "country": "República Dominicana",
-    "genre": "Acción",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 75,
-    "title": "Baile Urbano",
-    "year": 2018,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTBSWsCP1tJimR4PodeMG-g74lPSj7W_ZZz6MUwMi44Q&s=10",
-    "videoId": "KijOyndrk7c",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 76,
-    "title": "La Máscara",
-    "year": 2020,
-    "category": "horror",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAsusjz7c-GOIydA00qyLXNe5l6tBzTBwWbmfNnobhSQ&s=10",
-    "videoId": "nuUwusxMcAs",
-    "country": "República Dominicana",
-    "genre": "Terror",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 77,
-    "title": "La Máscara 2",
-    "year": 2021,
-    "category": "horror",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRt6Seil3o7jV-e_eOrikE8d3TqkTqFk0-Dx_bQm1cIuA&s=10",
-    "videoId": "42HruccjsNU",
-    "country": "República Dominicana",
-    "genre": "Terror",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 78,
-    "title": "El Rey de Najayo",
-    "year": 2012,
-    "category": "drama",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTc-N0YpJumRYHZkKJJoTFoDRzKlF0968mJH2c-auV_w&s=10",
-    "videoId": "hEDXnJGx_5I",
-    "country": "República Dominicana",
-    "genre": "Drama",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 79,
-    "title": "Santi Clo... La vaina de la Navidad",
-    "year": 2008,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFIbJQ0aF4yQmkCI3a4L30MphT3t3x7vh0lZmR7SOKyw&s=10",
-    "videoId": "67_CnSMYc00",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 80,
-    "title": "De Pez en Cuando",
-    "year": 2014,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTEDn4454uaVJ1G01vho_2CHO2x4qhbpCiSRAlEWmVtVA&s=10",
-    "videoId": "cC0o77NZIBw",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 87,
-    "title": "Perdiendo el Juicio",
-    "year": 2023,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUFSmE-p1X0F4IvZm1fHA6CLBrIY2Ztt41dPwHXBcGcA&s=10",
-    "videoId": "NBISYc_O-84",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 88,
-    "title": "La Gunguna",
-    "year": 2015,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY_ZKAqGn4bDvHeqoBN3A2sRWtWR-E5BvR8AWNQb1qZg&s=10",
-    "videoId": "i9pWZQgb4RE",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 89,
-    "title": "Quiero ser fiel",
-    "year": 2014,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqVk8INNejWq9QiPnTWzFPlIwZZ8ztUMoQ1ybmZQ-iww&s=10",
-    "videoId": "Wzd2FTFRJgE",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 92,
-    "title": "Todas las mujeres son iguales",
-    "year": 2017,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlA9jqyjR1tlJlUW90CBu0dx3WbvF5Pov-64o_UFtAg&s=10",
-    "videoId": "c2xIUmd3yXg",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 93,
-    "title": "Todos los hombres son iguales",
-    "year": 2016,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrbQjXKUTGj95bSBc7EtJlrT4lPu4B00MaZ_AbwlyBNA&s=10",
-    "videoId": "o-SFwI5VCpQ",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 94,
-    "title": "Trabajo Sucio",
-    "year": 2018,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdCGSkijXUaO7Rq2Ck5N_XbkNn5jJuTKxD0j5bUqMutA&s=10",
-    "videoId": "ZKrbDbYaNvk",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  },
-  {
-    "id": 95,
-    "title": "Volvió Juanita",
-    "year": 2019,
-    "category": "comedy",
-    "featured": false,
-    "poster": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqbN96_Fj5UvaEyDjgNFe9rZk5J36dH_reMlRnMAFaTQ&s=10",
-    "videoId": "kfR-AWI-cF4",
-    "country": "República Dominicana",
-    "genre": "Comedia",
-    "rating": null,
-    "synopsis": "Sinopsis pendiente de verificación. CineLibre mostrará aquí una sinopsis oficial o autorizada de esta película cuando la información sea confirmada.",
-    "source": "YouTube",
-    "rightsStatus": "Fuente de reproducción pendiente de verificación de derechos."
-  }
-];
-window.peliculas = peliculas;
-</script>
+<!-- =========================
+     PERFIL
+========================= -->
+
+<div
+    class="modal profile-modal"
+    id="profileModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="profileTitle">
+
+    <div class="panel">
+
+        <h2 id="profileTitle">
+            Tu perfil
+        </h2>
+
+        <p>
+            Este perfil se guarda localmente en este dispositivo.
+            Es la primera base para el futuro sistema real de cuentas
+            de CineLibre.
+        </p>
+
+        <input
+            class="profile-input"
+            id="profileName"
+            maxlength="30"
+            placeholder="¿Cómo quieres que te llamemos?">
+
+        <div class="profile-actions">
+
+            <button
+                class="btn btn-secondary"
+                id="cancelProfile">
+                Cancelar
+            </button>
+
+            <button
+                class="btn btn-primary"
+                id="saveProfile">
+                Guardar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     TOAST
+========================= -->
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+
+<!-- ============================================================
+     CATÁLOGO EXTERNO
+     
+     IMPORTANTE:
+     Las películas NO están dentro de index.html.
+     Todo el catálogo debe estar en peliculas.js.
+============================================================ -->
+
+<script src="peliculas.js"></script>
+
+
+<!-- ============================================================
+     LÓGICA DE CINE LIBRE
+============================================================ -->
+
 <script>
 'use strict';
-const movies=Array.isArray(window.peliculas)?window.peliculas:[];
-const categoryMap={comedy:'Comedia',drama:'Drama',horror:'Terror',action:'Acción',animation:'Animación',scifi:'Ciencia ficción',war:'Guerra',documentary:'Documental'};
-const categoryOrder=['comedy','drama','horror','action','animation','scifi','war','documentary'];
-const state={filter:'all',search:'',favorites:loadJSON('cinelibre_favs',[]),recent:loadJSON('cinelibre_recent',[]),profile:localStorage.getItem('cinelibre_profile')||'Invitado',current:null};
-const $=id=>document.getElementById(id),content=$('content'),heroImage=$('heroImage'),heroContent=$('heroContent'),toolbar=$('categoryToolbar'),modal=$('playerModal'),videoBox=$('videoBox'),searchBox=$('searchBox'),searchInput=$('searchInput'),searchResults=$('searchResults'),toast=$('toast');
-function loadJSON(k,f){try{const v=JSON.parse(localStorage.getItem(k));return Array.isArray(v)?v:f}catch{return f}}
-function save(k,v){localStorage.setItem(k,JSON.stringify(v))}
-function label(c){return categoryMap[c]||c||'Sin categoría'}
-function getMovie(id){return movies.find(m=>Number(m.id)===Number(id))}
-function hasVideo(m){return !!(m&&typeof m.videoId==='string'&&m.videoId.trim())}
-function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
-function notify(m){toast.textContent=m;toast.classList.add('show');clearTimeout(notify.t);notify.t=setTimeout(()=>toast.classList.remove('show'),2200)}
-function getFeatured(){return movies.find(m=>m.featured===true)||movies.find(hasVideo)||movies[0]}
+
+const movies =
+    Array.isArray(window.peliculas)
+        ? window.peliculas
+        : [];
+
+const categoryMap = {
+    comedy: 'Comedia',
+    drama: 'Drama',
+    horror: 'Terror',
+    action: 'Acción',
+    animation: 'Animación',
+    scifi: 'Ciencia ficción',
+    war: 'Guerra',
+    documentary: 'Documental'
+};
+
+const categoryOrder = [
+    'comedy',
+    'drama',
+    'horror',
+    'action',
+    'animation',
+    'scifi',
+    'war',
+    'documentary'
+];
+
+const state = {
+    filter: 'all',
+    search: '',
+    favorites: loadJSON('cinelibre_favs', []),
+    recent: loadJSON('cinelibre_recent', []),
+    profile:
+        localStorage.getItem('cinelibre_profile')
+        || 'Invitado',
+    current: null
+};
+
+const $ = id => document.getElementById(id);
+
+const content = $('content');
+const heroImage = $('heroImage');
+const heroContent = $('heroContent');
+const toolbar = $('categoryToolbar');
+const modal = $('playerModal');
+const videoBox = $('videoBox');
+const searchBox = $('searchBox');
+const searchInput = $('searchInput');
+const searchResults = $('searchResults');
+const toast = $('toast');
+
+
+/* =========================
+   UTILIDADES
+========================= */
+
+function loadJSON(key, fallback){
+
+    try{
+
+        const value =
+            JSON.parse(
+                localStorage.getItem(key)
+            );
+
+        return Array.isArray(value)
+            ? value
+            : fallback;
+
+    }catch{
+
+        return fallback;
+
+    }
+
+}
+
+
+function save(key, value){
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(value)
+    );
+
+}
+
+
+function label(category){
+
+    return categoryMap[category]
+        || category
+        || 'Sin categoría';
+
+}
+
+
+function getMovie(id){
+
+    return movies.find(
+        movie =>
+            Number(movie.id) === Number(id)
+    );
+
+}
+
+
+function hasVideo(movie){
+
+    return !!(
+        movie &&
+        typeof movie.videoId === 'string' &&
+        movie.videoId.trim()
+    );
+
+}
+
+
+function esc(value){
+
+    return String(value ?? '').replace(
+        /[&<>"']/g,
+        character => ({
+            '&':'&amp;',
+            '<':'&lt;',
+            '>':'&gt;',
+            '"':'&quot;',
+            "'":'&#039;'
+        }[character])
+    );
+
+}
+
+
+function notify(message){
+
+    toast.textContent = message;
+
+    toast.classList.add('show');
+
+    clearTimeout(notify.timer);
+
+    notify.timer =
+        setTimeout(
+            () => toast.classList.remove('show'),
+            2200
+        );
+
+}
+
+
+function getFeatured(){
+
+    return (
+        movies.find(movie => movie.featured === true)
+        || movies.find(hasVideo)
+        || movies[0]
+    );
+
+}
+
+
+/* =========================
+   HERO
+========================= */
 
 function renderHero(){
- const m=getFeatured();if(!m)return;
- heroImage.src=m.poster||'';heroImage.alt=`Fondo de ${m.title}`;
- heroContent.innerHTML=`<div class="eyebrow">${m.featured?'⭐ Destacada':'🎬 CineLibre'}</div><h1>${esc(m.title)}</h1>
- <div class="meta"><span class="year">${esc(m.year)}</span><span>${esc(label(m.category))}</span></div>
- <p>Descubre una película dominicana en CineLibre. Explora el catálogo, guarda tus favoritas y vuelve cuando quieras.</p>
- <div class="hero-actions"><button class="btn btn-primary" data-details="${m.id}">▶ Ver película</button><button class="btn btn-secondary" data-add="${m.id}">${state.favorites.includes(m.id)?'✓ En mi lista':'+ Mi lista'}</button></div>`;
+
+    const movie = getFeatured();
+
+    if(!movie){
+
+        heroImage.removeAttribute('src');
+
+        heroContent.innerHTML = `
+            <div class="eyebrow">
+                🎬 CineLibre
+            </div>
+
+            <h1>
+                Cine dominicano
+            </h1>
+
+            <p>
+                Agrega películas en
+                <strong>peliculas.js</strong>
+                para comenzar a mostrar el catálogo.
+            </p>
+        `;
+
+        return;
+    }
+
+    heroImage.src = movie.poster || '';
+
+    heroImage.alt =
+        `Fondo de ${movie.title}`;
+
+    heroContent.innerHTML = `
+
+        <div class="eyebrow">
+            ${
+                movie.featured
+                    ? '⭐ Destacada'
+                    : '🎬 CineLibre'
+            }
+        </div>
+
+        <h1>
+            ${esc(movie.title)}
+        </h1>
+
+        <div class="meta">
+
+            <span class="year">
+                ${esc(movie.year)}
+            </span>
+
+            <span>
+                ${esc(label(movie.category))}
+            </span>
+
+        </div>
+
+        <p>
+            Descubre una película dominicana
+            en CineLibre. Explora el catálogo,
+            guarda tus favoritas y vuelve
+            cuando quieras.
+        </p>
+
+        <div class="hero-actions">
+
+            <button
+                class="btn btn-primary"
+                data-details="${movie.id}">
+                ▶ Ver película
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                data-add="${movie.id}">
+                ${
+                    state.favorites.includes(movie.id)
+                        ? '✓ En mi lista'
+                        : '+ Mi lista'
+                }
+            </button>
+
+        </div>
+    `;
+
 }
+
+
+/* =========================
+   FILTROS
+========================= */
+
 function renderToolbar(){
- const items=[['all','Todas'],['fav','❤️ Mi lista'],...categoryOrder.map(c=>[c,label(c)])];
- toolbar.innerHTML=items.map(([id,t])=>`<button class="chip ${state.filter===id?'active':''}" data-filter="${id}">${esc(t)}</button>`).join('');
+
+    const items = [
+        ['all', 'Todas'],
+        ['fav', '❤️ Mi lista'],
+        ...categoryOrder.map(
+            category => [
+                category,
+                label(category)
+            ]
+        )
+    ];
+
+    toolbar.innerHTML =
+        items
+            .map(
+                ([id, title]) => `
+                    <button
+                        class="chip ${
+                            state.filter === id
+                                ? 'active'
+                                : ''
+                        }"
+                        data-filter="${id}">
+                        ${esc(title)}
+                    </button>
+                `
+            )
+            .join('');
+
 }
+
+
+/* =========================
+   FILTRADO
+========================= */
+
 function filtered(){
- let list=[...movies];
- if(state.filter==='fav')list=list.filter(m=>state.favorites.includes(m.id));else if(state.filter!=='all')list=list.filter(m=>m.category===state.filter);
- const q=state.search.trim().toLowerCase();
- if(q)list=list.filter(m=>String(m.title).toLowerCase().includes(q)||String(m.year).includes(q)||label(m.category).toLowerCase().includes(q)||String(m.category).toLowerCase().includes(q));
- return list;
+
+    let list = [...movies];
+
+    if(state.filter === 'fav'){
+
+        list =
+            list.filter(
+                movie =>
+                    state.favorites.includes(movie.id)
+            );
+
+    }else if(state.filter !== 'all'){
+
+        list =
+            list.filter(
+                movie =>
+                    movie.category === state.filter
+            );
+
+    }
+
+    const query =
+        state.search
+            .trim()
+            .toLowerCase();
+
+    if(query){
+
+        list =
+            list.filter(movie =>
+
+                String(movie.title)
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                String(movie.year)
+                    .includes(query)
+
+                ||
+
+                label(movie.category)
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                String(movie.category)
+                    .toLowerCase()
+                    .includes(query)
+
+            );
+
+    }
+
+    return list;
+
 }
-function card(m){
- const fav=state.favorites.includes(m.id),play=hasVideo(m);
- return `<article class="card" tabindex="0" role="button" aria-label="Ver información de ${esc(m.title)}" data-details="${m.id}">
- ${m.featured?'<span class="badge">⭐ Destacada</span>':''}${!play?'<span class="badge off">Sin video</span>':''}
- <button class="card-fav ${fav?'active':''}" data-fav="${m.id}" aria-label="${fav?'Quitar de Mi lista':'Agregar a Mi lista'}">${fav?'♥':'♡'}</button>
- <img src="${esc(m.poster||'')}" alt="Póster de ${esc(m.title)}" loading="lazy" onerror="this.onerror=null;this.style.opacity='.35'"><div class="card-gradient"></div>
- <button class="card-play" tabindex="-1" aria-hidden="true">i</button>
- <div class="card-info"><div class="card-title">${esc(m.title)}</div><div class="card-meta"><span>${esc(m.year)}</span><span>•</span><span>${esc(m.genre||label(m.category))}</span></div></div></article>`;
+
+
+/* =========================
+   TARJETA
+========================= */
+
+function card(movie){
+
+    const favorite =
+        state.favorites.includes(movie.id);
+
+    const playable =
+        hasVideo(movie);
+
+    return `
+
+        <article
+            class="card"
+            tabindex="0"
+            role="button"
+            aria-label="Ver información de ${esc(movie.title)}"
+            data-details="${movie.id}">
+
+            ${
+                movie.featured
+                    ? `
+                        <span class="badge">
+                            ⭐ Destacada
+                        </span>
+                    `
+                    : ''
+            }
+
+            ${
+                !playable
+                    ? `
+                        <span class="badge off">
+                            Sin video
+                        </span>
+                    `
+                    : ''
+            }
+
+            <button
+                class="card-fav ${
+                    favorite
+                        ? 'active'
+                        : ''
+                }"
+                data-fav="${movie.id}"
+                aria-label="${
+                    favorite
+                        ? 'Quitar de Mi lista'
+                        : 'Agregar a Mi lista'
+                }">
+
+                ${
+                    favorite
+                        ? '♥'
+                        : '♡'
+                }
+
+            </button>
+
+            <img
+                src="${esc(movie.poster || '')}"
+                alt="Póster de ${esc(movie.title)}"
+                loading="lazy"
+                onerror="
+                    this.onerror=null;
+                    this.style.opacity='.35'
+                ">
+
+            <div class="card-gradient"></div>
+
+            <button
+                class="card-play"
+                tabindex="-1"
+                aria-hidden="true">
+                i
+            </button>
+
+            <div class="card-info">
+
+                <div class="card-title">
+                    ${esc(movie.title)}
+                </div>
+
+                <div class="card-meta">
+
+                    <span>
+                        ${esc(movie.year)}
+                    </span>
+
+                    <span>•</span>
+
+                    <span>
+                        ${esc(
+                            movie.genre
+                            || label(movie.category)
+                        )}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+    `;
+
 }
+
+
+/* =========================
+   CONTENIDO
+========================= */
+
 function renderContent(){
- const list=filtered();
- if(!list.length){content.innerHTML=`<section class="section"><div class="empty"><strong>${state.filter==='fav'?'Tu lista está vacía':'No encontramos películas con esa búsqueda.'}</strong><span>Prueba otra búsqueda o selecciona otra categoría.</span></div></section>`;return}
- if(state.search||state.filter!=='all'){const title=state.filter==='fav'?'❤️ Mi lista':state.filter==='all'?'Resultados':label(state.filter);content.innerHTML=`<section class="section"><div class="section-head"><h2>${title}</h2><span>${list.length} película${list.length===1?'':'s'}</span></div><div class="grid">${list.map(card).join('')}</div></section>`;return}
- let html='',recent=state.recent.map(getMovie).filter(Boolean);
- if(recent.length)html+=`<section class="section"><div class="section-head"><h2>▶ Vistas recientes</h2><span>Tu actividad</span></div><div class="grid">${recent.slice(0,6).map(card).join('')}</div></section>`;
- const featured=movies.filter(m=>m.featured===true);
- if(featured.length)html+=`<section class="section"><div class="section-head"><h2>⭐ Destacadas</h2><span>${featured.length}</span></div><div class="grid">${featured.map(card).join('')}</div></section>`;
- categoryOrder.forEach(c=>{const a=movies.filter(m=>m.category===c);if(a.length)html+=`<section class="section"><div class="section-head"><h2>${label(c)}</h2><span>${a.length} películas</span></div><div class="grid">${a.map(card).join('')}</div></section>`});
- const extra=[...new Set(movies.map(m=>m.category))].filter(c=>!categoryOrder.includes(c));
- extra.forEach(c=>{const a=movies.filter(m=>m.category===c);html+=`<section class="section"><div class="section-head"><h2>${label(c)}</h2><span>${a.length} películas</span></div><div class="grid">${a.map(card).join('')}</div></section>`});
- content.innerHTML=html;
+
+    const list = filtered();
+
+    if(!list.length){
+
+        content.innerHTML = `
+
+            <section class="section">
+
+                <div class="empty">
+
+                    <strong>
+                        ${
+                            state.filter === 'fav'
+                                ? 'Tu lista está vacía'
+                                : 'No encontramos películas con esa búsqueda.'
+                        }
+                    </strong>
+
+                    <span>
+                        ${
+                            movies.length
+                                ? 'Prueba otra búsqueda o selecciona otra categoría.'
+                                : 'Agrega películas en peliculas.js.'
+                        }
+                    </span>
+
+                </div>
+
+            </section>
+        `;
+
+        return;
+    }
+
+
+    if(
+        state.search
+        ||
+        state.filter !== 'all'
+    ){
+
+        const title =
+            state.filter === 'fav'
+                ? '❤️ Mi lista'
+                : state.filter === 'all'
+                    ? 'Resultados'
+                    : label(state.filter);
+
+        content.innerHTML = `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ${esc(title)}
+                    </h2>
+
+                    <span>
+                        ${list.length}
+                        película${
+                            list.length === 1
+                                ? ''
+                                : 's'
+                        }
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${list.map(card).join('')}
+                </div>
+
+            </section>
+        `;
+
+        return;
+    }
+
+
+    let html = '';
+
+    const recent =
+        state.recent
+            .map(getMovie)
+            .filter(Boolean);
+
+
+    if(recent.length){
+
+        html += `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ▶ Vistas recientes
+                    </h2>
+
+                    <span>
+                        Tu actividad
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${
+                        recent
+                            .slice(0,6)
+                            .map(card)
+                            .join('')
+                    }
+                </div>
+
+            </section>
+        `;
+
+    }
+
+
+    const featured =
+        movies.filter(
+            movie =>
+                movie.featured === true
+        );
+
+
+    if(featured.length){
+
+        html += `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ⭐ Destacadas
+                    </h2>
+
+                    <span>
+                        ${featured.length}
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${featured.map(card).join('')}
+                </div>
+
+            </section>
+        `;
+
+    }
+
+
+    categoryOrder.forEach(category => {
+
+        const categoryMovies =
+            movies.filter(
+                movie =>
+                    movie.category === category
+            );
+
+        if(!categoryMovies.length)
+            return;
+
+        html += `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ${esc(label(category))}
+                    </h2>
+
+                    <span>
+                        ${categoryMovies.length}
+                        películas
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${
+                        categoryMovies
+                            .map(card)
+                            .join('')
+                    }
+                </div>
+
+            </section>
+        `;
+
+    });
+
+
+    const extraCategories =
+        [
+            ...new Set(
+                movies.map(
+                    movie =>
+                        movie.category
+                )
+            )
+        ]
+        .filter(
+            category =>
+                !categoryOrder.includes(category)
+        );
+
+
+    extraCategories.forEach(category => {
+
+        const categoryMovies =
+            movies.filter(
+                movie =>
+                    movie.category === category
+            );
+
+        html += `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ${esc(label(category))}
+                    </h2>
+
+                    <span>
+                        ${categoryMovies.length}
+                        películas
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${
+                        categoryMovies
+                            .map(card)
+                            .join('')
+                    }
+                </div>
+
+            </section>
+        `;
+
+    });
+
+
+    content.innerHTML = html;
+
 }
-function renderAll(){renderHero();renderToolbar();renderContent()}
-function addRecent(id){state.recent=[id,...state.recent.filter(x=>Number(x)!==Number(id))].slice(0,12);save('cinelibre_recent',state.recent)}
-function toggleFavorite(id){const i=state.favorites.findIndex(x=>Number(x)===Number(id));if(i>=0){state.favorites.splice(i,1);notify('Quitada de Mi lista')}else{state.favorites.push(id);notify('Añadida a Mi lista')}save('cinelibre_favs',state.favorites);renderAll()}
+
+
+/* =========================
+   RENDER GENERAL
+========================= */
+
+function renderAll(){
+
+    renderHero();
+    renderToolbar();
+    renderContent();
+
+}
+
+
+/* =========================
+   RECIENTES
+========================= */
+
+function addRecent(id){
+
+    state.recent = [
+        id,
+        ...state.recent.filter(
+            movieId =>
+                Number(movieId) !== Number(id)
+        )
+    ].slice(0,12);
+
+    save(
+        'cinelibre_recent',
+        state.recent
+    );
+
+}
+
+
+/* =========================
+   FAVORITOS
+========================= */
+
+function toggleFavorite(id){
+
+    const index =
+        state.favorites.findIndex(
+            movieId =>
+                Number(movieId) === Number(id)
+        );
+
+    if(index >= 0){
+
+        state.favorites.splice(index,1);
+
+        notify(
+            'Quitada de Mi lista'
+        );
+
+    }else{
+
+        state.favorites.push(id);
+
+        notify(
+            'Añadida a Mi lista'
+        );
+
+    }
+
+    save(
+        'cinelibre_favs',
+        state.favorites
+    );
+
+    renderAll();
+
+}
+
+
+/* =========================
+   DETALLES
+========================= */
+
 function openDetails(id){
- const m=getMovie(id); if(!m)return;
- state.current=m;
- $('detailPoster').src=m.poster||'';
- $('detailPoster').alt=`Póster de ${m.title}`;
- $('detailKicker').textContent=m.featured?'⭐ Película destacada':'🎬 CineLibre';
- $('detailTitle').textContent=m.title;
- $('detailYear').textContent=`📅 ${m.year}`;
- $('detailGenre').textContent=`🎭 ${m.genre||label(m.category)}`;
- $('detailCountry').textContent=`🇩🇴 ${m.country||'República Dominicana'}`;
- $('detailRating').textContent=m.rating?`⭐ ${m.rating}/10`:'⭐ Valoración pendiente';
- $('detailSynopsis').textContent=m.synopsis||'Sinopsis pendiente de verificación.';
- $('detailRights').textContent=m.rightsStatus||'Información de reproducción pendiente de verificación.';
- $('detailPlay').textContent=hasVideo(m)?'▶ Ver película':'▶️ Reproducción no disponible';
- $('detailPlay').disabled=!hasVideo(m);
- $('detailPlay').style.opacity=hasVideo(m)?'1':'.55';
- $('detailFav').textContent=state.favorites.includes(m.id)?'♥ En mi lista':'♡ Mi lista';
- $('detailFav').onclick=()=>{toggleFavorite(Number(m.id));openDetails(Number(m.id));};
- $('detailPlay').onclick=()=>{if(hasVideo(m)){closeDetails();openPlayer(Number(m.id));}};
- $('detailModal').classList.add('open');
- document.body.style.overflow='hidden';
- $('closeDetail').focus();
+
+    const movie = getMovie(id);
+
+    if(!movie)
+        return;
+
+    state.current = movie;
+
+    $('detailPoster').src =
+        movie.poster || '';
+
+    $('detailPoster').alt =
+        `Póster de ${movie.title}`;
+
+    $('detailKicker').textContent =
+        movie.featured
+            ? '⭐ Película destacada'
+            : '🎬 CineLibre';
+
+    $('detailTitle').textContent =
+        movie.title;
+
+    $('detailYear').textContent =
+        `📅 ${movie.year}`;
+
+    $('detailGenre').textContent =
+        `🎭 ${
+            movie.genre
+            || label(movie.category)
+        }`;
+
+    $('detailCountry').textContent =
+        `🇩🇴 ${
+            movie.country
+            || 'República Dominicana'
+        }`;
+
+    $('detailRating').textContent =
+        movie.rating
+            ? `⭐ ${movie.rating}/10`
+            : '⭐ Valoración pendiente';
+
+    $('detailSynopsis').textContent =
+        movie.synopsis
+        || 'Sinopsis pendiente de verificación.';
+
+    $('detailRights').textContent =
+        movie.rightsStatus
+        || 'Información de reproducción pendiente de verificación.';
+
+    const playable =
+        hasVideo(movie);
+
+    $('detailPlay').textContent =
+        playable
+            ? '▶ Ver película'
+            : '▶️ Reproducción no disponible';
+
+    $('detailPlay').disabled =
+        !playable;
+
+    $('detailPlay').style.opacity =
+        playable
+            ? '1'
+            : '.55';
+
+    $('detailFav').textContent =
+        state.favorites.includes(movie.id)
+            ? '♥ En mi lista'
+            : '♡ Mi lista';
+
+
+    $('detailFav').onclick = () => {
+
+        toggleFavorite(
+            Number(movie.id)
+        );
+
+        openDetails(
+            Number(movie.id)
+        );
+
+    };
+
+
+    $('detailPlay').onclick = () => {
+
+        if(hasVideo(movie)){
+
+            closeDetails();
+
+            openPlayer(
+                Number(movie.id)
+            );
+
+        }
+
+    };
+
+
+    $('detailModal')
+        .classList
+        .add('open');
+
+    document.body.style.overflow =
+        'hidden';
+
+    $('closeDetail').focus();
+
 }
-function closeDetails(){ $('detailModal').classList.remove('open'); if(!modal.classList.contains('open'))document.body.style.overflow=''; }
+
+
+/* =========================
+   CERRAR DETALLES
+========================= */
+
+function closeDetails(){
+
+    $('detailModal')
+        .classList
+        .remove('open');
+
+    if(
+        !modal.classList.contains('open')
+    ){
+
+        document.body.style.overflow =
+            '';
+
+    }
+
+}
+
+
+/* =========================
+   REPRODUCTOR
+========================= */
+
 function openPlayer(id){
- const m=getMovie(id);if(!m)return;state.current=m;addRecent(m.id);
- $('playerTitle').firstChild.textContent=m.title;$('playerMeta').textContent=`${m.year} · ${m.genre||label(m.category)}`;
- const yt=$('youtubeButton');
- if(hasVideo(m)){
-  videoBox.innerHTML=`<iframe src="https://www.youtube.com/embed/${encodeURIComponent(m.videoId)}?rel=0&modestbranding=1" title="Reproductor de ${esc(m.title)}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
-  yt.style.display='inline-block';
-  yt.onclick=()=>window.open(`https://www.youtube.com/watch?v=${encodeURIComponent(m.videoId)}`,'_blank','noopener,noreferrer');
-  $('playerStatus').textContent='Reproduciendo mediante YouTube';
- }else{
-  videoBox.innerHTML=`<div class="no-video"><div><div style="font-size:3rem">🎬</div><b>Esta película todavía no tiene un video disponible.</b><span>La película permanece en el catálogo y podrá reproducirse cuando se agregue una fuente legítima y autorizada.</span></div></div>`;
-  yt.style.display='none';$('playerStatus').textContent='Video no disponible';
- }
- modal.classList.add('open');document.body.style.overflow='hidden';$('closePlayer').focus()
+
+    const movie = getMovie(id);
+
+    if(!movie)
+        return;
+
+    state.current = movie;
+
+    addRecent(movie.id);
+
+
+    $('playerTitle').firstChild.textContent =
+        movie.title;
+
+    $('playerMeta').textContent =
+        `${movie.year} · ${
+            movie.genre
+            || label(movie.category)
+        }`;
+
+
+    const youtubeButton =
+        $('youtubeButton');
+
+
+    if(hasVideo(movie)){
+
+        videoBox.innerHTML = `
+
+            <iframe
+                src="https://www.youtube.com/embed/${encodeURIComponent(movie.videoId)}?rel=0&modestbranding=1"
+                title="Reproductor de ${esc(movie.title)}"
+                allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                    fullscreen
+                "
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+        `;
+
+
+        youtubeButton.style.display =
+            'inline-block';
+
+
+        youtubeButton.onclick =
+            () => {
+
+                window.open(
+                    `https://www.youtube.com/watch?v=${encodeURIComponent(movie.videoId)}`,
+                    '_blank',
+                    'noopener,noreferrer'
+                );
+
+            };
+
+
+        $('playerStatus').textContent =
+            'Reproduciendo mediante YouTube';
+
+
+    }else{
+
+        videoBox.innerHTML = `
+
+            <div class="no-video">
+
+                <div>
+
+                    <div style="font-size:3rem">
+                        🎬
+                    </div>
+
+                    <b>
+                        Esta película todavía
+                        no tiene un video disponible.
+                    </b>
+
+                    <span>
+                        La película permanece
+                        en el catálogo y podrá
+                        reproducirse cuando se
+                        agregue una fuente legítima
+                        y autorizada.
+                    </span>
+
+                </div>
+
+            </div>
+        `;
+
+
+        youtubeButton.style.display =
+            'none';
+
+        $('playerStatus').textContent =
+            'Video no disponible';
+
+    }
+
+
+    modal.classList.add('open');
+
+    document.body.style.overflow =
+        'hidden';
+
+    $('closePlayer').focus();
+
 }
-function closePlayer(){modal.classList.remove('open');document.body.style.overflow='';videoBox.innerHTML='';state.current=null}
-function openProfile(){$('profileName').value=state.profile==='Invitado'?'':state.profile;$('profileModal').classList.add('open');$('profileName').focus();document.body.style.overflow='hidden'}
-function closeProfile(){$('profileModal').classList.remove('open');document.body.style.overflow=''}
-function saveProfile(){const n=$('profileName').value.trim()||'Invitado';state.profile=n;localStorage.setItem('cinelibre_profile',n);$('profileButton').textContent=n;closeProfile();notify(`Perfil actualizado: ${n}`)}
+
+
+/* =========================
+   CERRAR REPRODUCTOR
+========================= */
+
+function closePlayer(){
+
+    modal.classList.remove('open');
+
+    document.body.style.overflow =
+        '';
+
+    videoBox.innerHTML =
+        '';
+
+    state.current =
+        null;
+
+}
+
+
+/* =========================
+   PERFIL
+========================= */
+
+function openProfile(){
+
+    $('profileName').value =
+        state.profile === 'Invitado'
+            ? ''
+            : state.profile;
+
+    $('profileModal')
+        .classList
+        .add('open');
+
+    $('profileName').focus();
+
+    document.body.style.overflow =
+        'hidden';
+
+}
+
+
+function closeProfile(){
+
+    $('profileModal')
+        .classList
+        .remove('open');
+
+    document.body.style.overflow =
+        '';
+
+}
+
+
+function saveProfile(){
+
+    const name =
+        $('profileName')
+            .value
+            .trim()
+        || 'Invitado';
+
+    state.profile =
+        name;
+
+    localStorage.setItem(
+        'cinelibre_profile',
+        name
+    );
+
+    $('profileButton').textContent =
+        name;
+
+    closeProfile();
+
+    notify(
+        `Perfil actualizado: ${name}`
+    );
+
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
 function doSearch(){
- state.search=searchInput.value;renderContent();
- if(state.search.trim()){const r=filtered().slice(0,8);searchResults.innerHTML=r.length?r.map(m=>`<div class="search-result" data-play="${m.id}"><img src="${esc(m.poster||'')}" alt=""><div><strong>${esc(m.title)}</strong><span>${esc(m.year)} · ${esc(label(m.category))}</span></div></div>`).join(''):`<div class="empty" style="padding:20px;border:0"><strong>No encontramos películas con esa búsqueda.</strong></div>`}else searchResults.innerHTML='';
+
+    state.search =
+        searchInput.value;
+
+    renderContent();
+
+
+    if(state.search.trim()){
+
+        const results =
+            filtered().slice(0,8);
+
+
+        searchResults.innerHTML =
+            results.length
+
+                ? results
+                    .map(movie => `
+
+                        <div
+                            class="search-result"
+                            data-play="${movie.id}">
+
+                            <img
+                                src="${esc(movie.poster || '')}"
+                                alt="">
+
+                            <div>
+
+                                <strong>
+                                    ${esc(movie.title)}
+                                </strong>
+
+                                <span>
+                                    ${esc(movie.year)}
+                                    ·
+                                    ${esc(
+                                        label(
+                                            movie.category
+                                        )
+                                    )}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    `)
+                    .join('')
+
+                : `
+
+                    <div
+                        class="empty"
+                        style="
+                            padding:20px;
+                            border:0
+                        ">
+
+                        <strong>
+                            No encontramos películas
+                            con esa búsqueda.
+                        </strong>
+
+                    </div>
+                `;
+
+    }else{
+
+        searchResults.innerHTML =
+            '';
+
+    }
+
 }
-document.addEventListener('click',e=>{
- const f=e.target.closest('[data-filter]');if(f){state.filter=f.dataset.filter;document.querySelectorAll('[data-filter]').forEach(x=>x.classList.toggle('active',x.dataset.filter===state.filter));renderContent();return}
- const fav=e.target.closest('[data-fav]');if(fav){e.stopPropagation();toggleFavorite(Number(fav.dataset.fav));return}
- const add=e.target.closest('[data-add]');if(add){toggleFavorite(Number(add.dataset.add));return}
- const d=e.target.closest('[data-details]');if(d){openDetails(Number(d.dataset.details));return}
- if(e.target===$('detailModal'))closeDetails();if(e.target===modal)closePlayer();if(e.target===$('profileModal'))closeProfile();
-});
-document.addEventListener('keydown',e=>{
- if(e.key==='Escape'){if($('detailModal').classList.contains('open'))closeDetails();else if(modal.classList.contains('open'))closePlayer();else if($('profileModal').classList.contains('open'))closeProfile();else if(searchBox.classList.contains('open')){searchBox.classList.remove('open');$('searchToggle').setAttribute('aria-expanded','false')}}
- if((e.key==='Enter'||e.key===' ')&&document.activeElement?.classList.contains('card')){e.preventDefault();openDetails(Number(document.activeElement.dataset.details))}
-});
-$('closeDetail').addEventListener('click',closeDetails);$('searchToggle').addEventListener('click',()=>{const o=searchBox.classList.toggle('open');$('searchToggle').setAttribute('aria-expanded',String(o));if(o)searchInput.focus()});
-searchInput.addEventListener('input',doSearch);$('closePlayer').addEventListener('click',closePlayer);$('closePlayer2').addEventListener('click',closePlayer);
-$('profileButton').addEventListener('click',openProfile);$('cancelProfile').addEventListener('click',closeProfile);$('saveProfile').addEventListener('click',saveProfile);
-$('profileName').addEventListener('keydown',e=>{if(e.key==='Enter')saveProfile()});
-$('homeLogo').addEventListener('click',e=>{e.preventDefault();state.filter='all';state.search='';searchInput.value='';renderAll();window.scrollTo({top:0,behavior:'smooth'})});
-document.addEventListener('click',e=>{if(!e.target.closest('.search-wrap')){searchBox.classList.remove('open');$('searchToggle').setAttribute('aria-expanded','false')}});
-$('profileButton').textContent=state.profile;renderAll();
-console.info(`CineLibre: ${movies.length} películas cargadas.`);
-if(!movies.length)console.error('No se encontró window.peliculas. Verifica peliculas.js.');
+
+
+/* =========================
+   EVENTOS CLICK
+========================= */
+
+document.addEventListener(
+    'click',
+    event => {
+
+        const filter =
+            event.target.closest(
+                '[data-filter]'
+            );
+
+
+        if(filter){
+
+            state.filter =
+                filter.dataset.filter;
+
+            document
+                .querySelectorAll(
+                    '[data-filter]'
+                )
+                .forEach(element => {
+
+                    element.classList.toggle(
+                        'active',
+                        element.dataset.filter
+                        === state.filter
+                    );
+
+                });
+
+            renderContent();
+
+            return;
+        }
+
+
+        const favorite =
+            event.target.closest(
+                '[data-fav]'
+            );
+
+
+        if(favorite){
+
+            event.stopPropagation();
+
+            toggleFavorite(
+                Number(
+                    favorite.dataset.fav
+                )
+            );
+
+            return;
+        }
+
+
+        const add =
+            event.target.closest(
+                '[data-add]'
+            );
+
+
+        if(add){
+
+            toggleFavorite(
+                Number(
+                    add.dataset.add
+                )
+            );
+
+            return;
+        }
+
+
+        const details =
+            event.target.closest(
+                '[data-details]'
+            );
+
+
+        if(details){
+
+            openDetails(
+                Number(
+                    details.dataset.details
+                )
+            );
+
+            return;
+        }
+
+
+        if(
+            event.target ===
+            $('detailModal')
+        ){
+
+            closeDetails();
+
+        }
+
+
+        if(
+            event.target === modal
+        ){
+
+            closePlayer();
+
+        }
+
+
+        if(
+            event.target ===
+            $('profileModal')
+        ){
+
+            closeProfile();
+
+        }
+
+    }
+);
+
+
+/* =========================
+   TECLADO
+========================= */
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        if(event.key === 'Escape'){
+
+            if(
+                $('detailModal')
+                    .classList
+                    .contains('open')
+            ){
+
+                closeDetails();
+
+            }else if(
+                modal
+                    .classList
+                    .contains('open')
+            ){
+
+                closePlayer();
+
+            }else if(
+                $('profileModal')
+                    .classList
+                    .contains('open')
+            ){
+
+                closeProfile();
+
+            }else if(
+                searchBox
+                    .classList
+                    .contains('open')
+            ){
+
+                searchBox
+                    .classList
+                    .remove('open');
+
+                $('searchToggle')
+                    .setAttribute(
+                        'aria-expanded',
+                        'false'
+                    );
+
+            }
+
+        }
+
+
+        if(
+            (
+                event.key === 'Enter'
+                ||
+                event.key === ' '
+            )
+            &&
+            document.activeElement?.classList
+                .contains('card')
+        ){
+
+            event.preventDefault();
+
+            openDetails(
+                Number(
+                    document.activeElement
+                        .dataset
+                        .details
+                )
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   BOTONES
+========================= */
+
+$('closeDetail')
+    .addEventListener(
+        'click',
+        closeDetails
+    );
+
+
+$('searchToggle')
+    .addEventListener(
+        'click',
+        () => {
+
+            const opened =
+                searchBox
+                    .classList
+                    .toggle('open');
+
+            $('searchToggle')
+                .setAttribute(
+                    'aria-expanded',
+                    String(opened)
+                );
+
+            if(opened){
+
+                searchInput.focus();
+
+            }
+
+        }
+    );
+
+
+searchInput
+    .addEventListener(
+        'input',
+        doSearch
+    );
+
+
+$('closePlayer')
+    .addEventListener(
+        'click',
+        closePlayer
+    );
+
+
+$('closePlayer2')
+    .addEventListener(
+        'click',
+        closePlayer
+    );
+
+
+$('profileButton')
+    .addEventListener(
+        'click',
+        openProfile
+    );
+
+
+$('cancelProfile')
+    .addEventListener(
+        'click',
+        closeProfile
+    );
+
+
+$('saveProfile')
+    .addEventListener(
+        'click',
+        saveProfile
+    );
+
+
+$('profileName')
+    .addEventListener(
+        'keydown',
+        event => {
+
+            if(event.key === 'Enter'){
+
+                saveProfile();
+
+            }
+
+        }
+    );
+
+
+$('homeLogo')
+    .addEventListener(
+        'click',
+        event => {
+
+            event.preventDefault();
+
+            state.filter =
+                'all';
+
+            state.search =
+                '';
+
+            searchInput.value =
+                '';
+
+            renderAll();
+
+            window.scrollTo({
+                top:0,
+                behavior:'smooth'
+            });
+
+        }
+    );
+
+
+document.addEventListener(
+    'click',
+    event => {
+
+        if(
+            !event.target.closest(
+                '.search-wrap'
+            )
+        ){
+
+            searchBox
+                .classList
+                .remove('open');
+
+            $('searchToggle')
+                .setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   INICIALIZACIÓN
+========================= */
+
+$('profileButton').textContent =
+    state.profile;
+
+renderAll();
+
+
+console.info(
+    `CineLibre: ${movies.length} películas cargadas.`
+);
+
+
+if(!movies.length){
+
+    console.error(
+        'No se encontró window.peliculas. Verifica que peliculas.js esté en la misma carpeta que index.html.'
+    );
+
+}
 </script>
+
 </body>
 </html>
