@@ -747,7 +747,7 @@ const peliculas = [
     },
 
     {
-        id: 68,
+        id: 67,
         title: "El fantasma de mi novia",
         year: 2018,
         category: "comedy",
@@ -758,7 +758,7 @@ const peliculas = [
     },
 
     {
-        id: 69,
+        id: 68,
         title: "Cristiano de la secreta",
         year: 2009,
         category: "comedy",
@@ -769,7 +769,7 @@ const peliculas = [
     },
 
     {
-        id: 70,
+        id: 69,
         title: "Dos policías en apuros",
         year: 2016,
         category: "comedy",
@@ -780,7 +780,7 @@ const peliculas = [
     },
 
     {
-        id: 71,
+        id: 70,
         title: "Nueba Yol 2: La historia continúa",
         year: 1996,
         category: "comedy",
@@ -791,7 +791,7 @@ const peliculas = [
     },
 
     {
-        id: 72,
+        id: 71,
         title: "Colao",
         year: 2017,
         category: "comedy",
@@ -802,7 +802,7 @@ const peliculas = [
     },
 
     {
-        id: 73,
+        id: 72,
         title: "Qué León",
         year: 2018,
         category: "comedy",
@@ -813,7 +813,7 @@ const peliculas = [
     },
 
     {
-        id: 74,
+        id: 73,
         title: "Código Paz",
         year: 2014,
         category: "action",
@@ -824,7 +824,7 @@ const peliculas = [
     },
 
     {
-        id: 75,
+        id: 74,
         title: "Baile Urbano",
         year: 2018,
         category: "drama",
@@ -835,7 +835,7 @@ const peliculas = [
     },
 
     {
-        id: 76,
+        id: 75,
         title: "La Máscara",
         year: 2020,
         category: "horror",
@@ -846,7 +846,7 @@ const peliculas = [
     },
 
     {
-        id: 77,
+        id: 76,
         title: "La Máscara 2",
         year: 2021,
         category: "horror",
@@ -857,7 +857,7 @@ const peliculas = [
     },
 
     {
-        id: 78,
+        id: 77,
         title: "El Rey de Najayo",
         year: 2012,
         category: "drama",
@@ -868,7 +868,7 @@ const peliculas = [
     },
 
     {
-        id: 79,
+        id: 78,
         title: "Santi Clo... La vaina de la Navidad",
         year: 2008,
         category: "comedy",
@@ -879,7 +879,7 @@ const peliculas = [
     },
 
     {
-        id: 80,
+        id: 79,
         title: "De Pez en Cuando",
         year: 2014,
         category: "comedy",
@@ -890,7 +890,7 @@ const peliculas = [
     },
 
     {
-        id: 87,
+        id: 80,
         title: "Perdiendo el Juicio",
         year: 2023,
         category: "comedy",
@@ -901,7 +901,7 @@ const peliculas = [
     },
 
     {
-        id: 88,
+        id: 81,
         title: "La Gunguna",
         year: 2015,
         category: "comedy",
@@ -912,7 +912,7 @@ const peliculas = [
     },
 
     {
-        id: 89,
+        id: 82,
         title: "Quiero ser fiel",
         year: 2014,
         category: "comedy",
@@ -923,7 +923,7 @@ const peliculas = [
     },
 
     {
-        id: 92,
+        id: 83,
         title: "Todas las mujeres son iguales",
         year: 2017,
         category: "comedy",
@@ -934,7 +934,7 @@ const peliculas = [
     },
 
     {
-        id: 93,
+        id: 84,
         title: "Todos los hombres son iguales",
         year: 2016,
         category: "comedy",
@@ -945,7 +945,7 @@ const peliculas = [
     },
 
     {
-        id: 94,
+        id: 85,
         title: "Trabajo Sucio",
         year: 2018,
         category: "comedy",
@@ -956,7 +956,7 @@ const peliculas = [
     },
 
     {
-        id: 95,
+        id: 86,
         title: "Volvió Juanita",
         year: 2019,
         category: "comedy",
