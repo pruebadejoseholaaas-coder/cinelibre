@@ -1,16 +1,17 @@
 // 🇩🇴 CATÁLOGO DE CINE DOMINICANO
 // ================================================================
-// Catálogo de películas dominicanas para CineLibre.
+// Catálogo de películas para CineLibre.
 // ================================================================
 //
 // Cada película contiene:
-// id          -> Identificador
+//
+// id          -> Identificador único
 // title       -> Título
 // year        -> Año
 // category    -> Categoría
 // featured    -> Película destacada
-// poster      -> Póster
-// videoId     -> ID del video de YouTube
+// poster      -> URL del póster
+// videoId     -> ID de YouTube o URL externa del video
 // synopsis    -> Sinopsis
 //
 // Categorías:
@@ -162,6 +163,10 @@ const peliculas = [
         videoId: "dwfL8l-wHIc",
         synopsis: "Un grupo de personajes se ve involucrado en un robo que desencadena una cadena de problemas, engaños y situaciones inesperadas."
     },
+
+    // ============================================================
+    // PELÍCULA EXTERNA - OK.RU
+    // ============================================================
 
     {
         id: 14,
@@ -517,7 +522,7 @@ const peliculas = [
 
     {
         id: 46,
-        title: "El año del tigre poster",
+        title: "El año del tigre",
         year: 2014,
         category: "drama",
         featured: false,
@@ -956,103 +961,97 @@ const peliculas = [
     },
 
     {
-    id: 86,
-    title: "Volvió Juanita",
-    year: 2019,
-    category: "comedy",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqbN96_Fj5UvaEyDjgNFe9rZk5J36dH_reMlRnMAFaTQ&s=10",
-    videoId: "kfR-AWI-cF4",
-    synopsis: "Juanita regresa después de varios años y su vuelta provoca una serie de cambios y situaciones inesperadas dentro de su familia."
-},
+        id: 86,
+        title: "Volvió Juanita",
+        year: 2019,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqbN96_Fj5UvaEyDjgNFe9rZk5J36dH_reMlRnMAFaTQ&s=10",
+        videoId: "kfR-AWI-cF4",
+        synopsis: "Juanita regresa después de varios años y su vuelta provoca una serie de cambios y situaciones inesperadas dentro de su familia."
+    },
 
-{
-    id: 95,
-    title: "Volvió Juanita",
-    year: 2019,
-    category: "comedy",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqbN96_Fj5UvaEyDjgNFe9rZk5J36dH_reMlRnMAFaTQ&s=10",
-    videoId: "kfR-AWI-cF4",
-    synopsis: "Juanita regresa después de varios años y su vuelta provoca una serie de cambios y situaciones inesperadas dentro de su familia."
-},
+    {
+        id: 87,
+        title: "Y a Dios que me perdone",
+        year: 2017,
+        category: "drama",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD0ncZCxe_attyKsf56ZwYOhFc19lkdH6_9bxxCugAsg&s=10",
+        videoId: "w3F21uP6gzA",
+        synopsis: "Un sargento de policía atraviesa una difícil situación familiar cuando su esposa enferma gravemente después del nacimiento de sus hijas. Ante las dificultades económicas y personales, deberá buscar una manera de mantener unida a su familia."
+    },
 
-{
-    id: 96,
-    title: "Y a Dios que me perdone",
-    year: 2017,
-    category: "drama",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSD0ncZCxe_attyKsf56ZwYOhFc19lkdH6_9bxxCugAsg&s=10",
-    videoId: "w3F21uP6gzA",
-    synopsis: "Un sargento de policía atraviesa una difícil situación familiar cuando su esposa enferma gravemente después del nacimiento de sus hijas. Ante las dificultades económicas y personales, deberá buscar una manera de mantener unida a su familia."
-},
+    {
+        id: 88,
+        title: "Oro y Polvo: El Primer Cartel Dominicano",
+        year: 2016,
+        category: "action",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu_v2Wv8V3w3Hse9myciV0OjH3FC4f-oqscPTSrJXGoQ&s=10",
+        videoId: "fpv0SgpGWis",
+        synopsis: "Una historia de acción y crimen que gira alrededor del surgimiento de una organización dedicada al narcotráfico y de los conflictos que aparecen entre sus integrantes y quienes intentan detenerlos."
+    },
 
-{
-    id: 97,
-    title: "Oro y Polvo: El Primer Cartel Dominicano",
-    year: 2016,
-    category: "action",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQu_v2Wv8V3w3Hse9myciV0OjH3FC4f-oqscPTSrJXGoQ&s=10",
-    videoId: "fpv0SgpGWis",
-    synopsis: "Una historia de acción y crimen que gira alrededor del surgimiento de una organización dedicada al narcotráfico y de los conflictos que aparecen entre sus integrantes y quienes intentan detenerlos."
-},
+    {
+        id: 89,
+        title: "Yunior 2",
+        year: 2024,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IbCH9LnXo6i8-c85cx8lTKmqC1tLuGOEfvtqIFsGJQ&s=10",
+        videoId: "3WZ6FfcjOko",
+        synopsis: "Yunior regresa con nuevas aventuras y situaciones inesperadas que ponen a prueba su ingenio y su manera de enfrentar los problemas."
+    },
 
-{
-    id: 98,
-    title: "Yunior 2",
-    year: 2024,
-    category: "comedy",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5IbCH9LnXo6i8-c85cx8lTKmqC1tLuGOEfvtqIFsGJQ&s=10",
-    videoId: "3WZ6FfcjOko",
-    synopsis: "Yunior regresa con nuevas aventuras y situaciones inesperadas que ponen a prueba su ingenio y su manera de enfrentar los problemas."
-},
+    {
+        id: 90,
+        title: "Sonic 3",
+        year: 2024,
+        category: "animation",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPXGj3wjWzOVbNhh-jVpNm33xnvsURwp4KXphqwZAfFg&s=10",
+        videoId: "Ab7yYfDOCCM",
+        synopsis: "Sonic, Knuckles y Tails vuelven a unir fuerzas para enfrentarse a Shadow, un misterioso y poderoso enemigo que representa una amenaza para el mundo. Los tres héroes deberán superar sus diferencias y trabajar juntos para detenerlo."
+    },
 
-{
-    id: 99,
-    title: "Sonic 3",
-    year: 2024,
-    category: "animation",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPXGj3wjWzOVbNhh-jVpNm33xnvsURwp4KXphqwZAfFg&s=10",
-    videoId: "Ab7yYfDOCCM",
-    synopsis: "Sonic, Knuckles y Tails vuelven a unir fuerzas para enfrentarse a Shadow, un misterioso y poderoso enemigo que representa una amenaza para el mundo. Los tres héroes deberán superar sus diferencias y trabajar juntos para detenerlo."
-},
+    {
+        id: 91,
+        title: "Garfield",
+        year: 2024,
+        category: "animation",
+        featured: false,
+        poster: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRLyvJHxfzq_GmVa5n_99fNpQPJsbHVW251WmXrPriO_YbpuJAz6Yus8ovsLdXV2YdoDPPR3XBUOVPotrlXr9tjvbCtGvJh3DRqLIbPMFPgIroUAgg&usqp=CAc",
+        videoId: "hFfmJDKPxYs",
+        synopsis: "Garfield vuelve a vivir una nueva aventura cuando se reencuentra inesperadamente con su padre, Vic. Junto a Odie, el famoso gato deberá abandonar su cómoda vida y enfrentarse a una divertida aventura llena de situaciones inesperadas."
+    },
 
-{
-    id: 100,
-    title: "Garfield",
-    year: 2024,
-    category: "animation",
-    featured: false,
-    poster: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRLyvJHxfzq_GmVa5n_99fNpQPJsbHVW251WmXrPriO_YbpuJAz6Yus8ovsLdXV2YdoDPPR3XBUOVPotrlXr9tjvbCtGvJh3DRqLIbPMFPgIroUAgg&usqp=CAc",
-    videoId: "hFfmJDKPxYs",
-    synopsis: "Garfield vuelve a vivir una nueva aventura cuando se reencuentra inesperadamente con su padre, Vic. Junto a Odie, el famoso gato deberá abandonar su cómoda vida y enfrentarse a una divertida aventura llena de situaciones inesperadas."
-},
+    {
+        id: 92,
+        title: "El Teniente Amado",
+        year: 2013,
+        category: "drama",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdtJ1RDaQNonIJi8AbacXpfd0sMr6zAm7Bd7Q6j5LXWA&s=10",
+        videoId: "7fCaVVWO8hU",
+        synopsis: "La historia del teniente Amado García Guerrero, un militar dominicano que decidió enfrentarse a la dictadura de Rafael Leónidas Trujillo y terminó participando en el complot que llevó al ajusticiamiento del dictador."
+    },
 
-{
-    id: 101,
-    title: "El Teniente Amado",
-    year: 2013,
-    category: "drama",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdtJ1RDaQNonIJi8AbacXpfd0sMr6zAm7Bd7Q6j5LXWA&s=10",
-    videoId: "7fCaVVWO8hU",
-    synopsis: "La historia del teniente Amado García Guerrero, un militar dominicano que decidió enfrentarse a la dictadura de Rafael Leónidas Trujillo y terminó participando en el complot que llevó al ajusticiamiento del dictador."
-},
+    {
+        id: 93,
+        title: "Un macho de mujer",
+        year: 2006,
+        category: "comedy",
+        featured: false,
+        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFwHyX7uJ8_xogFM3_AMyabvBPo37KFQPs0So570S-Hw&s=10",
+        videoId: "pIzzyVaH58g",
+        synopsis: "Ramón es un hombre acostumbrado a salir de fiesta y dejar las responsabilidades del hogar en manos de su esposa. Un extraño amuleto provoca un cambio inesperado de roles que lo obliga a experimentar la vida desde la perspectiva de ella."
+    }
 
-{
-    id: 102,
-    title: "Un macho de mujer",
-    year: 2006,
-    category: "comedy",
-    featured: false,
-    poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFwHyX7uJ8_xogFM3_AMyabvBPo37KFQPs0So570S-Hw&s=10",
-    videoId: "pIzzyVaH58g",
-    synopsis: "Ramón es un hombre acostumbrado a salir de fiesta y dejar las responsabilidades del hogar en manos de su esposa. Un extraño amuleto provoca un cambio inesperado de roles que lo obliga a experimentar la vida desde la perspectiva de ella."
-}
 ];
+
+// ================================================================
+// HACER EL CATÁLOGO DISPONIBLE PARA EL RESTO DE LA PÁGINA
+// ================================================================
 
 window.peliculas = peliculas;
