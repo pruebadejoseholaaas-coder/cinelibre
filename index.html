@@ -1,586 +1,3319 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- SEO -->
-    <title>CineLibre | Cine clásico gratis y legal</title>
-    <meta name="description" content="Catálogo de películas de dominio público y Creative Commons. Cine clásico gratis, legal y sin registros.">
-    <meta name="keywords" content="peliculas gratis, dominio publico, cine clasico, creative commons">
-    <meta name="author" content="Tu Nombre">
-    
-    <!-- Open Graph (para compartir en redes) -->
-    <meta property="og:title" content="CineLibre 🎬">
-    <meta property="og:description" content="Cine clásico gratis y legal.">
-    <meta property="og:type" content="website">
-    
-    <!-- Favicon (emoji como SVG) -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
-    
-    <style>
-        /* ============ VARIABLES Y RESET ============ */
-        :root {
-            --bg-primary: #0f0f0f;
-            --bg-secondary: #181818;
-            --bg-card: #1f1f1f;
-            --accent: #e50914;
-            --accent-hover: #f6121d;
-            --text-main: #ffffff;
-            --text-muted: #a0a0a0;
-            --radius: 10px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#07090d">
+<meta name="description" content="CineLibre — descubre y disfruta el cine dominicano.">
+<title>CineLibre | Cine Dominicano</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        
-        body {
-            background: var(--bg-primary);
-            color: var(--text-main);
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            min-height: 100vh;
-        }
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 
-        ::selection { background: var(--accent); }
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0
+}
 
-        /* Scrollbar personalizada */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: var(--bg-primary); }
-        ::-webkit-scrollbar-thumb { background: #444; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: var(--accent); }
+:root{
+    --bg:#07090d;
+    --surface:#10141c;
+    --surface2:#171c26;
+    --text:#f7f8fb;
+    --muted:#9aa3b2;
+    --accent:#e50914;
+    --line:rgba(255,255,255,.08);
+    --radius:12px;
+    --header:72px
+}
 
-        /* ============ HEADER ============ */
-        header {
-            position: sticky; top: 0; z-index: 50;
-            background: rgba(15, 15, 15, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
-            padding: 1rem 5%;
-            display: flex; flex-wrap: wrap; gap: 1rem;
-            align-items: center; justify-content: space-between;
-        }
+html{
+    scroll-behavior:smooth
+}
 
-        .logo {
-            font-size: 1.6rem; font-weight: 900;
-            color: var(--accent); letter-spacing: -1px;
-            text-decoration: none;
-        }
-        .logo span { color: var(--text-main); }
+body{
+    font-family:Inter,Segoe UI,system-ui,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    overflow-x:hidden
+}
 
-        /* ============ BUSCADOR ============ */
-        .search-box {
-            position: relative;
-            flex: 1; max-width: 400px; min-width: 200px;
-        }
+button,
+input{
+    font:inherit
+}
 
-        .search-box input {
-            width: 100%;
-            background: var(--bg-card);
-            border: 2px solid transparent;
-            border-radius: 25px;
-            padding: 0.7rem 1rem 0.7rem 2.8rem;
-            color: var(--text-main);
-            font-size: 0.95rem;
-            transition: var(--transition);
-            outline: none;
-        }
+button{
+    cursor:pointer
+}
 
-        .search-box input:focus { border-color: var(--accent); }
-        .search-box::before {
-            content: "🔍";
-            position: absolute; left: 1rem; top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.9rem; opacity: 0.6;
-        }
+img{
+    display:block;
+    max-width:100%
+}
 
-        /* ============ HERO ============ */
-        .hero {
-            padding: 3rem 5% 2rem;
-            background: radial-gradient(ellipse at top right, rgba(229,9,20,0.15), transparent 60%);
-        }
+a{
+    color:inherit
+}
 
-        .hero h1 {
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            font-weight: 900; line-height: 1.1;
-            margin-bottom: 0.8rem;
-        }
+::-webkit-scrollbar{
+    width:9px
+}
 
-        .hero h1 em { color: var(--accent); font-style: normal; }
+::-webkit-scrollbar-track{
+    background:var(--bg)
+}
 
-        .hero p { color: var(--text-muted); max-width: 600px; font-size: 1.05rem; }
+::-webkit-scrollbar-thumb{
+    background:#343b48;
+    border-radius:99px
+}
 
-        /* ============ BARRA DE CONTROL ============ */
-        .controls {
-            padding: 1.5rem 5% 0.5rem;
-            display: flex; flex-wrap: wrap; gap: 0.8rem;
-            align-items: center; justify-content: space-between;
-        }
+/* =========================
+   HEADER
+========================= */
 
-        .filters { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.header{
+    position:sticky;
+    top:0;
+    z-index:500;
+    height:var(--header);
+    display:flex;
+    align-items:center;
+    gap:28px;
+    padding:0 clamp(18px,4vw,60px);
+    background:rgba(7,9,13,.88);
+    border-bottom:1px solid var(--line);
+    backdrop-filter:blur(18px)
+}
 
-        .chip {
-            background: var(--bg-card);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: var(--text-muted);
-            padding: 0.5rem 1.1rem;
-            border-radius: 20px;
-            cursor: pointer; font-size: 0.85rem;
-            transition: var(--transition);
-        }
+.logo{
+    font-size:1.65rem;
+    font-weight:950;
+    letter-spacing:-1px;
+    text-decoration:none;
+    white-space:nowrap
+}
 
-        .chip:hover { color: var(--text-main); border-color: var(--accent); }
-        .chip.active { background: var(--accent); color: white; border-color: var(--accent); font-weight: 600; }
+.logo b{
+    color:var(--accent)
+}
 
-        .sort-select {
-            background: var(--bg-card);
-            color: var(--text-main);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            cursor: pointer; font-size: 0.85rem;
-            outline: none;
-        }
+.logo small{
+    font-size:.65rem
+}
 
-        /* ============ CONTADOR ============ */
-        .results-info {
-            padding: 1rem 5% 0;
-            color: var(--text-muted); font-size: 0.85rem;
-        }
+.nav{
+    display:flex;
+    gap:22px;
+    align-items:center
+}
 
-        /* ============ GRID DE PELÍCULAS ============ */
-        .catalog {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-            gap: 1.8rem;
-            padding: 1.5rem 5% 4rem;
-        }
+.nav button{
+    background:none;
+    border:0;
+    color:var(--muted);
+    font-size:.9rem;
+    transition:.25s
+}
 
-        .card {
-            background: var(--bg-card);
-            border-radius: var(--radius);
-            overflow: hidden;
-            cursor: pointer;
-            transition: var(--transition);
-            position: relative;
-            animation: fadeIn 0.4s ease backwards;
-        }
+.nav button:hover,
+.nav button.active{
+    color:#fff
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(15px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+.nav button.active{
+    font-weight:800
+}
 
-        .card:hover { transform: translateY(-8px) scale(1.02); box-shadow: 0 15px 40px rgba(0,0,0,0.6); }
+.header-spacer{
+    flex:1
+}
 
-        .poster-wrap { position: relative; aspect-ratio: 2/3; overflow: hidden; background: #2a2a2a; }
+/* =========================
+   SEARCH
+========================= */
 
-        .poster-wrap img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
+.search-wrap{
+    position:relative
+}
 
-        .card:hover .poster-wrap img { transform: scale(1.08); }
+.search-toggle{
+    border:0;
+    background:transparent;
+    color:#fff;
+    font-size:1.15rem;
+    padding:9px
+}
 
-        /* Botón play al hacer hover */
-        .play-overlay {
-            position: absolute; inset: 0;
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(0,0,0,0.4);
-            opacity: 0; transition: var(--transition);
-        }
+.search-box{
+    position:absolute;
+    right:0;
+    top:48px;
+    width:min(390px,calc(100vw - 28px));
+    padding:12px;
+    background:rgba(16,20,28,.98);
+    border:1px solid var(--line);
+    border-radius:12px;
+    box-shadow:0 18px 55px rgba(0,0,0,.5);
+    display:none
+}
 
-        .card:hover .play-overlay { opacity: 1; }
+.search-box.open{
+    display:block
+}
 
-        .play-overlay .play-icon {
-            width: 55px; height: 55px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.3rem; padding-left: 4px;
-        }
+.search-box input{
+    width:100%;
+    background:#080b10;
+    border:1px solid var(--line);
+    color:#fff;
+    padding:12px 14px;
+    border-radius:9px;
+    outline:0
+}
 
-        /* Botón favorito */
-        .fav-btn {
-            position: absolute; top: 8px; right: 8px; z-index: 5;
-            background: rgba(0,0,0,0.7);
-            border: none; color: white;
-            width: 34px; height: 34px;
-            border-radius: 50%; cursor: pointer;
-            font-size: 1rem;
-            transition: var(--transition);
-        }
+.search-box input:focus{
+    border-color:var(--accent)
+}
 
-        .fav-btn:hover { transform: scale(1.15); }
-        .fav-btn.active { background: var(--accent); }
+.search-results{
+    max-height:320px;
+    overflow:auto;
+    margin-top:8px
+}
 
-        .badge {
-            position: absolute; top: 8px; left: 8px;
-            background: var(--accent);
-            color: white; font-size: 0.65rem; font-weight: 700;
-            padding: 0.25rem 0.6rem; border-radius: 4px;
-            text-transform: uppercase;
-        }
+.search-result{
+    display:flex;
+    gap:10px;
+    padding:8px;
+    border-radius:9px;
+    cursor:pointer
+}
 
-        .info { padding: 0.9rem; }
-        .info .title {
-            font-size: 0.95rem; font-weight: 600;
-            margin-bottom: 0.35rem;
-            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-        }
-        .info .meta {
-            display: flex; justify-content: space-between;
-            font-size: 0.75rem; color: var(--text-muted);
-        }
+.search-result:hover{
+    background:var(--surface2)
+}
 
-        /* ============ ESTADO VACÍO ============ */
-        .empty-state {
-            grid-column: 1 / -1;
-            text-align: center; padding: 4rem 1rem;
-            color: var(--text-muted);
-        }
-        .empty-state .icon { font-size: 4rem; margin-bottom: 1rem; }
+.search-result img{
+    width:42px;
+    height:60px;
+    object-fit:cover;
+    border-radius:6px
+}
 
-        /* ============ MODAL REPRODUCTOR ============ */
-        .modal-overlay {
-            position: fixed; inset: 0; z-index: 100;
-            background: rgba(0,0,0,0.96);
-            display: flex; align-items: center; justify-content: center;
-            opacity: 0; pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
+.search-result div{
+    min-width:0
+}
 
-        .modal-overlay.active { opacity: 1; pointer-events: all; }
+.search-result strong{
+    display:block;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis
+}
 
-        .player-container {
-            width: 92%; max-width: 1100px;
-            position: relative;
-        }
+.search-result span{
+    color:var(--muted);
+    font-size:.75rem
+}
 
-        .player-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 0.8rem;
-        }
+/* =========================
+   PROFILE
+========================= */
 
-        .player-title { font-size: 1.2rem; font-weight: 700; }
+.profile-btn{
+    border:1px solid var(--line);
+    background:var(--surface2);
+    color:#fff;
+    border-radius:999px;
+    padding:8px 12px;
+    font-size:.8rem
+}
 
-        .close-btn {
-            background: rgba(255,255,255,0.1);
-            border: none; color: white;
-            width: 40px; height: 40px;
-            border-radius: 50%; cursor: pointer;
-            font-size: 1.3rem;
-            transition: var(--transition);
-        }
+.profile-btn:hover{
+    border-color:rgba(255,255,255,.2)
+}
 
-        .close-btn:hover { background: var(--accent); transform: rotate(90deg); }
+/* =========================
+   HERO
+========================= */
 
-        .video-frame {
-            aspect-ratio: 16/9;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 25px 80px rgba(229,9,20,0.2);
-        }
+.hero{
+    min-height:72vh;
+    position:relative;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden
+}
 
-        .video-frame iframe { width: 100%; height: 100%; border: none; }
+.hero-bg{
+    position:absolute;
+    inset:0;
+    z-index:-2
+}
 
-        /* ============ FOOTER ============ */
-        footer {
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 2rem 5%;
-            text-align: center;
-            color: var(--text-muted); font-size: 0.85rem;
-        }
+.hero-bg img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    filter:brightness(.42)
+}
 
-        footer a { color: var(--accent); text-decoration: none; }
+.hero-overlay{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            90deg,
+            rgba(7,9,13,.98),
+            rgba(7,9,13,.78) 38%,
+            rgba(7,9,13,.18) 78%
+        ),
+        linear-gradient(
+            0deg,
+            var(--bg),
+            transparent 35%
+        )
+}
 
-        /* ============ RESPONSIVE ============ */
-        @media (max-width: 768px) {
-            header { flex-direction: column; align-items: stretch; }
-            .search-box { max-width: 100%; }
-            .catalog { grid-template-columns: repeat(auto-fill, minmax(135px, 1fr)); gap: 1rem; }
-            .controls { flex-direction: column; align-items: flex-start; }
-        }
-    </style>
+.hero-content{
+    width:min(650px,92%);
+    margin:0 clamp(18px,6vw,90px) 80px
+}
+
+.eyebrow{
+    display:inline-flex;
+    background:var(--accent);
+    padding:6px 10px;
+    border-radius:6px;
+    text-transform:uppercase;
+    font-size:.68rem;
+    font-weight:900;
+    letter-spacing:.7px;
+    margin-bottom:14px
+}
+
+.hero h1{
+    font-size:clamp(2.1rem,6vw,4.5rem);
+    line-height:1.02;
+    letter-spacing:-2px;
+    margin-bottom:14px
+}
+
+.meta{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    color:var(--muted);
+    margin-bottom:14px
+}
+
+.meta .year{
+    color:#fff;
+    font-weight:700
+}
+
+.hero p{
+    color:#c4cad3;
+    line-height:1.65;
+    max-width:560px;
+    margin-bottom:22px
+}
+
+.hero-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap
+}
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn{
+    border:0;
+    border-radius:8px;
+    padding:11px 18px;
+    font-weight:800;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    transition:.25s
+}
+
+.btn-primary{
+    background:#fff;
+    color:#080a0e
+}
+
+.btn-primary:hover{
+    transform:translateY(-2px)
+}
+
+.btn-secondary{
+    background:rgba(255,255,255,.12);
+    color:#fff
+}
+
+.btn-secondary:hover{
+    background:rgba(255,255,255,.2)
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.main{
+    padding:0 clamp(18px,4vw,60px) 40px;
+    margin-top:-20px;
+    position:relative
+}
+
+.toolbar{
+    display:flex;
+    gap:10px;
+    align-items:center;
+    overflow:auto;
+    padding:10px 0 20px;
+    scrollbar-width:none
+}
+
+.toolbar::-webkit-scrollbar{
+    display:none
+}
+
+.chip{
+    flex:0 0 auto;
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:var(--muted);
+    padding:9px 14px;
+    border-radius:999px;
+    font-size:.8rem;
+    transition:.25s
+}
+
+.chip:hover,
+.chip.active{
+    background:#fff;
+    color:#080a0e;
+    border-color:#fff
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section{
+    margin:20px 0 34px
+}
+
+.section-head{
+    display:flex;
+    align-items:end;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:13px
+}
+
+.section-head h2{
+    font-size:1.35rem
+}
+
+.section-head span{
+    color:var(--muted);
+    font-size:.78rem
+}
+
+/* =========================
+   MOVIE GRID
+========================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(165px,1fr));
+    gap:15px
+}
+
+.card{
+    position:relative;
+    min-width:0;
+    aspect-ratio:2/3;
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--surface);
+    cursor:pointer;
+    box-shadow:0 7px 20px rgba(0,0,0,.2);
+    transition:
+        transform .25s,
+        box-shadow .25s
+}
+
+.card:hover,
+.card:focus-visible{
+    transform:translateY(-6px) scale(1.025);
+    box-shadow:0 18px 42px rgba(0,0,0,.55);
+    outline:none;
+    z-index:4
+}
+
+.card img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:transform .35s
+}
+
+.card:hover img{
+    transform:scale(1.06)
+}
+
+.card-gradient{
+    position:absolute;
+    inset:0;
+    background:
+        linear-gradient(
+            0deg,
+            rgba(0,0,0,.95),
+            rgba(0,0,0,.12) 62%,
+            transparent
+        )
+}
+
+.card-info{
+    position:absolute;
+    left:12px;
+    right:12px;
+    bottom:11px
+}
+
+.card-title{
+    font-size:.86rem;
+    font-weight:850;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis
+}
+
+.card-meta{
+    display:flex;
+    gap:7px;
+    color:#c0c5ce;
+    font-size:.68rem;
+    margin-top:4px
+}
+
+.card-play{
+    position:absolute;
+    left:50%;
+    top:45%;
+    transform:translate(-50%,-50%) scale(.8);
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    border:0;
+    background:var(--accent);
+    color:#fff;
+    font-size:1rem;
+    opacity:0;
+    transition:.25s;
+    box-shadow:0 10px 30px rgba(229,9,20,.35)
+}
+
+.card:hover .card-play,
+.card:focus-visible .card-play{
+    opacity:1;
+    transform:translate(-50%,-50%) scale(1)
+}
+
+.card-fav{
+    position:absolute;
+    right:9px;
+    top:9px;
+    width:31px;
+    height:31px;
+    border:0;
+    border-radius:50%;
+    background:rgba(0,0,0,.68);
+    color:#fff;
+    z-index:3
+}
+
+.card-fav.active{
+    background:var(--accent)
+}
+
+.badge{
+    position:absolute;
+    left:9px;
+    top:9px;
+    background:var(--accent);
+    padding:5px 7px;
+    border-radius:5px;
+    font-size:.58rem;
+    font-weight:900;
+    z-index:3
+}
+
+.badge.off{
+    background:#343a45
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty{
+    padding:55px 20px;
+    text-align:center;
+    color:var(--muted);
+    border:1px dashed var(--line);
+    border-radius:12px
+}
+
+.empty strong{
+    display:block;
+    color:#fff;
+    font-size:1.05rem;
+    margin-bottom:5px
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    border-top:1px solid var(--line);
+    padding:34px 20px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.76rem
+}
+
+.footer-links{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
+    margin-bottom:12px
+}
+
+.footer-links strong{
+    color:#fff
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    background:rgba(0,0,0,.94);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:16px;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s
+}
+
+.modal.open{
+    opacity:1;
+    pointer-events:auto
+}
+
+/* =========================
+   PLAYER
+========================= */
+
+.player{
+    width:min(1120px,100%);
+    max-height:96vh;
+    overflow:auto
+}
+
+.player-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:10px
+}
+
+.player-title{
+    font-weight:900;
+    font-size:1rem
+}
+
+.player-title span{
+    color:var(--muted);
+    font-weight:500;
+    margin-left:8px
+}
+
+.close{
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    background:var(--surface2);
+    color:#fff;
+    font-size:1.2rem
+}
+
+.close:hover{
+    background:var(--accent)
+}
+
+.video{
+    aspect-ratio:16/9;
+    background:#000;
+    border-radius:12px;
+    overflow:hidden
+}
+
+.video iframe{
+    width:100%;
+    height:100%;
+    border:0
+}
+
+.no-video{
+    height:100%;
+    min-height:300px;
+    display:grid;
+    place-items:center;
+    text-align:center;
+    padding:30px;
+    color:var(--muted)
+}
+
+.no-video div{
+    max-width:430px
+}
+
+.no-video b{
+    display:block;
+    color:#fff;
+    font-size:1.15rem;
+    margin:8px 0
+}
+
+.player-foot{
+    display:flex;
+    justify-content:space-between;
+    gap:10px;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-top:10px
+}
+
+.player-foot small{
+    color:var(--muted)
+}
+
+.player-foot button{
+    border:1px solid var(--line);
+    background:var(--surface2);
+    color:#fff;
+    border-radius:8px;
+    padding:9px 13px
+}
+
+.player-foot button:hover{
+    border-color:var(--accent)
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-modal .panel{
+    width:min(440px,100%);
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:24px;
+    box-shadow:0 18px 55px rgba(0,0,0,.5)
+}
+
+.profile-modal h2{
+    margin-bottom:8px
+}
+
+.profile-modal p{
+    color:var(--muted);
+    font-size:.85rem;
+    line-height:1.5;
+    margin-bottom:18px
+}
+
+.profile-input{
+    width:100%;
+    background:#080b10;
+    border:1px solid var(--line);
+    color:#fff;
+    padding:12px;
+    border-radius:8px;
+    outline:0
+}
+
+.profile-input:focus{
+    border-color:var(--accent)
+}
+
+.profile-actions{
+    display:flex;
+    justify-content:flex-end;
+    gap:8px;
+    margin-top:14px
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    left:50%;
+    bottom:25px;
+    transform:translate(-50%,20px);
+    background:#fff;
+    color:#080a0e;
+    padding:10px 15px;
+    border-radius:9px;
+    font-size:.8rem;
+    font-weight:800;
+    opacity:0;
+    pointer-events:none;
+    transition:.25s;
+    z-index:2000
+}
+
+.toast.show{
+    opacity:1;
+    transform:translate(-50%,0)
+}
+
+/* =========================
+   DETAIL MODAL
+========================= */
+
+.detail-modal{
+    align-items:center
+}
+
+.detail-panel{
+    width:min(1050px,100%);
+    max-height:94vh;
+    overflow:auto;
+    background:#0d1118;
+    border:1px solid var(--line);
+    border-radius:18px;
+    box-shadow:0 25px 80px rgba(0,0,0,.65)
+}
+
+.detail-grid{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:28px;
+    padding:28px
+}
+
+.detail-poster{
+    width:100%;
+    aspect-ratio:2/3;
+    object-fit:cover;
+    border-radius:12px;
+    background:#171c26
+}
+
+.detail-body{
+    padding:4px 0
+}
+
+.detail-kicker{
+    display:inline-block;
+    color:#fff;
+    background:var(--accent);
+    font-size:.68rem;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.7px;
+    padding:6px 9px;
+    border-radius:5px;
+    margin-bottom:12px
+}
+
+.detail-body h2{
+    font-size:clamp(1.7rem,4vw,3rem);
+    line-height:1.05;
+    margin-bottom:12px
+}
+
+.detail-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin:0 0 20px
+}
+
+.detail-pill{
+    border:1px solid var(--line);
+    background:var(--surface);
+    color:#dce1e9;
+    padding:7px 10px;
+    border-radius:999px;
+    font-size:.78rem
+}
+
+.detail-section{
+    margin:20px 0
+}
+
+.detail-section h3{
+    font-size:.9rem;
+    margin-bottom:8px
+}
+
+.detail-section p{
+    color:#b8c0cc;
+    line-height:1.7;
+    font-size:.92rem
+}
+
+.rating{
+    font-size:1.05rem;
+    font-weight:900
+}
+
+.detail-actions{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+    margin-top:22px
+}
+
+.rights-note{
+    font-size:.72rem!important;
+    color:#8f99a8!important;
+    border-top:1px solid var(--line);
+    padding-top:14px
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:850px){
+
+    .nav{
+        display:none
+    }
+
+    .header{
+        gap:12px
+    }
+
+    .hero{
+        min-height:65vh
+    }
+
+    .hero-content{
+        margin-bottom:55px
+    }
+
+    .grid{
+        grid-template-columns:repeat(auto-fill,minmax(135px,1fr));
+        gap:10px
+    }
+}
+
+@media(max-width:700px){
+
+    .detail-grid{
+        grid-template-columns:145px 1fr;
+        gap:18px;
+        padding:18px
+    }
+
+    .detail-body h2{
+        font-size:1.55rem
+    }
+
+    .detail-section p{
+        font-size:.84rem
+    }
+}
+
+@media(max-width:520px){
+
+    :root{
+        --header:62px
+    }
+
+    .logo{
+        font-size:1.35rem
+    }
+
+    .profile-btn{
+        padding:7px 9px
+    }
+
+    .hero{
+        min-height:59vh
+    }
+
+    .hero h1{
+        letter-spacing:-1px
+    }
+
+    .hero-content{
+        margin-bottom:38px
+    }
+
+    .main{
+        padding-left:12px;
+        padding-right:12px
+    }
+
+    .grid{
+        grid-template-columns:repeat(3,minmax(0,1fr));
+        gap:7px
+    }
+
+    .card{
+        border-radius:8px
+    }
+
+    .card-info{
+        left:8px;
+        right:8px;
+        bottom:8px
+    }
+
+    .card-title{
+        font-size:.7rem
+    }
+
+    .card-meta{
+        font-size:.58rem
+    }
+
+    .card-fav{
+        width:27px;
+        height:27px;
+        right:6px;
+        top:6px
+    }
+
+    .badge{
+        left:6px;
+        top:6px;
+        font-size:.5rem;
+        padding:4px
+    }
+
+    .card-play{
+        width:40px;
+        height:40px
+    }
+
+    .hero p{
+        font-size:.85rem
+    }
+}
+
+@media(max-width:480px){
+
+    .detail-grid{
+        grid-template-columns:1fr
+    }
+
+    .detail-poster{
+        width:170px;
+        max-width:55vw;
+        margin:auto
+    }
+
+    .detail-body{
+        text-align:left
+    }
+}
+</style>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7aacd14573c041a5bb55ea894657e30d"}'></script><!-- End Cloudflare Web Analytics -->
+
 </head>
+
 <body>
 
-    <!-- ============ HEADER ============ -->
-    <header>
-        <a href="#" class="logo" onclick="resetFilters(); return false;">CINE<span>LIBRE</span></a>
-        <div class="search-box">
-            <input type="search" id="searchInput" placeholder="Buscar películas..." aria-label="Buscar películas" autocomplete="off">
+<header class="header">
+
+    <a href="#" class="logo" id="homeLogo" aria-label="CineLibre, inicio">
+        CINE<b>LIBRE</b> 🇩🇴
+    </a>
+
+    <nav class="nav" aria-label="Navegación principal">
+        <button class="active" data-filter="all">Inicio</button>
+        <button data-filter="fav">❤️ Mi lista</button>
+        <button data-filter="comedy">Comedia</button>
+        <button data-filter="drama">Drama</button>
+        <button data-filter="horror">Terror</button>
+        <button data-filter="action">Acción</button>
+    </nav>
+
+    <div class="header-spacer"></div>
+
+    <div class="search-wrap">
+
+        <button
+            class="search-toggle"
+            id="searchToggle"
+            aria-label="Abrir buscador"
+            aria-expanded="false">
+            🔍
+        </button>
+
+        <div class="search-box" id="searchBox">
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Buscar por título, año o categoría..."
+                autocomplete="off"
+                aria-label="Buscar películas">
+
+            <div
+                class="search-results"
+                id="searchResults">
+            </div>
+
         </div>
-    </header>
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-        <h1>Cine clásico <em>gratis</em> y 100% legal 🍿</h1>
-        <p>Descubre obras maestras del dominio público y Creative Commons. Sin registros, sin pagos, sin anuncios.</p>
-    </section>
-
-    <!-- ============ CONTROLES ============ -->
-    <div class="controls">
-        <nav class="filters" id="filters" aria-label="Filtros de categoría">
-            <button class="chip active" data-filter="all">🎬 Todos</button>
-            <button class="chip" data-filter="scifi">🚀 Sci-Fi</button>
-            <button class="chip" data-filter="horror">👻 Terror</button>
-            <button class="chip" data-filter="drama">🎭 Drama</button>
-            <button class="chip" data-filter="comedy">😂 Comedia</button>
-            <button class="chip" data-filter="animation">🎨 Animación</button>
-            <button class="chip" data-filter="fav">❤️ Mi Lista</button>
-        </nav>
-        <select class="sort-select" id="sortSelect" aria-label="Ordenar películas">
-            <option value="default">Ordenar por...</option>
-            <option value="year-desc">Año (más reciente)</option>
-            <option value="year-asc">Año (más antigua)</option>
-            <option value="title">Título (A-Z)</option>
-        </select>
     </div>
 
-    <div class="results-info" id="resultsInfo"></div>
+    <button class="profile-btn" id="profileButton">
+        Perfil
+    </button>
 
-    <!-- ============ CATÁLOGO ============ -->
-    <main class="catalog" id="catalog" aria-live="polite"></main>
+</header>
 
-    <!-- ============ FOOTER ============ -->
-    <footer>
-        <p>🎬 <strong>CineLibre</strong> — Todo el contenido pertenece al dominio público o tiene licencia Creative Commons.</p>
-        <p>Hecho con ❤️ · <a href="https://github.com" target="_blank" rel="noopener">GitHub</a></p>
-    </footer>
+<section class="hero" aria-label="Película destacada">
 
-    <!-- ============ MODAL REPRODUCTOR ============ -->
-    <div class="modal-overlay" id="modal" role="dialog" aria-modal="true" aria-label="Reproductor de video">
-        <div class="player-container">
-            <div class="player-header">
-                <h2 class="player-title" id="playerTitle"></h2>
-                <button class="close-btn" id="closeBtn" aria-label="Cerrar reproductor">✕</button>
-            </div>
-            <div class="video-frame">
-                <iframe id="videoPlayer" src="" allowfullscreen allow="autoplay; encrypted-media; picture-in-picture"></iframe>
-            </div>
-        </div>
+    <div class="hero-bg">
+
+        <img
+            id="heroImage"
+            alt=""
+            fetchpriority="high">
+
+        <div class="hero-overlay"></div>
+
     </div>
+
+    <div
+        class="hero-content"
+        id="heroContent">
+    </div>
+
+</section>
+
+<main class="main">
+
+    <div
+        class="toolbar"
+        id="categoryToolbar"
+        aria-label="Filtros de películas">
+    </div>
+
+    <div id="content"></div>
+
+</main>
+
+<footer>
+
+    <div class="footer-links">
+
+        <strong>🎬 CineLibre</strong>
+
+        <span>Cine dominicano</span>
+
+        <span>Descubrimiento cultural</span>
+
+    </div>
+
+    <p>
+        CineLibre — una plataforma pensada para descubrir
+        el cine dominicano y caribeño.
+    </p>
+
+</footer>
+
+<div
+    class="modal detail-modal"
+    id="detailModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="detailTitle">
+
+    <div class="detail-panel">
+
+        <div
+            class="player-head"
+            style="padding:16px 18px 0">
+
+            <span></span>
+
+            <button
+                class="close"
+                id="closeDetail"
+                aria-label="Cerrar información">
+                ✕
+            </button>
+
+        </div>
+
+        <div class="detail-grid">
+
+            <img
+                class="detail-poster"
+                id="detailPoster"
+                alt="">
+
+            <div class="detail-body">
+
+                <div
+                    class="detail-kicker"
+                    id="detailKicker">
+                    CineLibre
+                </div>
+
+                <h2 id="detailTitle">
+                    Película
+                </h2>
+
+                <div class="detail-meta">
+
+                    <span
+                        class="detail-pill"
+                        id="detailYear">
+                    </span>
+
+                    <span
+                        class="detail-pill"
+                        id="detailGenre">
+                    </span>
+
+                    <span
+                        class="detail-pill"
+                        id="detailCountry">
+                    </span>
+
+                    <span
+                        class="detail-pill"
+                        id="detailRating">
+                    </span>
+
+                </div>
+
+                <div class="detail-section">
+
+                    <h3>📝 Sinopsis</h3>
+
+                    <p id="detailSynopsis"></p>
+
+                </div>
+
+                <div class="detail-section">
+
+                    <h3>▶️ Reproducción</h3>
+
+                    <p id="detailRights"></p>
+
+                </div>
+
+                <div class="detail-actions">
+
+                    <button
+                        class="btn btn-primary"
+                        id="detailPlay">
+                        ▶ Ver película
+                    </button>
+
+                    <button
+                        class="btn btn-secondary"
+                        id="detailFav">
+                        ♡ Mi lista
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    class="modal"
+    id="playerModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="playerTitle">
+
+    <div class="player">
+
+        <div class="player-head">
+
+            <div
+                class="player-title"
+                id="playerTitle">
+
+                Película
+
+                <span id="playerMeta"></span>
+
+            </div>
+
+            <button
+                class="close"
+                id="closePlayer"
+                aria-label="Cerrar reproductor">
+                ✕
+            </button>
+
+        </div>
+
+        <div
+            class="video"
+            id="videoBox">
+        </div>
+
+        <div class="player-foot">
+
+            <small id="playerStatus"></small>
+
+            <div>
+
+                <button
+                    id="youtubeButton"
+                    style="display:none">
+                    ▶ Abrir en YouTube
+                </button>
+
+                <button id="closePlayer2">
+                    Cerrar
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    class="modal profile-modal"
+    id="profileModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="profileTitle">
+
+    <div class="panel">
+
+        <h2 id="profileTitle">
+            Tu perfil
+        </h2>
+
+        <p>
+            Este perfil se guarda localmente en este dispositivo.
+            Es la primera base para el futuro sistema real de cuentas
+            de CineLibre.
+        </p>
+
+        <input
+            class="profile-input"
+            id="profileName"
+            maxlength="30"
+            placeholder="¿Cómo quieres que te llamemos?">
+
+        <div class="profile-actions">
+
+            <button
+                class="btn btn-secondary"
+                id="cancelProfile">
+                Cancelar
+            </button>
+
+            <button
+                class="btn btn-primary"
+                id="saveProfile">
+                Guardar
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    class="toast"
+    id="toast">
+</div>
+
+<script src="peliculas.js"></script>
 
 <script>
-    // ================================================================
-    // BASE DE DATOS DE PELÍCULAS (Dominio Público / Creative Commons)
-    // ⚠️ IMPORTANTE: Verifica que cada videoId corresponda a una
-    // subida legal. Puedes reemplazarlos con cualquier video de YouTube.
-    // ================================================================
-    const movies = [
-        { id: 1,  title: "Night of the Living Dead", year: 1968, category: "horror",    featured: true,  poster: "https://image.tmdb.org/t/p/w500/hZnnUq0mrUQInGxsMjRFIhEcxY.jpg", videoId: "B7ouVlTOrOo" },
-        { id: 2,  title: "Nosferatu",                year: 1922, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/A8DqaYwNfbvkRcJtflnJWjcOTzj.jpg", videoId: "fkRKTZfzXUk" },
-        { id: 3,  title: "Metropolis",               year: 1927, category: "scifi",     featured: true,  poster: "https://image.tmdb.org/t/p/w500/hUK9rewffKGqtXynH5SW3v9hzcu.jpg", videoId: "7ma8BzfCqdo" },
-        { id: 4,  title: "The General",              year: 1926, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/k4HAy7SNaKUdKMlPjHEXmLRrZl.jpg", videoId: "vMfFsfvKcHc" },
-        { id: 5,  title: "Charade",                  year: 1963, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/x5E7zXMtOsGgkRcJNjKqLhBwH.jpg", videoId: "W2yWCMn8vRs" },
-        { id: 6,  title: "His Girl Friday",          year: 1940, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/uWJyt3e0rdCUcZSbWnAeFoJqjQc.jpg", videoId: "wDwLJBERh0A" },
-        { id: 7,  title: "Plan 9 from Outer Space",  year: 1959, category: "scifi",     featured: false, poster: "https://image.tmdb.org/t/p/w500/6yogADyBYPMYvP3MxLCqfJZwXh.jpg", videoId: "3pNmf0bgLJk" },
-        { id: 8,  title: "The Kid",                  year: 1921, category: "comedy",    featured: false, poster: "https://image.tmdb.org/t/p/w500/drgMcNxILLMfAmQP1cBZr6MzT9k.jpg", videoId: "Qf5T6wZJqK8" },
-        { id: 9,  title: "A Trip to the Moon",       year: 1902, category: "scifi",     featured: false, poster: "https://image.tmdb.org/t/p/w500/v2SRgioPZfMkfWcBtJUMeFmJDns.jpg", videoId: "_S7J9uJvGHc" },
-        { id: 10, title: "Detour",                   year: 1945, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/wG0lQjUuJZfOQm7ZjMfLqJkqLbA.jpg", videoId: "cY9dFJjzW9Q" },
-        { id: 11, title: "The Phantom of the Opera", year: 1925, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/5XPPVv4IhwY6A6L0XwLWJFmYBfC.jpg", videoId: "QhS6uJkRq6M" },
-        { id: 12, title: "House on Haunted Hill",    year: 1959, category: "horror",    featured: false, poster: "https://image.tmdb.org/t/p/w500/qJpIcCmRk0cDqPnPzLqSmvEgLqp.jpg", videoId: "6Jc8sLJxVVE" },
-        { id: 13, title: "Sita Sings the Blues",     year: 2008, category: "animation", featured: false, poster: "https://image.tmdb.org/t/p/w500/nV8ZwWp4b6bnMxJyZqRCvCAqhB.jpg", videoId: "LsoLErDog_U" },
-        { id: 14, title: "Popeye el Marino",         year: 1938, category: "animation", featured: false, poster: "https://image.tmdb.org/t/p/w500/qbGyX0mFqLmCcJyKQhZwT3JqZpD.jpg", videoId: "A6fJkN3uB9E" },
-        { id: 15, title: "D.O.A.",                   year: 1950, category: "drama",     featured: false, poster: "https://image.tmdb.org/t/p/w500/6vJZkqPMvLqLYbQ6uMfWYxPjHdL.jpg", videoId: "XsJqY3sKfJE" }
+'use strict';
+
+const movies =
+    Array.isArray(window.peliculas)
+        ? window.peliculas
+        : [];
+
+const categoryMap = {
+    comedy: 'Comedia',
+    drama: 'Drama',
+    horror: 'Terror',
+    action: 'Acción',
+    animation: 'Animación',
+    scifi: 'Ciencia ficción',
+    war: 'Guerra',
+    documentary: 'Documental'
+};
+
+const categoryOrder = [
+    'comedy',
+    'drama',
+    'horror',
+    'action',
+    'animation',
+    'scifi',
+    'war',
+    'documentary'
+];
+
+const state = {
+    filter: 'all',
+    search: '',
+    favorites: loadJSON('cinelibre_favs', []),
+    recent: loadJSON('cinelibre_recent', []),
+    profile:
+        localStorage.getItem('cinelibre_profile')
+        || 'Invitado',
+    current: null
+};
+
+const $ = id => document.getElementById(id);
+
+const content = $('content');
+const heroImage = $('heroImage');
+const heroContent = $('heroContent');
+const toolbar = $('categoryToolbar');
+const modal = $('playerModal');
+const videoBox = $('videoBox');
+const searchBox = $('searchBox');
+const searchInput = $('searchInput');
+const searchResults = $('searchResults');
+const toast = $('toast');
+
+
+/* =========================
+   UTILIDADES
+========================= */
+
+function loadJSON(key, fallback){
+
+    try{
+
+        const value =
+            JSON.parse(
+                localStorage.getItem(key)
+            );
+
+        return Array.isArray(value)
+            ? value
+            : fallback;
+
+    }catch{
+
+        return fallback;
+
+    }
+
+}
+
+
+function save(key, value){
+
+    localStorage.setItem(
+        key,
+        JSON.stringify(value)
+    );
+
+}
+
+
+function label(category){
+
+    return categoryMap[category]
+        || category
+        || 'Sin categoría';
+
+}
+
+
+function getMovie(id){
+
+    return movies.find(
+        movie =>
+            Number(movie.id) === Number(id)
+    );
+
+}
+
+
+/* ============================================================
+   SOPORTE DE VIDEOS
+============================================================ */
+
+/*
+    Devuelve true si la película tiene:
+
+    1. videoId       -> YouTube
+    2. videoUrl      -> OK.ru u otra fuente
+    3. videoEmbedUrl -> URL directa de iframe
+*/
+
+function hasVideo(movie){
+
+    if(!movie)
+        return false;
+
+    const youtube =
+        typeof movie.videoId === 'string' &&
+        movie.videoId.trim();
+
+    const videoUrl =
+        typeof movie.videoUrl === 'string' &&
+        movie.videoUrl.trim();
+
+    const embedUrl =
+        typeof movie.videoEmbedUrl === 'string' &&
+        movie.videoEmbedUrl.trim();
+
+    return !!(
+        youtube ||
+        videoUrl ||
+        embedUrl
+    );
+
+}
+
+
+/* =========================
+   YOUTUBE
+========================= */
+
+function isYouTube(movie){
+
+    return !!(
+        movie &&
+        typeof movie.videoId === 'string' &&
+        movie.videoId.trim()
+    );
+
+}
+
+
+/* =========================
+   OK.RU
+========================= */
+
+function isOKRu(movie){
+
+    if(!movie)
+        return false;
+
+    const url =
+        typeof movie.videoUrl === 'string'
+            ? movie.videoUrl.trim()
+            : '';
+
+    const embed =
+        typeof movie.videoEmbedUrl === 'string'
+            ? movie.videoEmbedUrl.trim()
+            : '';
+
+    return !!(
+        /(?:^|\/\/)(?:www\.)?ok\.ru\//i.test(url)
+        ||
+        /(?:^|\/\/)(?:www\.)?ok\.ru\//i.test(embed)
+    );
+
+}
+
+
+/*
+    Si peliculas.js ya contiene directamente
+    una URL videoembed, la utilizamos.
+
+    Ejemplo:
+
+    videoEmbedUrl:
+    "https://ok.ru/videoembed/XXXXXXXX"
+*/
+
+function getOKRuEmbedUrl(movie){
+
+    if(!movie)
+        return null;
+
+
+    /*
+        PRIMERA OPCIÓN:
+        URL directa proporcionada por el catálogo.
+    */
+
+    if(
+        typeof movie.videoEmbedUrl === 'string' &&
+        movie.videoEmbedUrl.trim()
+    ){
+
+        return movie.videoEmbedUrl.trim();
+
+    }
+
+
+    /*
+        SEGUNDA OPCIÓN:
+        Algunas estructuras pueden utilizar
+        videoUrl directamente con /videoembed/.
+    */
+
+    if(
+        typeof movie.videoUrl === 'string' &&
+        /ok\.ru\/videoembed\//i.test(
+            movie.videoUrl
+        )
+    ){
+
+        return movie.videoUrl.trim();
+
+    }
+
+
+    /*
+        No inventamos el ID de videoembed.
+
+        OK.ru puede utilizar un identificador
+        de inserción diferente al identificador
+        visible en /video/.
+    */
+
+    return null;
+
+}
+
+
+/* =========================
+   ESCAPAR HTML
+========================= */
+
+function esc(value){
+
+    return String(value ?? '').replace(
+        /[&<>"']/g,
+        character => ({
+            '&':'&amp;',
+            '<':'&lt;',
+            '>':'&gt;',
+            '"':'&quot;',
+            "'":'&#039;'
+        }[character])
+    );
+
+}
+
+
+function notify(message){
+
+    toast.textContent = message;
+
+    toast.classList.add('show');
+
+    clearTimeout(notify.timer);
+
+    notify.timer =
+        setTimeout(
+            () => toast.classList.remove('show'),
+            2200
+        );
+
+}
+
+
+function getFeatured(){
+
+    return (
+        movies.find(movie => movie.featured === true)
+        || movies.find(hasVideo)
+        || movies[0]
+    );
+
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+function renderHero(){
+
+    const movie = getFeatured();
+
+    if(!movie){
+
+        heroImage.removeAttribute('src');
+
+        heroContent.innerHTML = `
+            <div class="eyebrow">
+                🎬 CineLibre
+            </div>
+
+            <h1>
+                Cine dominicano
+            </h1>
+
+            <p>
+                Agrega películas en
+                <strong>peliculas.js</strong>
+                para comenzar a mostrar el catálogo.
+            </p>
+        `;
+
+        return;
+    }
+
+    heroImage.src = movie.poster || '';
+
+    heroImage.alt =
+        `Fondo de ${movie.title}`;
+
+    heroContent.innerHTML = `
+
+        <div class="eyebrow">
+            ${
+                movie.featured
+                    ? '⭐ Destacada'
+                    : '🎬 CineLibre'
+            }
+        </div>
+
+        <h1>
+            ${esc(movie.title)}
+        </h1>
+
+        <div class="meta">
+
+            <span class="year">
+                ${esc(movie.year)}
+            </span>
+
+            <span>
+                ${esc(label(movie.category))}
+            </span>
+
+        </div>
+
+        <p>
+            Descubre una película dominicana
+            en CineLibre. Explora el catálogo,
+            guarda tus favoritas y vuelve
+            cuando quieras.
+        </p>
+
+        <div class="hero-actions">
+
+            <button
+                class="btn btn-primary"
+                data-details="${movie.id}">
+                ▶ Ver película
+            </button>
+
+            <button
+                class="btn btn-secondary"
+                data-add="${movie.id}">
+                ${
+                    state.favorites.includes(movie.id)
+                        ? '✓ En mi lista'
+                        : '+ Mi lista'
+                }
+            </button>
+
+        </div>
+    `;
+
+}
+
+
+/* =========================
+   FILTROS
+========================= */
+
+function renderToolbar(){
+
+    const items = [
+        ['all', 'Todas'],
+        ['fav', '❤️ Mi lista'],
+        ...categoryOrder.map(
+            category => [
+                category,
+                label(category)
+            ]
+        )
     ];
 
-    // ================================================================
-    // ESTADO GLOBAL
-    // ================================================================
-    let state = {
-        filter: 'all',
-        search: '',
-        sort: 'default',
-        favorites: JSON.parse(localStorage.getItem('cinelibre_favs')) || []
+    toolbar.innerHTML =
+        items
+            .map(
+                ([id, title]) => `
+                    <button
+                        class="chip ${
+                            state.filter === id
+                                ? 'active'
+                                : ''
+                        }"
+                        data-filter="${id}">
+                        ${esc(title)}
+                    </button>
+                `
+            )
+            .join('');
+
+}
+
+
+/* =========================
+   FILTRADO
+========================= */
+
+function filtered(){
+
+    let list = [...movies];
+
+    if(state.filter === 'fav'){
+
+        list =
+            list.filter(
+                movie =>
+                    state.favorites.includes(movie.id)
+            );
+
+    }else if(state.filter !== 'all'){
+
+        list =
+            list.filter(
+                movie =>
+                    movie.category === state.filter
+            );
+
+    }
+
+    const query =
+        state.search
+            .trim()
+            .toLowerCase();
+
+    if(query){
+
+        list =
+            list.filter(movie =>
+
+                String(movie.title)
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                String(movie.year)
+                    .includes(query)
+
+                ||
+
+                label(movie.category)
+                    .toLowerCase()
+                    .includes(query)
+
+                ||
+
+                String(movie.category)
+                    .toLowerCase()
+                    .includes(query)
+
+            );
+
+    }
+
+    return list;
+
+}
+
+
+/* =========================
+   TARJETA
+========================= */
+
+function card(movie){
+
+    const favorite =
+        state.favorites.includes(movie.id);
+
+    const playable =
+        hasVideo(movie);
+
+    return `
+
+        <article
+            class="card"
+            tabindex="0"
+            role="button"
+            aria-label="Ver información de ${esc(movie.title)}"
+            data-details="${movie.id}">
+
+            ${
+                movie.featured
+                    ? `
+                        <span class="badge">
+                            ⭐ Destacada
+                        </span>
+                    `
+                    : ''
+            }
+
+            ${
+                !playable
+                    ? `
+                        <span class="badge off">
+                            Sin video
+                        </span>
+                    `
+                    : ''
+            }
+
+            <button
+                class="card-fav ${
+                    favorite
+                        ? 'active'
+                        : ''
+                }"
+                data-fav="${movie.id}"
+                aria-label="${
+                    favorite
+                        ? 'Quitar de Mi lista'
+                        : 'Agregar a Mi lista'
+                }">
+
+                ${
+                    favorite
+                        ? '♥'
+                        : '♡'
+                }
+
+            </button>
+
+            <img
+                src="${esc(movie.poster || '')}"
+                alt="Póster de ${esc(movie.title)}"
+                loading="lazy"
+                onerror="
+                    this.onerror=null;
+                    this.style.opacity='.35'
+                ">
+
+            <div class="card-gradient"></div>
+
+            <button
+                class="card-play"
+                tabindex="-1"
+                aria-hidden="true">
+                ▶
+            </button>
+
+            <div class="card-info">
+
+                <div class="card-title">
+                    ${esc(movie.title)}
+                </div>
+
+                <div class="card-meta">
+
+                    <span>
+                        ${esc(movie.year)}
+                    </span>
+
+                    <span>•</span>
+
+                    <span>
+                        ${esc(
+                            movie.genre
+                            || label(movie.category)
+                        )}
+                    </span>
+
+                </div>
+
+            </div>
+
+        </article>
+    `;
+
+}
+
+
+/* =========================
+   CONTENIDO
+========================= */
+
+function renderContent(){
+
+    const list = filtered();
+
+    if(!list.length){
+
+        content.innerHTML = `
+
+            <section class="section">
+
+                <div class="empty">
+
+                    <strong>
+                        ${
+                            state.filter === 'fav'
+                                ? 'Tu lista está vacía'
+                                : 'No encontramos películas con esa búsqueda.'
+                        }
+                    </strong>
+
+                    <span>
+                        ${
+                            movies.length
+                                ? 'Prueba otra búsqueda o selecciona otra categoría.'
+                                : 'Agrega películas en peliculas.js.'
+                        }
+                    </span>
+
+                </div>
+
+            </section>
+        `;
+
+        return;
+    }
+
+
+    if(
+        state.search
+        ||
+        state.filter !== 'all'
+    ){
+
+        const title =
+            state.filter === 'fav'
+                ? '❤️ Mi lista'
+                : state.filter === 'all'
+                    ? 'Resultados'
+                    : label(state.filter);
+
+        content.innerHTML = `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ${esc(title)}
+                    </h2>
+
+                    <span>
+                        ${list.length}
+                        película${
+                            list.length === 1
+                                ? ''
+                                : 's'
+                        }
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${list.map(card).join('')}
+                </div>
+
+            </section>
+        `;
+
+        return;
+    }
+
+
+    let html = '';
+
+    const recent =
+        state.recent
+            .map(getMovie)
+            .filter(Boolean);
+
+
+    if(recent.length){
+
+        html += `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ▶ Vistas recientes
+                    </h2>
+
+                    <span>
+                        Tu actividad
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${
+                        recent
+                            .slice(0,6)
+                            .map(card)
+                            .join('')
+                    }
+                </div>
+
+            </section>
+        `;
+
+    }
+
+
+    const featured =
+        movies.filter(
+            movie =>
+                movie.featured === true
+        );
+
+
+    if(featured.length){
+
+        html += `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ⭐ Destacadas
+                    </h2>
+
+                    <span>
+                        ${featured.length}
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${featured.map(card).join('')}
+                </div>
+
+            </section>
+        `;
+
+    }
+
+
+    categoryOrder.forEach(category => {
+
+        const categoryMovies =
+            movies.filter(
+                movie =>
+                    movie.category === category
+            );
+
+        if(!categoryMovies.length)
+            return;
+
+        html += `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ${esc(label(category))}
+                    </h2>
+
+                    <span>
+                        ${categoryMovies.length}
+                        películas
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${
+                        categoryMovies
+                            .map(card)
+                            .join('')
+                    }
+                </div>
+
+            </section>
+        `;
+
+    });
+
+
+    const extraCategories =
+        [
+            ...new Set(
+                movies.map(
+                    movie =>
+                        movie.category
+                )
+            )
+        ]
+        .filter(
+            category =>
+                !categoryOrder.includes(category)
+        );
+
+
+    extraCategories.forEach(category => {
+
+        const categoryMovies =
+            movies.filter(
+                movie =>
+                    movie.category === category
+            );
+
+        html += `
+
+            <section class="section">
+
+                <div class="section-head">
+
+                    <h2>
+                        ${esc(label(category))}
+                    </h2>
+
+                    <span>
+                        ${categoryMovies.length}
+                        películas
+                    </span>
+
+                </div>
+
+                <div class="grid">
+                    ${
+                        categoryMovies
+                            .map(card)
+                            .join('')
+                    }
+                </div>
+
+            </section>
+        `;
+
+    });
+
+
+    content.innerHTML = html;
+
+}
+
+
+/* =========================
+   RENDER GENERAL
+========================= */
+
+function renderAll(){
+
+    renderHero();
+    renderToolbar();
+    renderContent();
+
+}
+
+
+/* =========================
+   RECIENTES
+========================= */
+
+function addRecent(id){
+
+    state.recent = [
+        id,
+        ...state.recent.filter(
+            movieId =>
+                Number(movieId) !== Number(id)
+        )
+    ].slice(0,12);
+
+    save(
+        'cinelibre_recent',
+        state.recent
+    );
+
+}
+
+
+/* =========================
+   FAVORITOS
+========================= */
+
+function toggleFavorite(id){
+
+    const index =
+        state.favorites.findIndex(
+            movieId =>
+                Number(movieId) === Number(id)
+        );
+
+    if(index >= 0){
+
+        state.favorites.splice(index,1);
+
+        notify(
+            'Quitada de Mi lista'
+        );
+
+    }else{
+
+        state.favorites.push(id);
+
+        notify(
+            'Añadida a Mi lista'
+        );
+
+    }
+
+    save(
+        'cinelibre_favs',
+        state.favorites
+    );
+
+    renderAll();
+
+}
+
+
+/* =========================
+   DETALLES
+========================= */
+
+function openDetails(id){
+
+    const movie = getMovie(id);
+
+    if(!movie)
+        return;
+
+    state.current = movie;
+
+    $('detailPoster').src =
+        movie.poster || '';
+
+    $('detailPoster').alt =
+        `Póster de ${movie.title}`;
+
+    $('detailKicker').textContent =
+        movie.featured
+            ? '⭐ Película destacada'
+            : '🎬 CineLibre';
+
+    $('detailTitle').textContent =
+        movie.title;
+
+    $('detailYear').textContent =
+        `📅 ${movie.year}`;
+
+    $('detailGenre').textContent =
+        `🎭 ${
+            movie.genre
+            || label(movie.category)
+        }`;
+
+    $('detailCountry').textContent =
+        `🇩🇴 ${
+            movie.country
+            || 'República Dominicana'
+        }`;
+
+    $('detailRating').textContent =
+        movie.rating
+            ? `⭐ ${movie.rating}/10`
+            : '⭐ Valoración pendiente';
+
+    $('detailSynopsis').textContent =
+        movie.synopsis
+        || 'Sinopsis pendiente de verificación.';
+
+    $('detailRights').textContent =
+        movie.rightsStatus
+        || 'Información de reproducción pendiente de verificación.';
+
+    const playable =
+        hasVideo(movie);
+
+    $('detailPlay').textContent =
+        playable
+            ? '▶ Ver película'
+            : '▶️ Reproducción no disponible';
+
+    $('detailPlay').disabled =
+        !playable;
+
+    $('detailPlay').style.opacity =
+        playable
+            ? '1'
+            : '.55';
+
+    $('detailFav').textContent =
+        state.favorites.includes(movie.id)
+            ? '♥ En mi lista'
+            : '♡ Mi lista';
+
+
+    $('detailFav').onclick = () => {
+
+        toggleFavorite(
+            Number(movie.id)
+        );
+
+        openDetails(
+            Number(movie.id)
+        );
+
     };
 
-    // Referencias DOM
-    const catalog = document.getElementById('catalog');
-    const modal = document.getElementById('modal');
-    const player = document.getElementById('videoPlayer');
-    const playerTitle = document.getElementById('playerTitle');
-    const closeBtn = document.getElementById('closeBtn');
-    const searchInput = document.getElementById('searchInput');
-    const sortSelect = document.getElementById('sortSelect');
-    const resultsInfo = document.getElementById('resultsInfo');
 
-    // ================================================================
-    // UTILIDADES
-    // ================================================================
-    function debounce(fn, delay = 300) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => fn(...args), delay);
-        };
-    }
+    $('detailPlay').onclick = () => {
 
-    function saveFavorites() {
-        localStorage.setItem('cinelibre_favs', JSON.stringify(state.favorites));
-    }
+        if(hasVideo(movie)){
 
-    function toggleFavorite(id, event) {
-        event.stopPropagation();
-        state.favorites = state.favorites.includes(id)
-            ? state.favorites.filter(f => f !== id)
-            : [...state.favorites, id];
-        saveFavorites();
-        renderMovies();
-    }
+            closeDetails();
 
-    // ================================================================
-    // FILTRADO Y ORDENAMIENTO
-    // ================================================================
-    function getFilteredMovies() {
-        let result = [...movies];
+            openPlayer(
+                Number(movie.id)
+            );
 
-        // Filtro por categoría o favoritos
-        if (state.filter === 'fav') {
-            result = result.filter(m => state.favorites.includes(m.id));
-        } else if (state.filter !== 'all') {
-            result = result.filter(m => m.category === state.filter);
         }
 
-        // Búsqueda por título
-        if (state.search) {
-            const q = state.search.toLowerCase();
-            result = result.filter(m => m.title.toLowerCase().includes(q));
-        }
+    };
 
-        // Ordenamiento
-        switch (state.sort) {
-            case 'year-desc': result.sort((a, b) => b.year - a.year); break;
-            case 'year-asc':  result.sort((a, b) => a.year - b.year); break;
-            case 'title':     result.sort((a, b) => a.title.localeCompare(b.title)); break;
-        }
 
-        return result;
+    $('detailModal')
+        .classList
+        .add('open');
+
+    document.body.style.overflow =
+        'hidden';
+
+    $('closeDetail').focus();
+
+}
+
+
+/* =========================
+   CERRAR DETALLES
+========================= */
+
+function closeDetails(){
+
+    $('detailModal')
+        .classList
+        .remove('open');
+
+    if(
+        !modal.classList.contains('open')
+    ){
+
+        document.body.style.overflow =
+            '';
+
     }
 
-    // ================================================================
-    // RENDERIZADO
-    // ================================================================
-    function renderMovies() {
-        const filtered = getFilteredMovies();
-        catalog.innerHTML = '';
+}
 
-        // Contador de resultados
-        resultsInfo.textContent = `Mostrando ${filtered.length} película${filtered.length !== 1 ? 's' : ''}`;
 
-        // Estado vacío
-        if (filtered.length === 0) {
-            catalog.innerHTML = `
-                <div class="empty-state">
-                    <div class="icon">🎬</div>
-                    <h3>No se encontraron películas</h3>
-                    <p>Prueba con otra búsqueda o categoría.</p>
-                </div>`;
+/* ============================================================
+   REPRODUCTOR MULTIFUENTE
+============================================================ */
+
+function openPlayer(id){
+
+    const movie = getMovie(id);
+
+    if(!movie)
+        return;
+
+    state.current = movie;
+
+    addRecent(movie.id);
+
+
+    $('playerTitle').firstChild.textContent =
+        movie.title;
+
+    $('playerMeta').textContent =
+        `${movie.year} · ${
+            movie.genre
+            || label(movie.category)
+        }`;
+
+
+    const youtubeButton =
+        $('youtubeButton');
+
+
+    /*
+       ============================================================
+       YOUTUBE
+       ============================================================
+    */
+
+    if(isYouTube(movie)){
+
+        const videoId =
+            movie.videoId.trim();
+
+
+        videoBox.innerHTML = `
+
+            <iframe
+                src="https://www.youtube.com/embed/${encodeURIComponent(videoId)}?rel=0&modestbranding=1"
+                title="Reproductor de ${esc(movie.title)}"
+                allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                    fullscreen
+                "
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+
+        `;
+
+
+        youtubeButton.style.display =
+            'inline-block';
+
+
+        youtubeButton.onclick =
+            () => {
+
+                window.open(
+                    `https://www.youtube.com/watch?v=${encodeURIComponent(videoId)}`,
+                    '_blank',
+                    'noopener,noreferrer'
+                );
+
+            };
+
+
+        $('playerStatus').textContent =
+            'Reproduciendo mediante YouTube';
+
+
+    /*
+       ============================================================
+       OK.RU
+       ============================================================
+    */
+
+    }else if(isOKRu(movie)){
+
+        const embedUrl =
+            getOKRuEmbedUrl(movie);
+
+
+        if(!embedUrl){
+
+            videoBox.innerHTML = `
+
+                <div class="no-video">
+
+                    <div>
+
+                        <div style="font-size:3rem">
+                            🎬
+                        </div>
+
+                        <b>
+                            No se pudo abrir el video de OK.ru.
+                        </b>
+
+                        <span>
+                            El enlace de OK.ru existe, pero
+                            esta película necesita la URL
+                            de inserción correspondiente
+                            para reproducirse dentro del
+                            reproductor.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            `;
+
+
+            youtubeButton.style.display =
+                'none';
+
+
+            $('playerStatus').textContent =
+                'Video de OK.ru pendiente de URL de inserción';
+
+
+        }else{
+
+            videoBox.innerHTML = `
+
+                <iframe
+                    src="${esc(embedUrl)}"
+                    title="Reproductor de ${esc(movie.title)}"
+                    allow="
+                        accelerometer;
+                        autoplay;
+                        clipboard-write;
+                        encrypted-media;
+                        gyroscope;
+                        picture-in-picture;
+                        web-share;
+                        fullscreen
+                    "
+                    allowfullscreen
+                    referrerpolicy="strict-origin-when-cross-origin">
+                </iframe>
+
+            `;
+
+
+            youtubeButton.style.display =
+                'none';
+
+
+            youtubeButton.onclick =
+                null;
+
+
+            $('playerStatus').textContent =
+                'Reproduciendo mediante OK.ru';
+
+        }
+
+
+    /*
+       ============================================================
+       OTRA URL DIRECTA DE VIDEO
+       ============================================================
+    */
+
+    }else if(
+        typeof movie.videoUrl === 'string' &&
+        movie.videoUrl.trim()
+    ){
+
+        videoBox.innerHTML = `
+
+            <iframe
+                src="${esc(movie.videoUrl.trim())}"
+                title="Reproductor de ${esc(movie.title)}"
+                allow="
+                    accelerometer;
+                    autoplay;
+                    clipboard-write;
+                    encrypted-media;
+                    gyroscope;
+                    picture-in-picture;
+                    web-share;
+                    fullscreen
+                "
+                allowfullscreen
+                referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+
+        `;
+
+
+        youtubeButton.style.display =
+            'none';
+
+
+        youtubeButton.onclick =
+            null;
+
+
+        $('playerStatus').textContent =
+            'Reproduciendo video';
+
+
+    /*
+       ============================================================
+       SIN VIDEO
+       ============================================================
+    */
+
+    }else{
+
+        videoBox.innerHTML = `
+
+            <div class="no-video">
+
+                <div>
+
+                    <div style="font-size:3rem">
+                        🎬
+                    </div>
+
+                    <b>
+                        Esta película todavía
+                        no tiene un video disponible.
+                    </b>
+
+                    <span>
+                        La película permanece
+                        en el catálogo y podrá
+                        reproducirse cuando se
+                        agregue una fuente legítima
+                        y autorizada.
+                    </span>
+
+                </div>
+
+            </div>
+        `;
+
+
+        youtubeButton.style.display =
+            'none';
+
+        youtubeButton.onclick =
+            null;
+
+        $('playerStatus').textContent =
+            'Video no disponible';
+
+    }
+
+
+    modal.classList.add('open');
+
+    document.body.style.overflow =
+        'hidden';
+
+    $('closePlayer').focus();
+
+}
+
+
+/* =========================
+   CERRAR REPRODUCTOR
+========================= */
+
+function closePlayer(){
+
+    modal.classList.remove('open');
+
+    document.body.style.overflow =
+        '';
+
+    videoBox.innerHTML =
+        '';
+
+    $('youtubeButton').onclick =
+        null;
+
+    state.current =
+        null;
+
+}
+
+
+/* =========================
+   PERFIL
+========================= */
+
+function openProfile(){
+
+    $('profileName').value =
+        state.profile === 'Invitado'
+            ? ''
+            : state.profile;
+
+    $('profileModal')
+        .classList
+        .add('open');
+
+    $('profileName').focus();
+
+    document.body.style.overflow =
+        'hidden';
+
+}
+
+
+function closeProfile(){
+
+    $('profileModal')
+        .classList
+        .remove('open');
+
+    document.body.style.overflow =
+        '';
+
+}
+
+
+function saveProfile(){
+
+    const name =
+        $('profileName')
+            .value
+            .trim()
+        || 'Invitado';
+
+    state.profile =
+        name;
+
+    localStorage.setItem(
+        'cinelibre_profile',
+        name
+    );
+
+    $('profileButton').textContent =
+        name;
+
+    closeProfile();
+
+    notify(
+        `Perfil actualizado: ${name}`
+    );
+
+}
+
+
+/* =========================
+   BUSCADOR
+========================= */
+
+function doSearch(){
+
+    state.search =
+        searchInput.value;
+
+    renderContent();
+
+
+    if(state.search.trim()){
+
+        const results =
+            filtered().slice(0,8);
+
+
+        searchResults.innerHTML =
+            results.length
+
+                ? results
+                    .map(movie => `
+
+                        <div
+                            class="search-result"
+                            data-play="${movie.id}">
+
+                            <img
+                                src="${esc(movie.poster || '')}"
+                                alt="">
+
+                            <div>
+
+                                <strong>
+                                    ${esc(movie.title)}
+                                </strong>
+
+                                <span>
+                                    ${esc(movie.year)}
+                                    ·
+                                    ${esc(
+                                        label(
+                                            movie.category
+                                        )
+                                    )}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    `)
+                    .join('')
+
+                : `
+
+                    <div
+                        class="empty"
+                        style="
+                            padding:20px;
+                            border:0
+                        ">
+
+                        <strong>
+                            No encontramos películas
+                            con esa búsqueda.
+                        </strong>
+
+                    </div>
+                `;
+
+    }else{
+
+        searchResults.innerHTML =
+            '';
+
+    }
+
+}
+
+
+/* =========================
+   EVENTOS CLICK
+========================= */
+
+document.addEventListener(
+    'click',
+    event => {
+
+        const filter =
+            event.target.closest(
+                '[data-filter]'
+            );
+
+
+        if(filter){
+
+            state.filter =
+                filter.dataset.filter;
+
+            document
+                .querySelectorAll(
+                    '[data-filter]'
+                )
+                .forEach(element => {
+
+                    element.classList.toggle(
+                        'active',
+                        element.dataset.filter
+                        === state.filter
+                    );
+
+                });
+
+            renderContent();
+
             return;
         }
 
-        // Crear tarjetas
-        filtered.forEach((movie, index) => {
-            const isFav = state.favorites.includes(movie.id);
-            const card = document.createElement('article');
-            card.className = 'card';
-            card.style.animationDelay = `${index * 0.05}s`;
-            card.setAttribute('tabindex', '0');
-            card.setAttribute('role', 'button');
-            card.setAttribute('aria-label', `Ver ${movie.title}`);
 
-            card.innerHTML = `
-                <div class="poster-wrap">
-                    <img src="${movie.poster}" alt="Póster de ${movie.title}" loading="lazy"
-                         onerror="this.src='https://via.placeholder.com/300x450/1f1f1f/666?text=Sin+Póster'">
-                    <div class="play-overlay"><div class="play-icon">▶</div></div>
-                    ${movie.featured ? '<span class="badge">Destacada</span>' : ''}
-                </div>
-                <button class="fav-btn ${isFav ? 'active' : ''}" aria-label="${isFav ? 'Quitar de' : 'Añadir a'} Mi Lista">
-                    ${isFav ? '❤️' : '🤍'}
-                </button>
-                <div class="info">
-                    <h3 class="title">${movie.title}</h3>
-                    <div class="meta">
-                        <span>${movie.year}</span>
-                        <span>${movie.category.toUpperCase()}</span>
-                    </div>
-                </div>
-            `;
+        const favorite =
+            event.target.closest(
+                '[data-fav]'
+            );
 
-            // Eventos
-            card.querySelector('.fav-btn').addEventListener('click', (e) => toggleFavorite(movie.id, e));
-            card.addEventListener('click', () => openPlayer(movie));
-            card.addEventListener('keydown', (e) => { if (e.key === 'Enter') openPlayer(movie); });
 
-            catalog.appendChild(card);
-        });
+        if(favorite){
+
+            event.stopPropagation();
+
+            toggleFavorite(
+                Number(
+                    favorite.dataset.fav
+                )
+            );
+
+            return;
+        }
+
+
+        const add =
+            event.target.closest(
+                '[data-add]'
+            );
+
+
+        if(add){
+
+            toggleFavorite(
+                Number(
+                    add.dataset.add
+                )
+            );
+
+            return;
+        }
+
+
+        const details =
+            event.target.closest(
+                '[data-details]'
+            );
+
+
+        if(details){
+
+            openDetails(
+                Number(
+                    details.dataset.details
+                )
+            );
+
+            return;
+        }
+
+
+        /*
+           Resultados del buscador.
+        */
+
+        const searchResult =
+            event.target.closest(
+                '[data-play]'
+            );
+
+
+        if(searchResult){
+
+            const movieId =
+                Number(
+                    searchResult.dataset.play
+                );
+
+            searchBox
+                .classList
+                .remove('open');
+
+            $('searchToggle')
+                .setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+            openDetails(movieId);
+
+            return;
+        }
+
+
+        if(
+            event.target ===
+            $('detailModal')
+        ){
+
+            closeDetails();
+
+        }
+
+
+        if(
+            event.target === modal
+        ){
+
+            closePlayer();
+
+        }
+
+
+        if(
+            event.target ===
+            $('profileModal')
+        ){
+
+            closeProfile();
+
+        }
+
     }
+);
 
-    // ================================================================
-    // REPRODUCTOR MODAL
-    // ================================================================
-    function openPlayer(movie) {
-        playerTitle.textContent = `${movie.title} (${movie.year})`;
-        player.src = `https://www.youtube-nocookie.com/embed/${movie.videoId}?autoplay=1&rel=0`;
-        modal.classList.add('active');
-        document.body.style.overflow = 'hidden';
-        closeBtn.focus();
+
+/* =========================
+   TECLADO
+========================= */
+
+document.addEventListener(
+    'keydown',
+    event => {
+
+        if(event.key === 'Escape'){
+
+            if(
+                $('detailModal')
+                    .classList
+                    .contains('open')
+            ){
+
+                closeDetails();
+
+            }else if(
+                modal
+                    .classList
+                    .contains('open')
+            ){
+
+                closePlayer();
+
+            }else if(
+                $('profileModal')
+                    .classList
+                    .contains('open')
+            ){
+
+                closeProfile();
+
+            }else if(
+                searchBox
+                    .classList
+                    .contains('open')
+            ){
+
+                searchBox
+                    .classList
+                    .remove('open');
+
+                $('searchToggle')
+                    .setAttribute(
+                        'aria-expanded',
+                        'false'
+                    );
+
+            }
+
+        }
+
+
+        if(
+            (
+                event.key === 'Enter'
+                ||
+                event.key === ' '
+            )
+            &&
+            document.activeElement?.classList
+                .contains('card')
+        ){
+
+            event.preventDefault();
+
+            openDetails(
+                Number(
+                    document.activeElement
+                        .dataset
+                        .details
+                )
+            );
+
+        }
+
     }
+);
 
-    function closePlayer() {
-        modal.classList.remove('active');
-        player.src = '';
-        document.body.style.overflow = '';
+
+/* =========================
+   BOTONES
+========================= */
+
+$('closeDetail')
+    .addEventListener(
+        'click',
+        closeDetails
+    );
+
+
+$('searchToggle')
+    .addEventListener(
+        'click',
+        () => {
+
+            const opened =
+                searchBox
+                    .classList
+                    .toggle('open');
+
+            $('searchToggle')
+                .setAttribute(
+                    'aria-expanded',
+                    String(opened)
+                );
+
+            if(opened){
+
+                searchInput.focus();
+
+            }
+
+        }
+    );
+
+
+searchInput
+    .addEventListener(
+        'input',
+        doSearch
+    );
+
+
+$('closePlayer')
+    .addEventListener(
+        'click',
+        closePlayer
+    );
+
+
+$('closePlayer2')
+    .addEventListener(
+        'click',
+        closePlayer
+    );
+
+
+$('profileButton')
+    .addEventListener(
+        'click',
+        openProfile
+    );
+
+
+$('cancelProfile')
+    .addEventListener(
+        'click',
+        closeProfile
+    );
+
+
+$('saveProfile')
+    .addEventListener(
+        'click',
+        saveProfile
+    );
+
+
+$('profileName')
+    .addEventListener(
+        'keydown',
+        event => {
+
+            if(event.key === 'Enter'){
+
+                saveProfile();
+
+            }
+
+        }
+    );
+
+
+$('homeLogo')
+    .addEventListener(
+        'click',
+        event => {
+
+            event.preventDefault();
+
+            state.filter =
+                'all';
+
+            state.search =
+                '';
+
+            searchInput.value =
+                '';
+
+            renderAll();
+
+            window.scrollTo({
+                top:0,
+                behavior:'smooth'
+            });
+
+        }
+    );
+
+
+document.addEventListener(
+    'click',
+    event => {
+
+        if(
+            !event.target.closest(
+                '.search-wrap'
+            )
+        ){
+
+            searchBox
+                .classList
+                .remove('open');
+
+            $('searchToggle')
+                .setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+        }
+
     }
+);
 
-    // ================================================================
-    // RESET (click en logo)
-    // ================================================================
-    function resetFilters() {
-        state.filter = 'all';
-        state.search = '';
-        searchInput.value = '';
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        document.querySelector('[data-filter="all"]').classList.add('active');
-        renderMovies();
-    }
 
-    // ================================================================
-    // EVENT LISTENERS
-    // ================================================================
-    closeBtn.addEventListener('click', closePlayer);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closePlayer(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closePlayer(); });
+/* =========================
+   INICIALIZACIÓN
+========================= */
 
-    searchInput.addEventListener('input', debounce((e) => {
-        state.search = e.target.value.trim();
-        renderMovies();
-    }));
+$('profileButton').textContent =
+    state.profile;
 
-    sortSelect.addEventListener('change', (e) => {
-        state.sort = e.target.value;
-        renderMovies();
-    });
+renderAll();
 
-    document.getElementById('filters').addEventListener('click', (e) => {
-        if (!e.target.classList.contains('chip')) return;
-        document.querySelectorAll('.chip').forEach(c => c.classList.remove('active'));
-        e.target.classList.add('active');
-        state.filter = e.target.dataset.filter;
-        renderMovies();
-    });
 
-    // ================================================================
-    // INICIALIZACIÓN
-    // ================================================================
-    renderMovies();
+console.info(
+    `CineLibre: ${movies.length} películas cargadas.`
+);
+
+
+if(!movies.length){
+
+    console.error(
+        'No se encontró window.peliculas. Verifica que peliculas.js esté en la misma carpeta que index.html.'
+    );
+
+}
 </script>
-
-<!-- Cloudflare Web Analytics -->
-<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7aacd14573c041a5bb55ea894657e30d"}'></script>
-<!-- End Cloudflare Web Analytics -->
-
-</body>
-</html>
+    
