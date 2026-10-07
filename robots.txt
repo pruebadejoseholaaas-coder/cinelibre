@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://pruebadejoseholaaas-coder.github.io/cinelibre/sitemap.xml
