@@ -7,7 +7,6 @@
 <meta name="google-site-verification" content="V-3mLZhaTlL85AzDXgcetqXu1GfvsFVvXHLEiQzJYz4" />
 
 <meta name="theme-color" content="#07090d">
-<meta name="theme-color" content="#07090d">
 <meta name="description" content="CineLibre: descubre películas dominicanas y caribeñas, conoce sus historias, géneros, años y sinopsis. Explora el cine de República Dominicana.">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://pruebadejoseholaaas-coder.github.io/cinelibre/">
@@ -377,6 +376,37 @@ a{
     padding:0 clamp(18px,4vw,60px) 40px;
     margin-top:-20px;
     position:relative
+}
+
+/* =========================
+   SEO INTRO
+========================= */
+
+.seo-intro{
+    max-width:900px;
+    margin:0 auto 28px;
+    padding:24px 26px;
+    background:linear-gradient(
+        135deg,
+        rgba(16,20,28,.96),
+        rgba(23,28,38,.72)
+    );
+    border:1px solid var(--line);
+    border-radius:14px;
+    box-shadow:0 10px 30px rgba(0,0,0,.18)
+}
+
+.seo-intro h2{
+    font-size:clamp(1.25rem,2.5vw,1.65rem);
+    line-height:1.25;
+    margin-bottom:9px
+}
+
+.seo-intro p{
+    color:#b8c0cc;
+    font-size:.9rem;
+    line-height:1.7;
+    max-width:800px
 }
 
 .toolbar{
@@ -957,6 +987,10 @@ footer{
     .detail-section p{
         font-size:.84rem
     }
+
+    .seo-intro{
+        padding:20px
+    }
 }
 
 @media(max-width:520px){
@@ -988,6 +1022,20 @@ footer{
     .main{
         padding-left:12px;
         padding-right:12px
+    }
+
+    .seo-intro{
+        margin-bottom:20px;
+        padding:18px
+    }
+
+    .seo-intro h2{
+        font-size:1.15rem
+    }
+
+    .seo-intro p{
+        font-size:.82rem;
+        line-height:1.6
     }
 
     .grid{
@@ -1131,6 +1179,22 @@ footer{
 </section>
 
 <main class="main">
+
+    <!-- CONTENIDO SEO VISIBLE PARA USUARIOS Y BUSCADORES -->
+
+    <section class="seo-intro">
+
+        <h2>
+            CineLibre — Películas Dominicanas y Cine del Caribe
+        </h2>
+
+        <p>
+            CineLibre es una plataforma para descubrir películas dominicanas
+            y del Caribe. Explora historias, géneros, años, países y sinopsis
+            del cine de República Dominicana y descubre nuevas películas.
+        </p>
+
+    </section>
 
     <div
         class="toolbar"
@@ -3323,10 +3387,12 @@ if(!movies.length){
 </script>
 
 <!-- Cloudflare Web Analytics -->
-<script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "7aacd14573c041a5bb55ea894657e30d"}'></script>
+<script
+    type='module'
+    src='https://static.cloudflareinsights.com/beacon.min.js'
+    data-cf-beacon='{"token": "7aacd14573c041a5bb55ea894657e30d"}'>
+</script>
 <!-- End Cloudflare Web Analytics -->
-
 
 </body>
 </html>
-
