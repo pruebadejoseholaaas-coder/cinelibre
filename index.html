@@ -12,6 +12,7 @@
 <link rel="canonical" href="https://pruebadejoseholaaas-coder.github.io/cinelibre/">
 
 <title>CineLibre | Películas Dominicanas y Cine del Caribe</title>
+
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -21,6 +22,7 @@
   "url": "https://pruebadejoseholaaas-coder.github.io/cinelibre/"
 }
 </script>
+
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 
 <style>
@@ -310,7 +312,7 @@ a{
     margin-bottom:14px
 }
 
-.hero h1{
+.hero h2{
     font-size:clamp(2.1rem,6vw,4.5rem);
     line-height:1.02;
     letter-spacing:-2px;
@@ -385,6 +387,7 @@ a{
     margin-top:-20px;
     position:relative
 }
+
 .site-title-seo{
     position:absolute;
     width:1px;
@@ -396,6 +399,7 @@ a{
     white-space:nowrap;
     border:0;
 }
+
 /* =========================
    SEO INTRO
 ========================= */
@@ -1029,7 +1033,7 @@ footer{
         min-height:59vh
     }
 
-    .hero h1{
+    .hero h2{
         letter-spacing:-1px
     }
 
@@ -1199,7 +1203,9 @@ footer{
 <main class="main">
 
     <!-- CONTENIDO SEO VISIBLE PARA USUARIOS Y BUSCADORES -->
-<h1 class="site-title-seo">CineLibre</h1>
+
+    <h1 class="site-title-seo">CineLibre</h1>
+
     <section class="seo-intro">
 
         <h2>
@@ -1655,23 +1661,12 @@ function isOKRu(movie){
 /*
     Si peliculas.js ya contiene directamente
     una URL videoembed, la utilizamos.
-
-    Ejemplo:
-
-    videoEmbedUrl:
-    "https://ok.ru/videoembed/XXXXXXXX"
 */
 
 function getOKRuEmbedUrl(movie){
 
     if(!movie)
         return null;
-
-
-    /*
-        PRIMERA OPCIÓN:
-        URL directa proporcionada por el catálogo.
-    */
 
     if(
         typeof movie.videoEmbedUrl === 'string' &&
@@ -1681,13 +1676,6 @@ function getOKRuEmbedUrl(movie){
         return movie.videoEmbedUrl.trim();
 
     }
-
-
-    /*
-        SEGUNDA OPCIÓN:
-        Algunas estructuras pueden utilizar
-        videoUrl directamente con /videoembed/.
-    */
 
     if(
         typeof movie.videoUrl === 'string' &&
@@ -1699,15 +1687,6 @@ function getOKRuEmbedUrl(movie){
         return movie.videoUrl.trim();
 
     }
-
-
-    /*
-        No inventamos el ID de videoembed.
-
-        OK.ru puede utilizar un identificador
-        de inserción diferente al identificador
-        visible en /video/.
-    */
 
     return null;
 
@@ -1779,9 +1758,9 @@ function renderHero(){
                 🎬 CineLibre
             </div>
 
-            <h1>
+            <h2>
                 Cine dominicano
-            </h1>
+            </h2>
 
             <p>
                 Agrega películas en
@@ -1808,9 +1787,9 @@ function renderHero(){
             }
         </div>
 
-        <h1>
+        <h2>
             ${esc(movie.title)}
-        </h1>
+        </h2>
 
         <div class="meta">
 
