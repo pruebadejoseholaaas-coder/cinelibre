@@ -1005,28 +1005,6 @@ const peliculas = [
     },
 
     {
-        id: 90,
-        title: "Sonic 3",
-        year: 2024,
-        category: "animation",
-        featured: false,
-        poster: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPXGj3wjWzOVbNhh-jVpNm33xnvsURwp4KXphqwZAfFg&s=10",
-        videoId: "Ab7yYfDOCCM",
-        synopsis: "Sonic, Knuckles y Tails vuelven a unir fuerzas para enfrentarse a Shadow, un misterioso y poderoso enemigo que representa una amenaza para el mundo. Los tres héroes deberán superar sus diferencias y trabajar juntos para detenerlo."
-    },
-
-    {
-        id: 91,
-        title: "Garfield",
-        year: 2024,
-        category: "animation",
-        featured: false,
-        poster: "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcRLyvJHxfzq_GmVa5n_99fNpQPJsbHVW251WmXrPriO_YbpuJAz6Yus8ovsLdXV2YdoDPPR3XBUOVPotrlXr9tjvbCtGvJh3DRqLIbPMFPgIroUAgg&usqp=CAc",
-        videoId: "hFfmJDKPxYs",
-        synopsis: "Garfield vuelve a vivir una nueva aventura cuando se reencuentra inesperadamente con su padre, Vic. Junto a Odie, el famoso gato deberá abandonar su cómoda vida y enfrentarse a una divertida aventura llena de situaciones inesperadas."
-    },
-
-    {
         id: 92,
         title: "El Teniente Amado",
         year: 2013,
